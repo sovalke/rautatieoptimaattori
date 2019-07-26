@@ -10,4 +10,6 @@
 
 * Laadittu määrittelydokumentti ja ensimmäinen viikkoraportti.
 
+* Tässä vaiheessa huomasin, että olin käyttänyt sekaisin kahta Github-tunnusta; toista, jonka olen luonut koulutöitä varten ja toista, joka on yksityinen. Siirsin repon oikean tunnuksen alle ja jouduin käytännössä myös poistamaan sen ja lataamaan kaiken uusiksi, koska commiteissa näkyi kahta eri tunnusta. Halusin, että kaikki commitit menisivät koulutunnuksen alle.
+
 * Käytetty aika yhteensä: noin 12 tuntia.
