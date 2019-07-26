@@ -1,0 +1,30 @@
+# NetBeans specific #
+**/nbproject/private/
+**/nbproject/Makefile-*.mk
+**/nbproject/Package-*.bash
+/nbproject/private/
+/nbproject/Makefile-*.mk
+/nbproject/Package-*.bash
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# Class Files #
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# OS
+.DS_Store
+
+#Manifest
+*.mf
+
+#Build
+/build.xml
