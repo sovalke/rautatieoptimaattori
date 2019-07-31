@@ -18,9 +18,12 @@ public class Dijkstra {
         // Lisätään kaari molempiin suuntiin.
         Solmu a = solmut.get(lahtopaikka);
         Solmu b = solmut.get(maaranpaa);
+        lisaaYhteys(a, b, i);
+    }
+    
+    void lisaaYhteys(Solmu a, Solmu b, int i) {
         a.lisaaYhteys(b, i);
         b.lisaaYhteys(a, i);
-
     }
 
     // Tulostetaan kaikki tunnetut yhteysvälit.
@@ -28,12 +31,12 @@ public class Dijkstra {
         for (HashMap.Entry<String, Solmu> entry : solmut.entrySet()) {
             Solmu tulos = entry.getValue();
             
-            System.out.println(tulos.nimi + ": ");
+            System.out.println(tulos.getNimi() + ": ");
 
-            HashMap<Solmu, Integer> naapurit = tulos.haeNaapurit();
+            HashMap<Solmu, Integer> naapurit = tulos.getNaapurit();
 
             for (HashMap.Entry<Solmu, Integer> naapuri : naapurit.entrySet()) {
-                System.out.println("    " + naapuri.getKey().nimi + " " + naapuri.getValue() + " km");
+                System.out.println("    " + naapuri.getKey().getNimi() + " " + naapuri.getValue() + " km");
             }
         }
     }
@@ -93,6 +96,7 @@ public class Dijkstra {
             }
 
             // Muutoin käydään läpi solmun naapurit.
+            // Miksi tässä ei voi käyttää getNaapurit-metodia? Tulee virheilmoitus.
             for (HashMap.Entry<Solmu, Integer> naapuri : kasiteltava.naapurit.entrySet()) {
 
               // Onko naapurisolmu jo etäisyysarviotaulukossa?
@@ -122,7 +126,7 @@ public class Dijkstra {
 
         }
 
-        System.out.println("Etäisyys " + alku.nimi + "-" + loppu.nimi + " on " + etaisyydet.get(loppu) + " km.");
+        System.out.println("Etäisyys " + alku.getNimi() + "-" + loppu.getNimi() + " on " + etaisyydet.get(loppu) + " km.");
     }
 
 }
