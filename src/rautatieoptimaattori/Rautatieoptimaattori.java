@@ -32,6 +32,10 @@ public class Rautatieoptimaattori {
         r.reitinPituus("Turku", "Kuopio");
         r.reitinPituus("Turku", "Helsinki");
         
+        Astar a = new Astar();
+        a.lisaaAsema("Helsinki", 123, 60.166640, 24.943536);
+        a.lisaaAsema("Turku", 124, 60.451389, 22.266667);
+        a.lisaaAsema("Tampere", 125, 61.498056, 23.760833);
     }
 
 }

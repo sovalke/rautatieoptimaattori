@@ -4,23 +4,62 @@ import java.util.HashMap;
 
 public class Solmu {
 
-    public String nimi;
+    private String nimi;
     HashMap<Solmu, Integer> naapurit = new HashMap<>();
+    private double koordinaattiX;
+    private double koordinaattiY;
+    private int id;
 
+    // Konstruktori Dijkstraa varten
     public Solmu(String nimi) {
         this.nimi = nimi;
+    }
+
+    // Konstruktori A*:aa varten
+    public Solmu(String nimi, int id, double x, double y) {
+        this.nimi = nimi;
+        this.id = id;
+        this.koordinaattiX = x;
+        this.koordinaattiY = y;
     }
 
     public void lisaaYhteys(Solmu paikka, int etaisyys) {
         naapurit.put(paikka, etaisyys);
     }
 
+    // Setterit
+    public void setId(int i) {
+        this.id = i;
+    }
+
+    public void setXY(double x, double y) {
+        this.koordinaattiX = x;
+        this.koordinaattiY = y;
+    }
+
+    // Getterit
+    public int getId() {
+        return this.id;
+    }
+    
     public int getEtaisyys(Solmu paikka) {
         return naapurit.get(paikka);
     }
 
-    public HashMap haeNaapurit() {
+    public String getNimi() {
+        return this.nimi;
+    }
+
+    public HashMap getNaapurit() {
         return naapurit;
+    }
+
+    public double getX() {
+        return this.koordinaattiX;
+    }
+
+    public double getY() {
+        return this.koordinaattiY;
     }
 
 }
