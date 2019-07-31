@@ -71,7 +71,6 @@ public class Dijkstra {
         
         // Asetetaan halutut alku- ja päätepisteet.
         Solmu alku = solmut.get(lahtopaikka);
-        alku.setKokonaisEtaisyys(0);
         Solmu loppu = solmut.get(maaranpaa);
 
         // Luodaan keko ja tarvittavat HashMapit.
