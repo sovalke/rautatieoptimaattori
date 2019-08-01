@@ -5,14 +5,10 @@ import java.util.PriorityQueue;
 
 public class Astar {
 
-    Verkko verkko;
+    private Verkko verkko;
 
     public Astar(Verkko v) {
         this.verkko = v;
-    }
-
-    public void tulostaReitit() {
-        verkko.tulostaReitit();
     }
 
     // Varsinainen algoritmi
