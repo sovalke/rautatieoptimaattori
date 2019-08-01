@@ -1,6 +1,9 @@
 # Viikkoraportti 2
 
-* Minua kehotettiin käyttämään työssä ulkopuolista dataa, mutta päätin olla tekemättä niin. Sopivan datan löytäminen on osoittautunut hankalaksi, sillä tarjolla on vain aikatauluja ja GPS-koordinaatteja; asemien väliset etäisyystiedot eli algoritmin kannalta oleellinen tieto (matkan pituus) puuttuu datasta. Totesin, että tämän laskeminen GPS-koordinaattien perusteella on sekä haastavaa että epäluotettavaa, sillä missään ei varmisteta, kulkeeko kahden GPS-pisteen välillä raideyhteys. Lisäksi data olisi jotenkin pitänyt muuntaa sellaiseen muotoon, että algoritmi olisi pystynyt hyödyntämään sitä. Ikävä kyllä minulla ei ole taitoa muuntaa dataa tällaisella tavalla, enkä parin tunnin selvittelyllä onnistunut keksimään, miten se onnistuu. Päätin jättää ulkopuolisen datan sikseen ja keskittyä algoritmin toteuttamiseen.
+* Minua kehotettiin käyttämään työssä ulkopuolista dataa. Päätin edetä niin, että teen ensin toimivan algoritmin ja käytän rakentamisvaiheessa yksinkertaista itse generoitua verkkoa. Pienessä verkossa algoritmin rakentaminen on helpompaa. Kun olen saanut algoritmit toimintakuntoon, otan mukaan ulkopuolisen datan.
 
+* Tiistai: Dijkstran algoritmin ensimmäinen versio valmis. Käytetty aika: 12 tuntia.
 
+* Keskiviikko: A*-algoritmin ensimmäinen versio valmis. Käytetty aika: 4 tuntia.
 
+* Torstai: A\*-algoritmin paranneltu versio valmis. Sekä Dijkstra että A\* refaktoroitu. Käytetty aika: 7 tuntia.

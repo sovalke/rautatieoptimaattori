@@ -9,4 +9,5 @@ Ohjelmassa käytettävä ohjelmointikieli on Java.
 
 ## Viikkoraportit
 [Viikko 1](documents/reports/week1.md)
+[Viikko 2](documents/reports/week2.md)
 
