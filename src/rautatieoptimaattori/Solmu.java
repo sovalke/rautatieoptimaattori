@@ -41,7 +41,7 @@ public class Solmu {
     public int getId() {
         return this.id;
     }
-    
+
     public int getEtaisyys(Solmu paikka) {
         return naapurit.get(paikka);
     }
