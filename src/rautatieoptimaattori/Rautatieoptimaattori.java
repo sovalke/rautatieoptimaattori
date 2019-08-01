@@ -45,7 +45,6 @@ public class Rautatieoptimaattori {
         
         a.lisaaYhteys("Helsinki", "Tampere", 187);
         a.lisaaYhteys("Helsinki","Turku",193);
-        a.lisaaYhteys(124,125,170);
         a.lisaaYhteys("Seinäjoki","Oulu",335);
         a.lisaaYhteys("Tampere","Seinäjoki",160);
         a.tulostaReitit();

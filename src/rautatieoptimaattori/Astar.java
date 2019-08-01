@@ -6,7 +6,6 @@ import java.util.PriorityQueue;
 public class Astar {
 
     HashMap<String, Solmu> solmut = new HashMap<>();
-    HashMap<Integer, Solmu> solmutId = new HashMap<>();
 
     // Lisätään asema koordinaatteineen.
     void lisaaAsema(String nimi, int id, double x, double y) {
@@ -14,11 +13,9 @@ public class Astar {
             Solmu paivitettava = solmut.get(nimi);
             paivitettava.setXY(x, y);
             paivitettava.setId(id);
-            solmutId.put(id, paivitettava);
         } else {
             Solmu lisattava = new Solmu(nimi, id, x, y);
             solmut.put(lisattava.getNimi(), lisattava);
-            solmutId.put(lisattava.getId(), lisattava);
         }
         Solmu a = solmut.get(nimi);
         System.out.println("Lisätty asema " + a.getNimi() + " (" + a.getId() + "), koordinaatit " + a.getX() + " / " + a.getY());
@@ -36,21 +33,6 @@ public class Astar {
         // Lisätään kaari molempiin suuntiin.
         Solmu a = solmut.get(lahtopaikka);
         Solmu b = solmut.get(maaranpaa);
-        lisaaYhteys(a, b, i);
-    }
-
-    // Lähtöpaikka ja määränpää annetaan id-numerona.
-    void lisaaYhteys(int lahtopaikkaId, int maaranpaaId, int i) {
-        if (!solmutId.containsKey(lahtopaikkaId)) {
-            System.out.println("Asemaa " + lahtopaikkaId + " ei löydy");
-        }
-        if (!solmutId.containsKey(maaranpaaId)) {
-            System.out.println("Asemaa " + maaranpaaId + " ei löydy");
-        }
-
-        // Lisätään kaari molempiin suuntiin.
-        Solmu a = solmutId.get(lahtopaikkaId);
-        Solmu b = solmutId.get(maaranpaaId);
         lisaaYhteys(a, b, i);
     }
 
@@ -125,54 +107,51 @@ public class Astar {
 
             // Napataan käsiteltävä solmu.
             Solmu kasiteltava = keko.poll().getSolmu();
+            System.out.println("Tarkastellaan solmua " + kasiteltava.getNimi());
+            
+            if (kasiteltava.equals(loppu)) {
+                System.out.println("Ollaan päästy maaliin!");
+                break;
+            }
 
             // Onko solmua käsitelty vielä? Jos on, hypätään yli.
             if (kasitelty.containsKey(kasiteltava)) {
+                System.out.println("---hypätään solmun " + kasiteltava + " yli");
                 continue;
             }
-
-            double pieninArvio = Double.POSITIVE_INFINITY;
-            Solmu valittu = kasiteltava;
 
             // Muutoin käydään läpi solmun naapurit.
             // Miksi tässä ei voi käyttää getNaapurit-metodia? Tulee virheilmoitus.
             for (HashMap.Entry<Solmu, Integer> naapuri : kasiteltava.naapurit.entrySet()) {
 
-                // Onko naapurisolmu jo etäisyysarviotaulukossa?
-                Solmu tutkittavaNaapuri = naapuri.getKey();
-                double uusi = etaisyydet.get(kasiteltava) + kasiteltava.getEtaisyys(tutkittavaNaapuri);
-                double kokonaisArvio = uusi + etaisyysArvio(tutkittavaNaapuri, loppu);
-                System.out.println("-- Naapuri " + tutkittavaNaapuri.getNimi() + ", f: " + kokonaisArvio);
+              // Onko naapurisolmu jo etäisyysarviotaulukossa?
+              Solmu tutkittavaNaapuri = naapuri.getKey();
+              double uusi = etaisyydet.get(kasiteltava) + kasiteltava.getEtaisyys(tutkittavaNaapuri);
 
-                // Päivitetään pienin etäisyysarvio ja tallennetaan tieto parhaasta solmusta.
-                if (kokonaisArvio < pieninArvio) {
-                    pieninArvio = kokonaisArvio;
-                    valittu = tutkittavaNaapuri;
-                }
+              // Ei ole; lisää se etäisyytaulukkoon ja kekoon.
+              if(! etaisyydet.containsKey(tutkittavaNaapuri)) {
+                etaisyydet.put(tutkittavaNaapuri, uusi);
+                
+                double arvio = uusi + etaisyysArvio(tutkittavaNaapuri, loppu);
+                keko.add(new VertailtavaSolmu(tutkittavaNaapuri, arvio));
+                System.out.println(uusi + " / " + arvio);
+                
+                continue;
+              }
 
-                // Solmu ei ole vielä etäisyystaulukossa; lisätään se
-                if (!etaisyydet.containsKey(tutkittavaNaapuri)) {
-                    etaisyydet.put(tutkittavaNaapuri, uusi);
-                    continue;
-                }
+              // On; verrataan uutta ja vanhaa etäisyyttä
+              double vanha = etaisyydet.get(tutkittavaNaapuri);
+              if (uusi < vanha) {
+                  etaisyydet.put(tutkittavaNaapuri, uusi);
+                  double arvio = uusi + etaisyysArvio(tutkittavaNaapuri, loppu);
+                  System.out.println("Moi");
 
-                // Solmu on taulukossa; verrataan uutta ja vanhaa etäisyyttä
-                double vanha = etaisyydet.get(tutkittavaNaapuri);
-                if (uusi < vanha) {
-                    etaisyydet.put(tutkittavaNaapuri, uusi);
-                }
-
-                System.out.println("Määränpäänä " + loppu.getNimi());
-                System.out.println("Valittuna " + valittu.getNimi());
+                  // Siirrytään tutkimaan naapuria.
+                  keko.add(new VertailtavaSolmu(tutkittavaNaapuri, arvio));
+                  System.out.println(arvio);
+              }
 
             }
-            
-            // Määränpää saavutettu, nyt voi stopata.
-            if (loppu.getId() == valittu.getId()) {
-                break;
-            }
-            System.out.println("Valittu solmuksi " + valittu.getNimi() + ", f: " + pieninArvio);
-            keko.add(new VertailtavaSolmu(valittu, pieninArvio));
 
             kasitelty.put(kasiteltava, true);
 
@@ -186,8 +165,8 @@ public class Astar {
         // Hyödynnetään Pythagoraan lausetta etäisyysarvion laskemiseen.
 
         // Varmistetaan, että etäisyys ilmaistaan itseisarvoina.        
-        double x = Math.abs(maaranpaa.getX() - piste.getX());
-        double y = Math.abs(maaranpaa.getY() - piste.getY());
+        double x = maaranpaa.getX() - piste.getX();
+        double y = maaranpaa.getY() - piste.getY();
 
         // etaisyysaArvio = neliöjuuri(x^2 + y^2)
         double etaisyysArvio = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)) * 100;
