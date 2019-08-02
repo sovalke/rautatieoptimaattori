@@ -10,12 +10,6 @@ public class Solmu {
     private double koordinaattiY;
     private int id;
 
-    // Konstruktori Dijkstraa varten
-    public Solmu(String nimi) {
-        this.nimi = nimi;
-    }
-
-    // Konstruktori A*:aa varten
     public Solmu(String nimi, int id, double x, double y) {
         this.nimi = nimi;
         this.id = id;
