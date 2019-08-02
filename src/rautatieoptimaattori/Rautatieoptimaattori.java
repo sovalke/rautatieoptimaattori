@@ -14,17 +14,21 @@ public class Rautatieoptimaattori {
         verkko.lisaaAsema("Tampere", 125, 61.498056, 23.760833);
         verkko.lisaaAsema("Oulu", 126, 65.013785, 25.472099);
         verkko.lisaaAsema("Seinäjoki", 127, 62.790278, 22.840278);
+        verkko.lisaaAsema("Riihimäki", 128, 60.738889, 24.772222);
+        verkko.lisaaAsema("Lahti", 129, 60.983333, 25.655556);
         
         verkko.lisaaYhteys("Helsinki","Tampere",187);
         verkko.lisaaYhteys("Helsinki","Turku",193);
         verkko.lisaaYhteys("Turku","Tampere",170);
         verkko.lisaaYhteys("Tampere","Seinäjoki",160);
         verkko.lisaaYhteys("Seinäjoki","Oulu",335); 
+        verkko.lisaaYhteys("Lahti","Riihimäki",59);
+        verkko.lisaaYhteys("Lahti","Helsinki",104);
+        verkko.lisaaYhteys("Tampere","Riihimäki",116);
         
         
-        Dijkstra r = new Dijkstra( verkko );
+        Dijkstra r = new Dijkstra(verkko);
 
-        // System.out.println("KÄYTÖSSÄ OLEVAT RADANPÄTKÄT");
         verkko.tulostaReitit();
         System.out.println("-------------------------------------------");
 
@@ -33,6 +37,7 @@ public class Rautatieoptimaattori {
         r.reitinPituus("Turku", "Helsinki");
         r.reitinPituus("Oulu", "Helsinki");
         r.reitinPituus("Oulu", "Tampere");
+        r.reitinPituus("Lahti", "Turku");
         
         System.out.println("-------------------------------------------");
         System.out.println("A* vauhdissa...");
@@ -43,6 +48,8 @@ public class Rautatieoptimaattori {
         a.reitinPituus("Oulu", "Helsinki");
         a.reitinPituus("Oulu", "Tampere");
         a.reitinPituus("Tampere", "Oulu");
+        a.reitinPituus("Lahti", "Turku");
+        System.out.println(a.reitinPituus("Lahti", "Turku") + r.reitinPituus("Lahti", "Turku"));
         
         
         
