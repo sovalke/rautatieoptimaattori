@@ -12,7 +12,7 @@ public class Astar {
     }
 
     // Varsinainen algoritmi
-    void reitinPituus(String lahtopaikka, String maaranpaa) {
+    public double reitinPituus(String lahtopaikka, String maaranpaa) {
 
         // Asetetaan halutut alku- ja päätepisteet.
         Solmu alku = this.verkko.getSolmu(lahtopaikka);
@@ -85,6 +85,7 @@ public class Astar {
 
         System.out.println("Etäisyys " + alku.getNimi() + "-" + loppu.getNimi() + " on " + etaisyydet.get(loppu) + " km.");
         System.out.println("--------------");
+        return etaisyydet.get(loppu);
     }
 
     double etaisyysArvio(Solmu piste, Solmu maaranpaa) {
