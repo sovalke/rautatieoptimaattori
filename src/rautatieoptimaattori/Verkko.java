@@ -7,7 +7,7 @@ public class Verkko {
     private HashMap<String, Solmu> solmut = new HashMap<>();
 
     // Lisätään uusi asema koordinaatteineen.
-    void lisaaAsema(String nimi, int id, double x, double y) {
+    public void lisaaAsema(String nimi, int id, double x, double y) {
         if (solmut.containsKey(nimi)) {
             Solmu paivitettava = solmut.get(nimi);
             paivitettava.setXY(x, y);
@@ -21,13 +21,13 @@ public class Verkko {
     }
 
     // Lisää kahdensuuntainen yhteys asemien välille.
-    void lisaaYhteys(String lahtopaikka, String maaranpaa, int i) {
-        // Lisätään verkkoon lähtö- ja päätepisteet, jos ne puuttuvat.
+    public void lisaaYhteys(String lahtopaikka, String maaranpaa, int i) {
+        // Annetaan virheilmoitus, jos asemia ei löydy.
         if (!solmut.containsKey(lahtopaikka)) {
-            solmut.put(lahtopaikka, new Solmu(lahtopaikka));
+            System.out.println("Lähtöpaikkaa ei löydy.");
         }
         if (!solmut.containsKey(maaranpaa)) {
-            solmut.put(maaranpaa, new Solmu(maaranpaa));
+            System.out.println("Määränpäätä ei löydy.");
         }
 
         // Lisätään kaari molempiin suuntiin.
@@ -42,7 +42,7 @@ public class Verkko {
     }
 
     // Tulostetaan kaikki tunnetut yhteysvälit.
-    void tulostaReitit() {
+    public void tulostaReitit() {
         for (HashMap.Entry<String, Solmu> entry : solmut.entrySet()) {
             Solmu tulos = entry.getValue();
 
@@ -58,6 +58,10 @@ public class Verkko {
 
     Solmu getSolmu(String nimi) {
         return this.solmut.get(nimi);
+    }
+    
+    public int getKoko() {
+        return solmut.size();
     }
 
 
