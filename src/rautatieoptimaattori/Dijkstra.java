@@ -12,7 +12,7 @@ public class Dijkstra {
     }
 
     // Varsinainen Dijkstran algoritmi
-    void reitinPituus(String lahtopaikka, String maaranpaa) {
+    public double reitinPituus(String lahtopaikka, String maaranpaa) {
         
         // Asetetaan halutut alku- ja päätepisteet.
         Solmu alku = this.verkko.getSolmu(lahtopaikka);
@@ -69,6 +69,7 @@ public class Dijkstra {
         }
 
         System.out.println("Etäisyys " + alku.getNimi() + "-" + loppu.getNimi() + " on " + etaisyydet.get(loppu) + " km.");
+        return etaisyydet.get(loppu);
     }
 
 }
