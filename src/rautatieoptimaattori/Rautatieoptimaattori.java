@@ -1,5 +1,7 @@
 package rautatieoptimaattori;
 
+import rautatieoptimaattori.algorithms.Astar;
+import rautatieoptimaattori.algorithms.Dijkstra;
 import java.util.HashSet;
 import java.util.Map.Entry;
 import java.util.Set;

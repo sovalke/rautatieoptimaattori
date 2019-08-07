@@ -10,8 +10,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import rautatieoptimaattori.Astar;
-import rautatieoptimaattori.Dijkstra;
+import rautatieoptimaattori.algorithms.Astar;
+import rautatieoptimaattori.algorithms.Dijkstra;
 import rautatieoptimaattori.Verkko;
 
 /**

@@ -56,7 +56,7 @@ public class Verkko {
         }
     }
 
-    Solmu getSolmu(String nimi) {
+    public Solmu getSolmu(String nimi) {
         return this.solmut.get(nimi);
     }
     

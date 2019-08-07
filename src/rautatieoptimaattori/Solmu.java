@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class Solmu {
 
     private String nimi;
-    HashMap<Solmu, Integer> naapurit = new HashMap<>();
+    public HashMap<Solmu, Integer> naapurit = new HashMap<>();
     private double koordinaattiX;
     private double koordinaattiY;
     private int id;

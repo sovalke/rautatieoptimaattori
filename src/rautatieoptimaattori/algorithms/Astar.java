@@ -1,7 +1,10 @@
-package rautatieoptimaattori;
+package rautatieoptimaattori.algorithms;
 
 import java.util.HashMap;
 import java.util.PriorityQueue;
+import rautatieoptimaattori.Solmu;
+import rautatieoptimaattori.Verkko;
+import rautatieoptimaattori.VertailtavaSolmu;
 
 public class Astar {
 

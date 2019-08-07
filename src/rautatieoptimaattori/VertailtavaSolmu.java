@@ -5,12 +5,12 @@ public class VertailtavaSolmu implements Comparable {
     private Solmu solmu;
     private double etaisyys;
 
-    VertailtavaSolmu(Solmu solmu, double etaisyys) {
+    public VertailtavaSolmu(Solmu solmu, double etaisyys) {
         this.solmu = solmu;
         this.etaisyys = etaisyys;
     }
 
-    Solmu getSolmu() {
+    public Solmu getSolmu() {
         return this.solmu;
     }
 
