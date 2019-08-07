@@ -5,19 +5,19 @@ import java.util.HashMap;
 public class Solmu {
 
     private String nimi;
-    public HashMap<Solmu, Integer> naapurit = new HashMap<>();
-    private double koordinaattiX;
-    private double koordinaattiY;
+    public HashMap<Solmu, Long> naapurit = new HashMap<>();
+    private long koordinaattiX;
+    private long koordinaattiY;
     private int id;
 
     public Solmu(String nimi, int id, double x, double y) {
         this.nimi = nimi;
         this.id = id;
-        this.koordinaattiX = x;
-        this.koordinaattiY = y;
+        this.koordinaattiX = (long) x * 1000000;
+        this.koordinaattiY = (long) y * 1000000;
     }
 
-    public void lisaaYhteys(Solmu paikka, int etaisyys) {
+    public void lisaaYhteys(Solmu paikka, long etaisyys) {
         naapurit.put(paikka, etaisyys);
     }
 
@@ -25,8 +25,12 @@ public class Solmu {
     public void setId(int i) {
         this.id = i;
     }
+    
+    public void setNimi(String nomen) {
+        this.nimi = nomen;
+    }
 
-    public void setXY(double x, double y) {
+    public void setXY(long x, long y) {
         this.koordinaattiX = x;
         this.koordinaattiY = y;
     }
@@ -36,7 +40,7 @@ public class Solmu {
         return this.id;
     }
 
-    public int getEtaisyys(Solmu paikka) {
+    public long getEtaisyys(Solmu paikka) {
         return naapurit.get(paikka);
     }
 
