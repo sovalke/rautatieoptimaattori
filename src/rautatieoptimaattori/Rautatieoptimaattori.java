@@ -1,6 +1,8 @@
 package rautatieoptimaattori;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
 import rautatieoptimaattori.algorithms.Astar;
 import rautatieoptimaattori.algorithms.Dijkstra;
 import java.util.HashSet;
@@ -10,7 +12,7 @@ import rautatieoptimaattori.io.Aineistokasittelija;
 
 public class Rautatieoptimaattori {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, FileNotFoundException, ParseException {
         
 //        Verkko verkko = new Verkko();
 //        verkko.lisaaAsema("Helsinki", 123, 60.166640, 24.943536);
@@ -55,8 +57,17 @@ public class Rautatieoptimaattori {
 //        a.reitinPituus("Lahti", "Turku");
 //        System.out.println(a.reitinPituus("Lahti", "Turku") + r.reitinPituus("Lahti", "Turku"));
         
-        Aineistokasittelija mau = new Aineistokasittelija("./data/stations.csv");
-        Aineistokasittelija may = new Aineistokasittelija("./data/trains.csv");
+        Aineistokasittelija data = new Aineistokasittelija();
+        data.lisaaAsemat("./data/stations.csv");
+        data.lisaaYhteydet("./data/trains.csv");
+        Verkko verkko = data.getVerkko();
+        
+        verkko.getKoko();
+        Astar r = new Astar(verkko);
+        r.reitinPituus(130, 1);
+        
+        Dijkstra d = new Dijkstra(verkko);
+        d.reitinPituus(130, 1);
         
     }
 
