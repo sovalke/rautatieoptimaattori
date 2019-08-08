@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import rautatieoptimaattori.Solmu;
 import rautatieoptimaattori.Verkko;
 
 public class Aineistokasittelija {
@@ -18,97 +21,82 @@ public class Aineistokasittelija {
         this.verkko = new Verkko();
     }
 
-    public void lisaaAsemat(String polku) throws FileNotFoundException, IOException {
+    public int lisaaAsemat(String polku) throws FileNotFoundException, IOException, Exception {
         csvLukija = new BufferedReader(new FileReader(polku));
+
+        String ensimmainenRivi = csvLukija.readLine();
         String asemaAlku = "Name,id,lat,long";
 
+        if (!ensimmainenRivi.equalsIgnoreCase(asemaAlku)) {
+            throw new Exception("Data ei ole oikeassa muodossa.");
+        }
+
         // Tallennetaan rivit taulukoksi.
-        String rivit;
-        boolean asema = false;
+        String rivi;
 
-        while ((rivit = csvLukija.readLine()) != null) {
-            String[] data = rivit.split("\"[\\r\\n]+\"");
+        while ((rivi = csvLukija.readLine()) != null) {
 
-            for (String a : data) {
-                String nimi;
-                int id;
-                double x;
-                double y;
+            String nimi;
+            int id;
+            double x;
+            double y;
 
-                if (a.equalsIgnoreCase(asemaAlku)) {
-                    // Kyse on nimenomaan ASEMALISTAUKSESTA.
-                    asema = true;
-                }
+            // Katkaistaan rivi aina pilkun kohdalta.
+            String[] olio = rivi.split(",");
 
-                // Katkaistaan rivi aina pilkun kohdalta.
-                String[] olio = a.split(",");
-
-                // Tallennetaan pilkuilla erotellut aseman tiedot verkkoon.
-                // Ensimmäistä riviä ei käsitellä.
-                if (olio[0].equalsIgnoreCase("name") || olio[0].equalsIgnoreCase("from")) {
-                    continue;
-                }
-
-                // Käsitellään vain, jos kaikki tarvittavat kentät (4) ovat olemassa
-                // JA kyseessä on asemadata.
-                if (olio.length == 4 && asema == true) {
-                    nimi = olio[0];
-                    id = Integer.parseInt(olio[1]);
-                    x = Double.parseDouble(olio[2]);
-                    y = Double.parseDouble(olio[3]);
-                    this.verkko.lisaaAsema(nimi, id, x, y);
-                }
+            // Käsitellään vain, jos kaikki tarvittavat kentät (4) ovat olemassa
+            if (olio.length == 4) {
+                nimi = olio[0];
+                id = Integer.parseInt(olio[1]);
+                x = Double.parseDouble(olio[2]);
+                y = Double.parseDouble(olio[3]);
+                this.verkko.lisaaAsema(nimi, id, x, y);
             }
         }
+
         csvLukija.close();
-        System.out.println("Verkossa on nyt " + this.verkko.getKoko() + " solmua.");
+
+        return this.verkko.getKoko();
     }
 
-    public void lisaaYhteydet(String polku) throws IOException, ParseException {
+    public void lisaaYhteydet(String polku) throws IOException, ParseException, Exception {
         csvLukija = new BufferedReader(new FileReader(polku));
         String yhteysAlku = "from,to,departs,arrives";
+        String ensimmainenRivi = csvLukija.readLine();
+        
+        if (!ensimmainenRivi.equalsIgnoreCase(yhteysAlku)) {
+            throw new Exception("Data ei ole oikeassa muodossa.");
+        }
 
         // Tallennetaan rivit taulukoksi.
-        String rivit;
-        boolean yhteys = false;
+        String rivi;
 
-        while ((rivit = csvLukija.readLine()) != null) {
-            String[] data = rivit.split("\"[\\r\\n]+\"");
+        while ((rivi = csvLukija.readLine()) != null) {
 
-            for (String a : data) {
+            // Katkaistaan rivi aina pilkun kohdalta.
+            String[] olio = rivi.split(",");
 
-                // Kyse on YHTEYSLUETTELOSTA.
-                if (a.equalsIgnoreCase(yhteysAlku)) {
-                    yhteys = true;
-                }
-
-                // Katkaistaan rivi aina pilkun kohdalta.
-                String[] olio = a.split(",");
-
-                // Tallennetaan pilkuilla erotellut yhteystiedot verkkoon.
-                // Ensimmäistä riviä ei käsitellä.
-                if (olio[0].equalsIgnoreCase("name") || olio[0].equalsIgnoreCase("from")) {
-                    continue;
-                }
-
+            // Käsitellään vain, jos kaikki tarvittavat kentät ovat olemassa.
+            if (olio.length == 4) {
+                
                 // Jos kaksi ensimmäistä kenttää ovat identtiset, dataa ei käsitellä;
                 // (joko lähtöasema ja määränpää ovat samat TAI datassa on muuten virhe).
                 if (olio[0].equalsIgnoreCase(olio[1])) {
                     continue;
                 }
-
-                // Käsitellään vain, jos kaikki tarvittavat kentät ovat olemassa.
-                if (olio.length == 4 && yhteys == true) {
-                    int lahtopaikka = Integer.parseInt(olio[0]);
-                    int maaranpaa = Integer.parseInt(olio[1]);
-                    String selko = this.verkko.getSolmu(lahtopaikka).getNimi() + "-" + this.verkko.getSolmu(maaranpaa).getNimi();
-
+                
+                int lahtopaikka = Integer.parseInt(olio[0]);
+                int maaranpaa = Integer.parseInt(olio[1]);
+                try {
+                    Solmu lahtoSolmu = this.verkko.getSolmu(lahtopaikka);
+                    Solmu maaranpaaSolmu = this.verkko.getSolmu(maaranpaa);
+                    
                     Date lahtoAika = null;
                     Date saapumisAika = null;
 
                     // Aikaleimaformaatti
                     SimpleDateFormat aikaleima = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-
+                    
                     lahtoAika = aikaleima.parse(olio[2]);
                     saapumisAika = aikaleima.parse(olio[3]);
 
@@ -116,8 +104,16 @@ public class Aineistokasittelija {
                     long erotus = saapumisAika.getTime() - lahtoAika.getTime();
 
                     // Lisätään laskettu yhteys verkkoon.
-                    this.verkko.lisaaYhteys(lahtopaikka, maaranpaa, erotus);
+                    this.verkko.lisaaYhteys(lahtoSolmu, maaranpaaSolmu, erotus);
+                
+                
+                } catch (Exception ex) {
+                    Logger.getLogger(Aineistokasittelija.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
+
+               
+
             }
         }
 

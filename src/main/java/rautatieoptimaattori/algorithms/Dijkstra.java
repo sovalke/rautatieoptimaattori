@@ -15,7 +15,7 @@ public class Dijkstra {
     }
 
     // Varsinainen Dijkstran algoritmi
-    public double reitinPituus(Integer lahtopaikka, Integer maaranpaa) {
+    public double reitinPituus(Integer lahtopaikka, Integer maaranpaa) throws Exception {
         
         // Asetetaan halutut alku- ja päätepisteet.
         Solmu alku = this.verkko.getSolmu(lahtopaikka);

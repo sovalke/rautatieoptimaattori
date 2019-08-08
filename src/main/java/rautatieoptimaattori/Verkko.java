@@ -7,7 +7,7 @@ public class Verkko {
 private HashMap<Integer, Solmu> solmut = new HashMap<>();
 
     // Lisätään uusi asema koordinaatteineen.
-    public void lisaaAsema(String nimi, int id, double x, double y) {
+    public Solmu lisaaAsema(String nimi, int id, double x, double y) {
         if (solmut.containsKey(id)) {
             Solmu paivitettava = solmut.get(id);
             long x1 = (long) x * 1000000;
@@ -18,7 +18,7 @@ private HashMap<Integer, Solmu> solmut = new HashMap<>();
             Solmu lisattava = new Solmu(nimi, id, x, y);
             solmut.put(lisattava.getId(), lisattava);
         }
-        Solmu a = solmut.get(id);
+        return solmut.get(id);
         //System.out.println("Lisätty asema " + a.getNimi() + " (" + a.getId() + "), koordinaatit " + a.getX() + " / " + a.getY());
     }
 
@@ -38,22 +38,7 @@ private HashMap<Integer, Solmu> solmut = new HashMap<>();
 //        lisaaYhteys(a, b, i);
 //    }
 
-    public void lisaaYhteys(Integer lahtopaikka, Integer maaranpaa, long i) {
-        // Annetaan virheilmoitus, jos asemia ei löydy.
-        if (!this.solmut.containsKey(lahtopaikka)) {
-            System.out.println("Lähtöpaikkaa ei löydy.");
-        }
-        if (!this.solmut.containsKey(maaranpaa)) {
-            System.out.println("Määränpäätä ei löydy.");
-        }
-
-        // Lisätään kaari molempiin suuntiin.
-        Solmu a = solmut.get(lahtopaikka);
-        Solmu b = solmut.get(maaranpaa);
-        lisaaYhteys(a, b, i);
-    }
-
-    void lisaaYhteys(Solmu a, Solmu b, long i) {
+    public void lisaaYhteys(Solmu a, Solmu b, long i) {
         a.lisaaYhteys(b, i);
         b.lisaaYhteys(a, i);
         //System.out.println("Lisätty yhteys " + a.getNimi() + "-" + b.getNimi());
@@ -78,14 +63,16 @@ private HashMap<Integer, Solmu> solmut = new HashMap<>();
         }
     }
 
+    public boolean onkoSolmua(Solmu solmu) {
+        return this.solmut.containsValue(solmu);
+    }
 
-    public Solmu getSolmu(Integer id) {
+    public Solmu getSolmu(Integer id) throws Exception {
         if (this.solmut.containsKey(id)) {
             return this.solmut.get(id);
-        } else {
-            System.out.println("Eksyttiin");
-            return null;
         }
+        
+        throw new Exception("Asemaa ei löydy.");
     }
 
     public int getKoko() {

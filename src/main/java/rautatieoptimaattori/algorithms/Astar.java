@@ -15,11 +15,15 @@ public class Astar {
     }
 
     // Varsinainen algoritmi
-    public double reitinPituus(Integer lahtopaikka, Integer maaranpaa) {
+    public double reitinPituus(Solmu alku, Solmu loppu) throws Exception {
 
-        // Asetetaan halutut alku- ja päätepisteet.
-        Solmu alku = this.verkko.getSolmu(lahtopaikka);
-        Solmu loppu = this.verkko.getSolmu(maaranpaa);
+        if (! this.verkko.onkoSolmua(alku) ) {
+            throw new Exception("Kääk! Lähtöasemaa ei löydy!");
+        }
+
+        if (! this.verkko.onkoSolmua(loppu)) {
+            throw new Exception("Kääk! Määränpääasemaa ei löydy!");
+        }
 
         // System.out.println("Etäisyysarvio matkalle " + alku.getNimi() + "-" + loppu.getNimi() + " on " + etaisyysArvio(alku, loppu));
 
@@ -88,10 +92,10 @@ public class Astar {
         long sekunnit = millisekunnit / 1000 % 60;
         long minuutit = millisekunnit / (60 * 1000) % 60;
         System.out.println("A*:       etäisyys " + alku.getNimi() + "-" + loppu.getNimi() + " on " + tunnit + " h " + minuutit + " min " + sekunnit + " s (" + millisekunnit + " millisekuntia).");
-        return tunnit;
+        return millisekunnit;
     }
 
-    double etaisyysArvio(Solmu piste, Solmu maaranpaa) {
+    private double etaisyysArvio(Solmu piste, Solmu maaranpaa) {
         // Hyödynnetään Pythagoraan lausetta etäisyysarvion laskemiseen.
 
         double x = maaranpaa.getX() - piste.getX();
