@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import rautatieoptimaattori.Solmu;
 import rautatieoptimaattori.Verkko;
 
 public class Aineistokasittelija {
@@ -37,7 +36,7 @@ public class Aineistokasittelija {
                 double y;
 
                 if (a.equalsIgnoreCase(asemaAlku)) {
-                    // Kyse on ASEMALISTAUKSESTA.
+                    // Kyse on nimenomaan ASEMALISTAUKSESTA.
                     asema = true;
                 }
 
@@ -115,12 +114,8 @@ public class Aineistokasittelija {
 
                     // Aikaleimojen erotus
                     long erotus = saapumisAika.getTime() - lahtoAika.getTime();
-//                    long eSekunnit = erotus / 1000 % 60;
-//                    long eMinuutit = erotus / (60 * 1000) % 60;
-//                    long eTunnit = erotus / (60 * 60 * 1000);
-//                    System.out.println(erotus);
-//                    System.out.println("Aikaa kului " + eTunnit + " tuntia " + eMinuutit + " minuuttia " + eSekunnit + " sekuntia");
 
+                    // Lisätään laskettu yhteys verkkoon.
                     this.verkko.lisaaYhteys(lahtopaikka, maaranpaa, erotus);
                 }
             }
