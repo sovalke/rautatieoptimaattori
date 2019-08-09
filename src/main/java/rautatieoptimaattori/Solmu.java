@@ -13,8 +13,10 @@ public class Solmu {
     public Solmu(String nimi, int id, double x, double y) {
         this.nimi = nimi;
         this.id = id;
-        this.koordinaattiX = (long) x * 1000000;
-        this.koordinaattiY = (long) y * 1000000;
+        double muunnosX = x * 1000000;
+        double muunnosY = y * 1000000;
+        this.koordinaattiX = (long) muunnosX;
+        this.koordinaattiY = (long) muunnosY;
     }
 
     public void lisaaYhteys(Solmu paikka, long etaisyys) {

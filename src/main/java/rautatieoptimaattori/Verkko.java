@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Verkko {
 
-private HashMap<Integer, Solmu> solmut = new HashMap<>();
+    private HashMap<Integer, Solmu> solmut = new HashMap<>();
 
     // Lisätään uusi asema koordinaatteineen.
     public Solmu lisaaAsema(String nimi, int id, double x, double y) {
@@ -22,34 +22,22 @@ private HashMap<Integer, Solmu> solmut = new HashMap<>();
         //System.out.println("Lisätty asema " + a.getNimi() + " (" + a.getId() + "), koordinaatit " + a.getX() + " / " + a.getY());
     }
 
-//    // Lisää kahdensuuntainen yhteys asemien välille.
-//    public void lisaaYhteys(String lahtopaikka, String maaranpaa, long i) {
-//        // Annetaan virheilmoitus, jos asemia ei löydy.
-//        if (!this.solmut.containsKey(lahtopaikka)) {
-//            System.out.println("Lähtöpaikkaa ei löydy.");
-//        }
-//        if (!this.solmut.containsKey(maaranpaa)) {
-//            System.out.println("Määränpäätä ei löydy.");
-//        }
-//
-//        // Lisätään kaari molempiin suuntiin.
-//        Solmu a = this.solmut.get(lahtopaikka);
-//        Solmu b = this.solmut.get(maaranpaa);
-//        lisaaYhteys(a, b, i);
-//    }
-
-    public void lisaaYhteys(Solmu a, Solmu b, long i) {
-        a.lisaaYhteys(b, i);
-        b.lisaaYhteys(a, i);
+    public int lisaaYhteys(Solmu a, Solmu b, long i) {
+        try {
+            a.lisaaYhteys(b, i);
+            b.lisaaYhteys(a, i);
+            return 1;
+        } catch (NullPointerException ex) {
+            return -1;
+        }
         //System.out.println("Lisätty yhteys " + a.getNimi() + "-" + b.getNimi());
     }
 
     // Tulostetaan kaikki tunnetut yhteysvälit.
     public void tulostaReitit() {
+        
         for (HashMap.Entry<Integer, Solmu> entry : this.solmut.entrySet()) {
             Solmu tulos = entry.getValue();
-
-            System.out.println(tulos.getNimi() + ": ");
 
             HashMap<Solmu, Long> naapurit = tulos.getNaapurit();
 
@@ -58,7 +46,7 @@ private HashMap<Integer, Solmu> solmut = new HashMap<>();
                 long sekunnit = erotus / 1000 % 60;
                 long minuutit = erotus / (60 * 1000) % 60;
                 long tunnit = erotus / (60 * 60 * 1000);
-                System.out.println("    " + naapuri.getKey().getNimi() + " " + tunnit + ":" + minuutit + ":" + sekunnit);
+                System.out.println(tulos.getNimi() + "-" + naapuri.getKey().getNimi() + " " + tunnit + ":" + minuutit + ":" + sekunnit);
             }
         }
     }
@@ -71,7 +59,7 @@ private HashMap<Integer, Solmu> solmut = new HashMap<>();
         if (this.solmut.containsKey(id)) {
             return this.solmut.get(id);
         }
-        
+
         throw new Exception("Asemaa ei löydy.");
     }
 
