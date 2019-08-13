@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import rautatieoptimaattori.io.Aineistokasittelija;
 import tietorakenteet.OmaLista;
-import tietorakenteet.Pari;
+import tietorakenteet.OmaPari;
 
 public class Rautatieoptimaattori {
 
@@ -44,7 +44,7 @@ public class Rautatieoptimaattori {
             lista.remove("hei");
             System.out.println(lista.contains("hei"));
 
-            Pari<String, Integer> pari = new Pari<>("yksi", 1);
+            OmaPari<String, Integer> pari = new OmaPari<>("yksi", 1);
             System.out.println(pari.getKey() + " -> " + pari.getValue());
 
         } catch (Exception ex) {

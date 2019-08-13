@@ -1,7 +1,7 @@
 package tietorakenteet;
 
 public class OmaHashMap<K, V> {
-    private OmaLista<Pari<K, V>>[] values;
+    private OmaLista<OmaPari<K, V>>[] values;
     private int numberOfValues;
 
     public OmaHashMap() {
@@ -19,7 +19,7 @@ public class OmaHashMap<K, V> {
         }
         
         // Etsitään avain listalta.
-        OmaLista<Pari<K, V>> valuesInIndex = this.values[hashValue];
+        OmaLista<OmaPari<K, V>> valuesInIndex = this.values[hashValue];
 
         for (int i = 0; i < valuesInIndex.size(); i++) {
             if (valuesInIndex.value(i).getKey().equals(key)) {
@@ -34,7 +34,7 @@ public class OmaHashMap<K, V> {
     // olemassaolevan arvon)
     public void put(K key, V value) {
         // Haetaan arvot.
-        OmaLista<Pari<K, V>> valuesInIndex = getKeyRelatedList(key);
+        OmaLista<OmaPari<K, V>> valuesInIndex = getKeyRelatedList(key);
         
         // Haetaan avaimen perusteella arvoa...
         int index = getIndexOfKey(valuesInIndex, key);
@@ -42,7 +42,7 @@ public class OmaHashMap<K, V> {
         // Jos ei löydy, lisätään uusi pari;
         // jos löytyy, päivitetään vanha.
         if (index < 0) {
-            valuesInIndex.add(new Pari<>(key, value));
+            valuesInIndex.add(new OmaPari<>(key, value));
             this.numberOfValues++;
         } else {
             valuesInIndex.value(index).setValue(value);
@@ -56,7 +56,7 @@ public class OmaHashMap<K, V> {
 
     // Metodi, joka poistaa avain-arvoparin hajautustaulusta.
     public V remove(K key) {
-        OmaLista<Pari<K, V>> valuesInIndex = getKeyRelatedList(key);
+        OmaLista<OmaPari<K, V>> valuesInIndex = getKeyRelatedList(key);
         
         // Lista on tyhjä; palautetaan null.
         if (valuesInIndex.size() == 0) {
@@ -70,11 +70,12 @@ public class OmaHashMap<K, V> {
         }
 
         // Haetaan pari.
-        Pari<K, V> pari = valuesInIndex.value(indeksi);
+        OmaPari<K, V> pari = valuesInIndex.value(indeksi);
         valuesInIndex.remove(pari);
         
         return pari.getValue();
     }
+    
 
     
     // YKSITYISET METODIT
@@ -82,7 +83,7 @@ public class OmaHashMap<K, V> {
     // Kasvattaa taulukon kokoa tarvittaessa, jotta kaikki data mahtuu.
     // Luodaan uusi, entistä isompi taulukko ja siirretään vanhat arvot siihen.
     private void grow() {
-        OmaLista<Pari<K, V>>[] newList = new OmaLista[this.values.length * 2];
+        OmaLista<OmaPari<K, V>>[] newList = new OmaLista[this.values.length * 2];
 
         for (int i = 0; i < this.values.length; i++) {
             copy(newList, i);
@@ -93,9 +94,9 @@ public class OmaHashMap<K, V> {
 
     // Metodi, joka kopioi vanhan taulukon yksi indeksi kerrallaan uuteen
     // taulukkoon.
-    private void copy(OmaLista<Pari<K, V>>[] uusi, int fromIndex) {
+    private void copy(OmaLista<OmaPari<K, V>>[] uusi, int fromIndex) {
         for (int i = 0; i < this.values[fromIndex].size(); i++) {
-            Pari<K, V> value = this.values[fromIndex].value(i);
+            OmaPari<K, V> value = this.values[fromIndex].value(i);
 
             int hajautusarvo = Math.abs(value.getKey().hashCode() % uusi.length);
             if (uusi[hajautusarvo] == null) {
@@ -107,7 +108,7 @@ public class OmaHashMap<K, V> {
     }
 
     // Metodi, joka hakee avaimeen liittyvän listan.
-    private OmaLista<Pari<K, V>> getKeyRelatedList(K key) {
+    private OmaLista<OmaPari<K, V>> getKeyRelatedList(K key) {
         int hashValue = Math.abs(key.hashCode() % values.length);
         
         // Jos listaa ei löydy, luodaan se.
@@ -119,7 +120,7 @@ public class OmaHashMap<K, V> {
     }
 
     // Metodi, joka etsii avaimen indeksin listalta.
-    private int getIndexOfKey(OmaLista<Pari<K, V>> list, K key) {
+    private int getIndexOfKey(OmaLista<OmaPari<K, V>> list, K key) {
         for (int i = 0; i < list.size(); i++) {
             if (list.value(i).getKey().equals(key)) {
                 return i;
@@ -127,6 +128,10 @@ public class OmaHashMap<K, V> {
         }
 
         return -1;
+    }
+
+    public boolean containsKey(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

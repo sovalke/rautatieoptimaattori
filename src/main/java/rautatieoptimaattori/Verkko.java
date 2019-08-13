@@ -1,6 +1,7 @@
 package rautatieoptimaattori;
 
 import java.util.HashMap;
+import tietorakenteet.OmaHashMap;
 
 public class Verkko {
 
