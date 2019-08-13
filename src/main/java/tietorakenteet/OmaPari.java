@@ -1,11 +1,11 @@
 package tietorakenteet;
 
-public class Pari<K, V> {
+public class OmaPari<K, V> {
 
     private K key;
     private V value;
 
-    public Pari(K key, V value) {
+    public OmaPari(K key, V value) {
         this.key = key;
         this.value = value;
     }
