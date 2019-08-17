@@ -11,6 +11,7 @@ import rautatieoptimaattori.domain.Solmu;
 import rautatieoptimaattori.algorithms.Astar;
 import rautatieoptimaattori.algorithms.Dijkstra;
 import rautatieoptimaattori.domain.Verkko;
+import tietorakenteet.OmaLista;
 
 public class VerkkoTest {
 
@@ -35,14 +36,6 @@ public class VerkkoTest {
         assertEquals(1, tulos);
     }
 
-//    @Test
-//    public void tulostaReitit() {
-//        Verkko verkko = new Verkko();
-//        Solmu helsinki = verkko.lisaaAsema("Helsinki", 123, 60.166640, 24.943536);
-//        Solmu turku = verkko.lisaaAsema("Turku", 124, 60.451389, 22.266667);
-//        String tuloste = verkko.tulostaReitit();
-//    }
-
     @Test
     public void onkoSolmua() {
         Verkko verkko = new Verkko();
@@ -54,9 +47,44 @@ public class VerkkoTest {
     @Test
     public void getSolmu() throws Exception {
         Verkko verkko = new Verkko();
-        Solmu helsinki = verkko.lisaaAsema("Helsinki", 123, 60.166640, 24.943536);
+        verkko.lisaaAsema("Helsinki", 123, 60.166640, 24.943536);
         Solmu solmu = verkko.getSolmu(123);
         assertEquals(solmu.getId(), 123);
+    }
+    
+    @Test
+    public void tuplaLisäys() throws Exception {
+        Verkko verkko = new Verkko();
+        verkko.lisaaAsema("Helsinki", 123, 60.166640, 24.943536);
+        verkko.lisaaAsema("Turku", 123, 60.166640, 24.943536);
+        Solmu testi = verkko.getSolmu(123);
+        assertEquals(testi.getNimi(), "Turku");
+    }
+    
+    @Test
+    public void tuntematonAsema() throws Exception {
+        Verkko verkko = new Verkko();
+        verkko.lisaaAsema("Helsinki", 123, 60.166640, 24.943536);
+        String error ="";
+        try {
+            verkko.getSolmu(1);
+        }
+        catch(Exception e) {
+            error = e.toString();
+            System.out.println(error);
+        }
+        assertEquals(error, "java.lang.Exception: Asemaa ei löydy.");
+    }
+    
+    @Test
+    public void Reitit() {
+        Verkko verkko = new Verkko();
+        Solmu helsinki = verkko.lisaaAsema("Helsinki", 123, 60.166640, 24.943536);
+        Solmu turku = verkko.lisaaAsema("Turku", 124, 60.451389, 22.266667);
+        verkko.lisaaYhteys(turku, helsinki, 180);
+        
+        OmaLista<String> lista = verkko.Reitit();
+        assertEquals(lista.value(0), "Helsinki-Turku 0:0:0");
     }
 
 }
