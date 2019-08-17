@@ -7,10 +7,10 @@
 * pom.xml: asetustiedosto Mavenia ym. varten
 * **/data**: sisältää csv-muotoiset tiedostot, joita käytetään ohjelman aineistona
 * **/documents**: sisältää ohjelman dokumentaation
-⋅⋅* **/reports**: sisältää viikkoraportit
+⋅⋅⋅ **/reports**: sisältää viikkoraportit
 * **/src**: varsinainen ohjelmakoodi
-⋅⋅* **/main/java**: java-paketit & itse ohjelmakoodi
-⋅⋅* **/test/java/rautatieoptimaattori**: ohjelmaan liittyvät JUnit-testit
+⋅⋅⋅* **/main/java**: java-paketit & itse ohjelmakoodi
+⋅⋅⋅* **/test/java/rautatieoptimaattori**: ohjelmaan liittyvät JUnit-testit
 
 ## Käsitelävä data
 
@@ -35,9 +35,9 @@ Ensimmäisen rivin jälkeen data esitetään siten, että jokaiselle riville tul
 
 Esimerkki kelpuutettavasta tiedostosta:
 
-` from,to,departs,arrives
-` 1,10,2019-07-30T03:57:00.000Z,2019-07-30T04:02:00.000Z
-` 10,10,2019-07-30T04:02:00.000Z,2019-07-30T04:03:00.000Z
+> from,to,departs,arrives
+> 1,10,2019-07-30T03:57:00.000Z,2019-07-30T04:02:00.000Z
+> 10,10,2019-07-30T04:02:00.000Z,2019-07-30T04:03:00.000Z
 
 ### Asemien tiedot
 
@@ -58,9 +58,9 @@ Ensimmäisen rivin jälkeen data esitetään siten, että jokaiselle riville tul
 
 Esimerkki kelpuutettavasta tiedostosta:
 
-` Name,id,lat,long
-` Ahonpää,1343,64.537118,25.006783
-` Ahvenus,1000,61.291923,22.498185
+> Name,id,lat,long
+> Ahonpää,1343,64.537118,25.006783
+> Ahvenus,1000,61.291923,22.498185
 
 
 ## Aika- ja tilavaativuudet
