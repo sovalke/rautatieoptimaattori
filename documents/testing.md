@@ -33,8 +33,6 @@ Projektille on tarkoitus luoda suorituskykytesti. Toistaiseksi tällaista testi�
 
 Projektille on yritetty luoda suorituskykytestiä **JMeteriä** käyttäen. Ikävä kyllä tämä ei onnistunut, sillä vaikka JMeterin käyttöönotto onnistui, toimivien testien luominen osoittautui vaikeaksi.
 
-Yritin luoda testiä myös **JUnitia** käyttäen. Ikävä kyllä en saanut myöskään tätä testiä toimimaan. Turvauduin lopulta tira-labran [esimerkkitestiin](https://github.com/TiraLabra/Testing-and-rmq/tree/master/src/main/java/rmq/util), mutta se oli erittäin vaikealukuinen. En siis saanut selville, kuinka se toimii – ilmeisesti RMQ:n vaikeaselkoisuus on tähän syynä.
-
-Nähdäkseni esimerkkikoodissa ei kutsuta testattavia luokkia ollenkaan, vaikka sen pitäisi testata juuri niiden suorituskykyä.
+Yritin luoda testiä myös **JUnitia** käyttäen. Ikävä kyllä en saanut myöskään tätä testiä toimimaan. Turvauduin lopulta tira-labran [esimerkkitestiin](https://github.com/TiraLabra/Testing-and-rmq/tree/master/src/main/java/rmq/util), mutta se oli erittäin vaikealukuinen. En siis saanut selville, kuinka se toimii – ilmeisesti RMQ:n vaikeaselkoisuus on tähän syynä. Lisäksi tiran esimerkkikoodissa ei ymmärtääkseni kutsuta testattavia luokkia ollenkaan, vaikka sen pitäisi testata juuri niiden suorituskykyä. Minulle on epäselvää, miten tämä testi pystyy testaamaan luokkia, joihin se ei viittaa lainkaan.
 
 * __Ratkaisu:__ Pyrin selvittämään mahdollisimman nopeasti, miten suorituskykytestin saa kasattua ja miten RMQ liittyy asiaan. Lisään testin heti, kun saan toimivan testin aikaan.
