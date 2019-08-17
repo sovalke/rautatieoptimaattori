@@ -9,3 +9,5 @@
 * Lisätty yksikkötestejä Dijkstralle ja A*:lle. Yksikkötestien kattavuus alkaa olla kivalla tasolla.
 
 * Kirjoitettu toteutus- ja testausdokumentteihin tietoja.
+
+* Siistitty algoritmitiedostoista turhia kommentteja ja sout-komentoja pois. (Nämä ovat olleet hyödyllisiä algoritmien rakennusvaiheessa, mutta eivät enää.)
