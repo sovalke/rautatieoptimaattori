@@ -6,14 +6,14 @@ Projektille on pyritty luomaan mahdollisimman kattava JUnit-yksikkötestien pake
 
 Tällä hetkellä (17.8.2019) yksikkötestien koodikattavuus on seuraava:
 
-* Kokonaiskattavuus (rivikattavuus/mutaatiokattavuus):
+* **Kokonaiskattavuus** (rivikattavuus/mutaatiokattavuus):
 	- 92 % / 84 %
 
-* Algoritmien kattavuus (rivikattavuus/mutaatiokattavuus):
+* **Algoritmien kattavuus** (rivikattavuus/mutaatiokattavuus):
 	- Dijkstra: 91 % / 90 %
 	- A*: 90 % / 76 %
 
-* Domain-luokkien kattavuus (rivikattavuus/mutaatiokattavuus):
+* **Domain-luokkien kattavuus** (rivikattavuus/mutaatiokattavuus):
 	- Solmu: 100 % / 100 %
 	- Verkko: 100 % / 88 %
 	- VertailtavaSolmu: 64 % / 50 %
@@ -33,6 +33,8 @@ Projektille on tarkoitus luoda suorituskykytesti. Toistaiseksi tällaista testi�
 
 Projektille on yritetty luoda suorituskykytestiä **JMeteriä** käyttäen. Ikävä kyllä tämä ei onnistunut, sillä vaikka JMeterin käyttöönotto onnistui, toimivien testien luominen osoittautui vaikeaksi.
 
-Yritin luoda testiä myös **JUnitia** käyttäen. Ikävä kyllä en saanut myöskään tätä testiä toimimaan. Turvauduin lopulta tira-labran esimerkkitestiin, mutta se oli erittäin vaikealukuinen, enkä saanut selville, kuinka se toimii. Nähdäkseni siinä ei kutsuta testattavia luokkia ollenkaan, vaikka sen pitäisi testata juuri niiden suorituskykyä.
+Yritin luoda testiä myös **JUnitia** käyttäen. Ikävä kyllä en saanut myöskään tätä testiä toimimaan. Turvauduin lopulta tira-labran [esimerkkitestiin](https://github.com/TiraLabra/Testing-and-rmq/tree/master/src/main/java/rmq/util), mutta se oli erittäin vaikealukuinen. En siis saanut selville, kuinka se toimii – ilmeisesti RMQ:n vaikeaselkoisuus on tähän syynä.
 
-* __Ratkaisu:__ Pyrin selvittämään mahdollisimman nopeasti, miten suorituskykytestin saa kasattua. Lisään testin heti, kun saan toimivan testin aikaan.
+Nähdäkseni esimerkkikoodissa ei kutsuta testattavia luokkia ollenkaan, vaikka sen pitäisi testata juuri niiden suorituskykyä.
+
+* __Ratkaisu:__ Pyrin selvittämään mahdollisimman nopeasti, miten suorituskykytestin saa kasattua ja miten RMQ liittyy asiaan. Lisään testin heti, kun saan toimivan testin aikaan.
