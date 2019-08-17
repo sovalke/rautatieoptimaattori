@@ -2,12 +2,12 @@
 
 ## Ohjelman yleisrakenne
 
-+ .gitignore: gitin asetukset
-+ README.md: lueminut-infotiedosto
-+ pom.xml: asetustiedosto Mavenia ym. varten
++ **.gitignore**: gitin asetukset
++ **README.md**: lueminut-infotiedosto
++ **pom.xml**: asetustiedosto Mavenia ym. varten
 + **/data**: sisältää csv-muotoiset tiedostot, joita käytetään ohjelman aineistona
-+ **/documents**: sisältää ohjelman dokumentaation
-    - **/reports**: sisältää viikkoraportit
++ **/documents**: sisältää ohjelman dokumentaation (käyttöohje, testausraportti, toteutus ym.)
+    - **/reports**: sisältää tiran viikkoraportit
 + **/src**: varsinainen ohjelmakoodi
     - **/main/java**: java-paketit & itse ohjelmakoodi
     - **/test/java/rautatieoptimaattori**: ohjelmaan liittyvät JUnit-testit
@@ -20,7 +20,7 @@ Ohjelman käyttämä data (junien ja asemien tiedot) tallennetaan **data**-kansi
 
 Junien tiedot tallennetaan .csv-dokumenttiin, jonka ensimmäisen rivi on:
 
-> from,to,departs,arrives
+    from,to,departs,arrives
 
 Mikäli ensimmäinen rivi poikkeaa tästä, ohjelma ei käsittele tiedostoa.
 
@@ -43,7 +43,7 @@ Esimerkki kelpuutettavasta tiedostosta:
 
 Asemien tiedot tallennetaan .csv-dokumenttiin, jonka ensimmäinen rivi on:
 
-> Name,id,lat,long
+    Name,id,lat,long
 
 Mikäli ensimmäinen rivi poikkeaa tästä, ohjelma ei käsittele tiedostoa.
 
