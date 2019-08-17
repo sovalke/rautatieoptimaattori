@@ -35,6 +35,17 @@ public class VerkkoTest {
         int tulos = verkko.lisaaYhteys(turku, helsinki, 180);
         assertEquals(1, tulos);
     }
+    
+    // Testataan tilannetta, jossa verkkoon yritetään lisätä olematonta asemaa.
+    @Test
+    public void LisaaOlematonYhteys() {
+        Solmu[] taulukko = new Solmu[10];
+        Verkko verkko = new Verkko();
+        Solmu helsinki = verkko.lisaaAsema("Helsinki", 123, 60.166640, 24.943536);
+        taulukko[0] = helsinki;
+        int tulos = verkko.lisaaYhteys(taulukko[0], taulukko[1], 100);
+        assertEquals(-1, tulos);
+    }
 
     @Test
     public void onkoSolmua() {
