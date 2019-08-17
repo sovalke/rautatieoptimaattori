@@ -1,4 +1,4 @@
-package rautatieoptimaattori;
+package rautatieoptimaattori.domain;
 
 import java.util.HashMap;
 import tietorakenteet.OmaHashMap;
