@@ -7,6 +7,10 @@ Ohjelmassa käytettävä ohjelmointikieli on Java.
 ## Dokumentaatio
 [Määrittelydokumentti](documents/specifications.md)
 
+[Testausdokumentti](documents/testing.md)
+
+[Toteutusdokumentti](documents/implementation.md)
+
 ## Viikkoraportit
 [Viikko 1](documents/reports/week1.md)
 
