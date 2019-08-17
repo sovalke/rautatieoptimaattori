@@ -2,9 +2,9 @@ package rautatieoptimaattori.algorithms;
 
 import java.util.HashMap;
 import java.util.PriorityQueue;
-import rautatieoptimaattori.Solmu;
-import rautatieoptimaattori.Verkko;
-import rautatieoptimaattori.VertailtavaSolmu;
+import rautatieoptimaattori.domain.Solmu;
+import rautatieoptimaattori.domain.Verkko;
+import rautatieoptimaattori.domain.VertailtavaSolmu;
 
 public class Astar {
 

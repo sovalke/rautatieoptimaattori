@@ -1,4 +1,4 @@
-package rautatieoptimaattori;
+package rautatieoptimaattori.domain;
 
 public class VertailtavaSolmu implements Comparable {
 

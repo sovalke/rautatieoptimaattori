@@ -1,3 +1,5 @@
+package rautatieoptimaattori.domain;
+
 import java.util.HashMap;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -5,7 +7,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import rautatieoptimaattori.Solmu;
+import rautatieoptimaattori.domain.Solmu;
 
 public class SolmuTest {
     

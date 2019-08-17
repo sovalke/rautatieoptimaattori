@@ -1,3 +1,5 @@
+package rautatieoptimaattori.algorithms;
+
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -5,9 +7,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import rautatieoptimaattori.Solmu;
+import rautatieoptimaattori.domain.Solmu;
 import rautatieoptimaattori.algorithms.Astar;
-import rautatieoptimaattori.Verkko;
+import rautatieoptimaattori.domain.Verkko;
 
 public class AstarTest {
 
