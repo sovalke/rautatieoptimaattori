@@ -25,10 +25,10 @@ public class Rautatieoptimaattori {
             
             data.lisaaYhteydet("./data/trains.csv");
             Verkko verkko = data.getVerkko();
-//            
-//            
-//            Astar r = new Astar(verkko);
-//            r.reitinPituus(verkko.getSolmu(130), verkko.getSolmu(1));
+            
+            
+            Astar r = new Astar(verkko);
+            r.reitinPituus(verkko.getSolmu(130), verkko.getSolmu(1));
 //            
 //            Dijkstra d = new Dijkstra(verkko);
 //            d.reitinPituus(130, 1);
