@@ -15,7 +15,7 @@ public class Dijkstra {
     }
 
     // Varsinainen Dijkstran algoritmi
-    public double reitinPituus(Solmu alku, Solmu loppu) throws Exception {
+    public long reitinPituus(Solmu alku, Solmu loppu) throws Exception {
 
         if (!this.verkko.onkoSolmua(alku)) {
             throw new Exception("Kääk! Lähtöasemaa ei löydy!");

@@ -15,7 +15,7 @@ public class Astar {
     }
 
     // Varsinainen algoritmi
-    public double reitinPituus(Solmu alku, Solmu loppu) throws Exception {
+    public long reitinPituus(Solmu alku, Solmu loppu) throws Exception {
 
         if (! this.verkko.onkoSolmua(alku) ) {
             throw new Exception("Kääk! Lähtöasemaa ei löydy!");
@@ -24,8 +24,6 @@ public class Astar {
         if (! this.verkko.onkoSolmua(loppu)) {
             throw new Exception("Kääk! Määränpääasemaa ei löydy!");
         }
-
-        // System.out.println("Etäisyysarvio matkalle " + alku.getNimi() + "-" + loppu.getNimi() + " on " + etaisyysArvio(alku, loppu));
 
         // Luodaan keko ja tarvittavat HashMapit.
         HashMap<Solmu, Long> etaisyydet = new HashMap<>();
@@ -41,14 +39,13 @@ public class Astar {
             // Napataan käsiteltävä solmu.
             Solmu kasiteltava = keko.poll().getSolmu();
 
+            // Ollaan päästy maaliin: lopetetaan suorittaminen.
             if (kasiteltava.equals(loppu)) {
-                // System.out.println("Ollaan päästy maaliin!");
                 break;
             }
 
             // Onko solmua käsitelty vielä? Jos on, hypätään yli.
             if (kasitelty.containsKey(kasiteltava)) {
-                //System.out.println("---hypätään solmun " + kasiteltava + " yli");
                 continue;
             }
 
@@ -66,8 +63,6 @@ public class Astar {
 
                     double arvio = uusi + etaisyysArvio(tutkittavaNaapuri, loppu);
                     keko.add(new VertailtavaSolmu(tutkittavaNaapuri, arvio));
-                    // System.out.println(uusi + " / " + arvio);
-
                     continue;
                 }
 
@@ -98,7 +93,6 @@ public class Astar {
         double x = maaranpaa.getX() - piste.getX();
         double y = maaranpaa.getY() - piste.getY();
 
-        // etaisyysaArvio = neliöjuuri(x^2 + y^2)
         double etaisyysArvio = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
         return etaisyysArvio;
     }
