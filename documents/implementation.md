@@ -2,15 +2,23 @@
 
 ## Ohjelman yleisrakenne
 
-* .gitignore: gitin asetukset
-* README.md: lueminut-infotiedosto
-* pom.xml: asetustiedosto Mavenia ym. varten
-* **/data**: sisältää csv-muotoiset tiedostot, joita käytetään ohjelman aineistona
-* **/documents**: sisältää ohjelman dokumentaation
+.gitignore: gitin asetukset
+
+README.md: lueminut-infotiedosto
+
+pom.xml: asetustiedosto Mavenia ym. varten
+
+**/data**: sisältää csv-muotoiset tiedostot, joita käytetään ohjelman aineistona
+
+**/documents**: sisältää ohjelman dokumentaation
+
 ⋅⋅⋅ **/reports**: sisältää viikkoraportit
-* **/src**: varsinainen ohjelmakoodi
-⋅⋅⋅* **/main/java**: java-paketit & itse ohjelmakoodi
-⋅⋅⋅* **/test/java/rautatieoptimaattori**: ohjelmaan liittyvät JUnit-testit
+
+**/src**: varsinainen ohjelmakoodi
+
+⋅⋅⋅ **/main/java**: java-paketit & itse ohjelmakoodi
+
+⋅⋅⋅ **/test/java/rautatieoptimaattori**: ohjelmaan liittyvät JUnit-testit
 
 ## Käsitelävä data
 
@@ -59,7 +67,9 @@ Ensimmäisen rivin jälkeen data esitetään siten, että jokaiselle riville tul
 Esimerkki kelpuutettavasta tiedostosta:
 
 > Name,id,lat,long
+>
 > Ahonpää,1343,64.537118,25.006783
+>
 > Ahvenus,1000,61.291923,22.498185
 
 
