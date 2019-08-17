@@ -1,5 +1,7 @@
 # Ohjelman testaus
 
-## Otsikko
+## Yksikkötestaus: JUnit
 
 Tietoa tähän
+
+## Suorituskykytestaus: 
