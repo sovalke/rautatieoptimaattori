@@ -15,8 +15,13 @@ Tällä hetkellä (17.8.2019) yksikkötestien koodikattavuus on seuraava:
 | - Solmu            | 100 %          | 100 %             |
 | - Verkko           | 100 %          | 88 %              |
 | - VertailtavaSolmu | 64 %           | 50 %              |
-| **Kaikki yhteensä**| 92 %           | 84 %              |                   |
+| **Kaikki yhteensä**| 92 %           | 84 %              | 
 
+### JUnit-testeissä käytetty aineisto
+
+Tällä hetkellä JUnit-testeissä käytetään pientä aineistoa, joka generoidaan jokaista testiä varten erikseen. Pienimmät aineistot ovat vain yhden tai kahden solmun kokoisia – näitä käytetään mm. getterien testauksessa.
+
+Jatkossa osassa testeistä on tarkoitus käyttää merkittävästi laajempaa aineistoa, jotta tietyt testeissä havaitut kattavuuserot saadaan korjattua.
 
 ### Syyt JUnit-testien kattavuuseroihin
 
