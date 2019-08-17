@@ -25,28 +25,23 @@ public class Rautatieoptimaattori {
             
             data.lisaaYhteydet("./data/trains.csv");
             Verkko verkko = data.getVerkko();
-            
-            
+
             Astar r = new Astar(verkko);
-            r.reitinPituus(verkko.getSolmu(130), verkko.getSolmu(1));
-//            
-//            Dijkstra d = new Dijkstra(verkko);
-//            d.reitinPituus(130, 1);
+            long reittiB = r.reitinPituus(verkko.getSolmu(130), verkko.getSolmu(1));
+            System.out.println("A*:     " + verkko.getSolmu(130).getNimi() + "-" + verkko.getSolmu(1).getNimi() + ": " + reittiB + " ms");
 
-//            OmaLista<String> lista = new OmaLista<>();
-//            System.out.println(lista.contains("hei"));
-//            lista.add("hei");
-//            System.out.println(lista.contains("hei"));
-//            int indeksi = lista.indexOf("hei");
-//            System.out.println(indeksi);
-//            System.out.println(lista.value(indeksi));
-//            lista.remove("hei");
-//            System.out.println(lista.contains("hei"));
-//
-//            OmaPari<String, Integer> pari = new OmaPari<>("yksi", 1);
-//            System.out.println(pari.getKey() + " -> " + pari.getValue());
+            Dijkstra d = new Dijkstra(verkko);
+            long reittiA = d.reitinPituus(verkko.getSolmu(130), verkko.getSolmu(1));
+            System.out.println("Dijkstra: " + verkko.getSolmu(130).getNimi() + "-" + verkko.getSolmu(1).getNimi() + ": " + reittiA + " ms");
 
-              OmaLista<String> lista = verkko.Reitit();
+            OmaLista<String> lista = verkko.Reitit();
+            
+            // Printataan kaikki yhteydet
+//            for (int i = 0; i < lista.size(); i++) {
+//                String var = lista.value(i);
+//                System.out.println(var + " ms");
+//            }
+            
 
         } catch (Exception ex) {
             System.out.println("VIRHE: " + ex.getMessage());
