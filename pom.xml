@@ -18,6 +18,12 @@
         <version>4.12</version>
         <scope>test</scope>
     </dependency>
+    <dependency>
+    	<groupId>org.jsmart</groupId>
+    	<artifactId>zerocode-rest-bdd</artifactId>
+    	<version>1.2.7</version>
+    	<scope>test</scope>
+	</dependency>
 </dependencies>
 
 <build>
@@ -46,5 +52,6 @@
         </plugin>
     </plugins>
 </build>
+
     
 </project>
