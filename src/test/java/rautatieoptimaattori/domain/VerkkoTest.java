@@ -84,7 +84,7 @@ public class VerkkoTest {
         verkko.lisaaYhteys(turku, helsinki, 180);
         
         OmaLista<String> lista = verkko.Reitit();
-        assertEquals(lista.value(0), "Helsinki-Turku 0:0:0");
+        assertEquals(lista.value(0), "Helsinki-Turku 180");
     }
 
 }

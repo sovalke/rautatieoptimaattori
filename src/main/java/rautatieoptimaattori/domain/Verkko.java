@@ -43,10 +43,7 @@ public class Verkko {
 
             for (HashMap.Entry<Solmu, Long> naapuri : naapurit.entrySet()) {
                 long erotus = naapuri.getValue();
-                long sekunnit = erotus / 1000 % 60;
-                long minuutit = erotus / (60 * 1000) % 60;
-                long tunnit = erotus / (60 * 60 * 1000);
-                lista.add(tulos.getNimi() + "-" + naapuri.getKey().getNimi() + " " + tunnit + ":" + minuutit + ":" + sekunnit);
+                lista.add(tulos.getNimi() + "-" + naapuri.getKey().getNimi() + " " + erotus);
             }
         }
         return lista;
