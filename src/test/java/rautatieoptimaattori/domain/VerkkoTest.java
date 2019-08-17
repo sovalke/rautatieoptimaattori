@@ -1,10 +1,5 @@
 package rautatieoptimaattori.domain;
 
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import rautatieoptimaattori.domain.Solmu;
@@ -63,6 +58,7 @@ public class VerkkoTest {
         assertEquals(solmu.getId(), 123);
     }
     
+    // Lisätään samalla id:llä kaksi eri asemaa.
     @Test
     public void tuplaLisäys() throws Exception {
         Verkko verkko = new Verkko();
@@ -72,6 +68,7 @@ public class VerkkoTest {
         assertEquals(testi.getNimi(), "Turku");
     }
     
+    // Yritetään lisätä verkkoon olematon asema.
     @Test
     public void tuntematonAsema() throws Exception {
         Verkko verkko = new Verkko();
@@ -82,11 +79,11 @@ public class VerkkoTest {
         }
         catch(Exception e) {
             error = e.toString();
-            System.out.println(error);
         }
         assertEquals(error, "java.lang.Exception: Asemaa ei löydy.");
     }
     
+    // Testataan, palauttaako Reitit-metodi oikeanlaisen syötteen.
     @Test
     public void Reitit() {
         Verkko verkko = new Verkko();

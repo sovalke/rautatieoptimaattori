@@ -17,22 +17,6 @@ public class DijkstraTest {
     public DijkstraTest() {
     }
 
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-
     @Test
     // Tällä testillä testataan Dijkstran algoritmin toiminta helpossa
     // perustapauksessa (suora yhteys pisteiden välillä).
@@ -57,7 +41,7 @@ public class DijkstraTest {
 
         Dijkstra d = new Dijkstra(verkko);
 
-        double Vastaus = d.reitinPituus(124, 125);
+        double Vastaus = d.reitinPituus(turku, tampere);
         assertEquals(170, Vastaus, 0.02);
     }
 
@@ -84,9 +68,47 @@ public class DijkstraTest {
 
         Dijkstra d = new Dijkstra(verkko);
 
-        double vastaus = d.reitinPituus(129, 124);
+        double vastaus = d.reitinPituus(lahti, turku);
         assertEquals(297, vastaus, 0.02);
 
+    }
+    
+        @Test
+    // Tällä katsotaan, toimiiko nullpointerin käsittely oikein
+    // (määränpääasemaa ei löydy).
+    public void nullPointer1() {
+        Verkko verkko = new Verkko();
+        Solmu[] taulukko = new Solmu[10];
+        taulukko[0] = verkko.lisaaAsema("Helsinki", 123, 60.166640, 24.943536);
+        Dijkstra d = new Dijkstra(verkko);
+        String error ="";
+        
+        try {
+            d.reitinPituus(taulukko[0], taulukko[1]);
+        }
+        catch(Exception e) {
+            error = e.toString();
+        }
+        assertEquals(error, "java.lang.Exception: Kääk! Määränpääasemaa ei löydy!");
+    }
+    
+    @Test
+    // Tällä katsotaan, toimiiko nullpointerin käsittely oikein (lähtöasemaa
+    // ei löydy).
+    public void nullPointer2() {
+        Verkko verkko = new Verkko();
+        Solmu[] taulukko = new Solmu[10];
+        taulukko[0] = verkko.lisaaAsema("Helsinki", 123, 60.166640, 24.943536);
+        Dijkstra d = new Dijkstra(verkko);
+        String error ="";
+        
+        try {
+            d.reitinPituus(taulukko[1], taulukko[0]);
+        }
+        catch(Exception e) {
+            error = e.toString();
+        }
+        assertEquals(error, "java.lang.Exception: Kääk! Lähtöasemaa ei löydy!");
     }
 
 }

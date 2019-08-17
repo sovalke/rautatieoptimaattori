@@ -17,8 +17,8 @@ public class AstarTest {
     }
 
     @Test
-//     Tällä testillä testataan A*-algoritmin toiminta helpossa
-//     perustapauksessa (suora yhteys pisteiden välillä).
+    // Tällä testillä testataan A*-algoritmin toiminta helpossa
+    // perustapauksessa (suora yhteys pisteiden välillä).
     public void etsiReitti1() throws Exception {
         Verkko verkko = new Verkko();
         Solmu helsinki = verkko.lisaaAsema("Helsinki", 123, 60.166640, 24.943536);
@@ -45,8 +45,8 @@ public class AstarTest {
     }
 
     @Test
+    // Tällä testillä testataan A*-algoritmin heuristiikkaa.
     public void etsiReitti2() throws Exception {
-        // Tällä testillä testataan A*-algoritmin heuristiikkaa.
         Verkko verkko = new Verkko();
         Solmu helsinki = verkko.lisaaAsema("Helsinki", 123, 60.166640, 24.943536);
         Solmu turku = verkko.lisaaAsema("Turku", 124, 60.451389, 22.266667);
@@ -69,6 +69,43 @@ public class AstarTest {
 
         double vastaus = a.reitinPituus(lahti, turku);
         assertEquals(345, vastaus, 0.02);
-
+    }
+    
+    @Test
+    // Tällä katsotaan, toimiiko nullpointerin käsittely oikein
+    // (määränpääasemaa ei löydy).
+    public void nullPointer1() {
+        Verkko verkko = new Verkko();
+        Solmu[] taulukko = new Solmu[10];
+        taulukko[0] = verkko.lisaaAsema("Helsinki", 123, 60.166640, 24.943536);
+        Astar r = new Astar(verkko);
+        String error ="";
+        
+        try {
+            r.reitinPituus(taulukko[0], taulukko[1]);
+        }
+        catch(Exception e) {
+            error = e.toString();
+        }
+        assertEquals(error, "java.lang.Exception: Kääk! Määränpääasemaa ei löydy!");
+    }
+    
+    @Test
+    // Tällä katsotaan, toimiiko nullpointerin käsittely oikein (lähtöasemaa
+    // ei löydy).
+    public void nullPointer2() {
+        Verkko verkko = new Verkko();
+        Solmu[] taulukko = new Solmu[10];
+        taulukko[0] = verkko.lisaaAsema("Helsinki", 123, 60.166640, 24.943536);
+        Astar r = new Astar(verkko);
+        String error ="";
+        
+        try {
+            r.reitinPituus(taulukko[1], taulukko[0]);
+        }
+        catch(Exception e) {
+            error = e.toString();
+        }
+        assertEquals(error, "java.lang.Exception: Kääk! Lähtöasemaa ei löydy!");
     }
 }
