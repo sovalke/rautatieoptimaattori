@@ -53,4 +53,32 @@ public class SolmuTest {
         assertEquals(x, 60.166640, 0.00);
         assertEquals(y, 24.943536, 0.00);
     }
+    
+    @Test
+    public void setNimi() {
+        Solmu helsinki = new Solmu("Helsinki", 1, 60.166640, 24.943536);
+        int i = helsinki.setNimi("Helsingfors");
+        assertEquals(i, 1);
+    }
+    
+    @Test
+    public void setNimi2() {
+        Solmu helsinki = new Solmu("Helsinki", 1, 60.166640, 24.943536);
+        int i = helsinki.setNimi("");
+        assertEquals(i, -1);
+    }
+    
+    @Test
+    public void setXY() {
+        Solmu helsinki = new Solmu("Helsinki", 1, 60.166640, 24.943536);
+        int i = helsinki.setXY((long) 60.2, (long) 24.95);
+        assertEquals(i, 1);
+    }
+    
+    @Test
+    public void setId() {
+        Solmu helsinki = new Solmu("Helsinki", 1, 60.166640, 24.943536);
+        int i = helsinki.setId(2);
+        assertEquals(i, 1);
+    }
 }

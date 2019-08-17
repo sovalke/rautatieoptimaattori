@@ -24,17 +24,23 @@ public class Solmu {
     }
 
     // Setterit
-    public void setId(int i) {
+    public int setId(int i) {
         this.id = i;
+        return 1;
     }
     
-    public void setNimi(String nomen) {
+    public int setNimi(String nomen) {
+        if (nomen.isEmpty()) {
+            return -1;
+        }
         this.nimi = nomen;
+        return 1;
     }
 
-    public void setXY(long x, long y) {
+    public int setXY(long x, long y) {
         this.koordinaattiX = x;
         this.koordinaattiY = y;
+        return 1;
     }
 
     // Getterit
