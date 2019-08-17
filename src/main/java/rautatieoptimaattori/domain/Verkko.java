@@ -1,6 +1,7 @@
 package rautatieoptimaattori.domain;
 
 import java.util.HashMap;
+import tietorakenteet.OmaLista;
 
 public class Verkko {
 
@@ -19,9 +20,9 @@ public class Verkko {
             solmut.put(lisattava.getId(), lisattava);
         }
         return solmut.get(id);
-        //System.out.println("Lisätty asema " + a.getNimi() + " (" + a.getId() + "), koordinaatit " + a.getX() + " / " + a.getY());
     }
 
+    // Lisätään yhteys kahden aseman välille.
     public int lisaaYhteys(Solmu a, Solmu b, long i) {
         try {
             a.lisaaYhteys(b, i);
@@ -30,15 +31,14 @@ public class Verkko {
         } catch (NullPointerException ex) {
             return -1;
         }
-        //System.out.println("Lisätty yhteys " + a.getNimi() + "-" + b.getNimi());
     }
 
-    // Tulostetaan kaikki tunnetut yhteysvälit.
-    public void tulostaReitit() {
+    // Palautetaan tunnetut yhteysvälit listana.
+    public OmaLista Reitit() {
+        OmaLista<String> lista = new OmaLista<>();
         
         for (HashMap.Entry<Integer, Solmu> entry : this.solmut.entrySet()) {
             Solmu tulos = entry.getValue();
-
             HashMap<Solmu, Long> naapurit = tulos.getNaapurit();
 
             for (HashMap.Entry<Solmu, Long> naapuri : naapurit.entrySet()) {
@@ -46,23 +46,26 @@ public class Verkko {
                 long sekunnit = erotus / 1000 % 60;
                 long minuutit = erotus / (60 * 1000) % 60;
                 long tunnit = erotus / (60 * 60 * 1000);
-                System.out.println(tulos.getNimi() + "-" + naapuri.getKey().getNimi() + " " + tunnit + ":" + minuutit + ":" + sekunnit);
+                lista.add(tulos.getNimi() + "-" + naapuri.getKey().getNimi() + " " + tunnit + ":" + minuutit + ":" + sekunnit);
             }
         }
+        return lista;
     }
 
+    // Tarkistetaan, onko solmua olemassa.
     public boolean onkoSolmua(Solmu solmu) {
         return this.solmut.containsValue(solmu);
     }
 
+    // Haetaan haluttu solmu.
     public Solmu getSolmu(Integer id) throws Exception {
         if (this.solmut.containsKey(id)) {
             return this.solmut.get(id);
         }
-
         throw new Exception("Asemaa ei löydy.");
     }
 
+    // Haetaan tieto asemien lukumäärästä.
     public int getKoko() {
         return this.solmut.size();
     }
