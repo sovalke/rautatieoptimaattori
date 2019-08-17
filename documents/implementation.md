@@ -66,11 +66,9 @@ Ensimmäisen rivin jälkeen data esitetään siten, että jokaiselle riville tul
 
 Esimerkki kelpuutettavasta tiedostosta:
 
-> Name,id,lat,long
->
-> Ahonpää,1343,64.537118,25.006783
->
-> Ahvenus,1000,61.291923,22.498185
+    Name,id,lat,long
+    honpää,1343,64.537118,25.006783
+    Ahvenus,1000,61.291923,22.498185
 
 
 ## Aika- ja tilavaativuudet
