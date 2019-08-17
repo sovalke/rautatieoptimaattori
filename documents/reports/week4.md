@@ -1,4 +1,4 @@
-# Viikkoraportti 3
+# Viikkoraportti 4
 
 * Lisätty käyttöön Pit. (Tämä vaati vähän säätämistä ohjaajan kanssa. Jacoco toimi vähemmällä säädöllä, mutta koska Pit on kattavampi, otin sen käyttöön.)
 
@@ -11,3 +11,5 @@
 * Kirjoitettu toteutus- ja testausdokumentteihin tietoja.
 
 * Siistitty algoritmitiedostoista turhia kommentteja ja sout-komentoja pois. (Nämä ovat olleet hyödyllisiä algoritmien rakennusvaiheessa, mutta eivät enää.)
+
+Viikolla käytetty aika: noin 15 tuntia.
