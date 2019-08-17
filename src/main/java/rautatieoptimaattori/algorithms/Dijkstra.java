@@ -76,7 +76,6 @@ public class Dijkstra {
         }
         long millisekunnit = etaisyydet.get(loppu);
 
-        // System.out.println("Dijkstra: etäisyys " + alku.getNimi() + "-" + loppu.getNimi() + " on " + millisekunnit + " ms.");
         return millisekunnit;
     }
 

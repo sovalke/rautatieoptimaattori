@@ -74,7 +74,6 @@ public class Astar {
 
                     // Siirrytään tutkimaan naapuria.
                     keko.add(new VertailtavaSolmu(tutkittavaNaapuri, arvio));
-                    //System.out.println(arvio);
                 }
 
             }
@@ -83,7 +82,6 @@ public class Astar {
 
         }
         long millisekunnit = etaisyydet.get(loppu);
-        // System.out.println("A*:       etäisyys " + alku.getNimi() + "-" + loppu.getNimi() + " on " + millisekunnit + " ms.");
         return millisekunnit;
     }
 
