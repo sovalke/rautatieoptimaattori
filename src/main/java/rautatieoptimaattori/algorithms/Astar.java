@@ -88,10 +88,7 @@ public class Astar {
 
         }
         long millisekunnit = etaisyydet.get(loppu);
-        long tunnit = millisekunnit / (60 * 60 * 1000);
-        long sekunnit = millisekunnit / 1000 % 60;
-        long minuutit = millisekunnit / (60 * 1000) % 60;
-        System.out.println("A*:       etäisyys " + alku.getNimi() + "-" + loppu.getNimi() + " on " + tunnit + " h " + minuutit + " min " + sekunnit + " s (" + millisekunnit + " millisekuntia).");
+        // System.out.println("A*:       etäisyys " + alku.getNimi() + "-" + loppu.getNimi() + " on " + millisekunnit + " ms.");
         return millisekunnit;
     }
 
