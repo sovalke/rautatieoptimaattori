@@ -5,18 +5,18 @@
 Projektille on pyritty luomaan mahdollisimman kattava JUnit-yksikkötestien paketti. Testien koodikattavuutta on testattu Pitin avulla.
 
 Tällä hetkellä (17.8.2019) yksikkötestien koodikattavuus on seuraava:
+	
+| Luokka             | Rivikattavuus  | Mutaatiokattavuus |
+| -------------------|:---------------|:------------------|
+| **Algoritmit**     |                |                   |
+| - Astar            | 90 %           | 76 %              |
+| - Dijkstra         | 91 %           | 90 %              |
+| **Domain-luokat**  |                |                   |
+| - Solmu            | 100 %          | 100 %             |
+| - Verkko           | 100 %          | 88 %              |
+| - VertailtavaSolmu | 64 %           | 50 %              |
+| **Kaikki yhteensä**| 92 %           | 84 %              |                   |
 
-* **Kokonaiskattavuus** (rivikattavuus/mutaatiokattavuus):
-	- 92 % / 84 %
-
-* **Algoritmien kattavuus** (rivikattavuus/mutaatiokattavuus):
-	- Dijkstra: 91 % / 90 %
-	- A*: 90 % / 76 %
-
-* **Domain-luokkien kattavuus** (rivikattavuus/mutaatiokattavuus):
-	- Solmu: 100 % / 100 %
-	- Verkko: 100 % / 88 %
-	- VertailtavaSolmu: 64 % / 50 %
 
 ### Syyt JUnit-testien kattavuuseroihin
 

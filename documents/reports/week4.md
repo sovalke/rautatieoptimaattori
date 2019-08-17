@@ -4,8 +4,8 @@
 
 * Kansiorakennetta paranneltu.
 
-* Yritetty rakentaa suorituskykytestiä. Ikävä kyllä tässä ei ole vielä onnistuttu. Sain mm. Jmeterin asennettua, mutta en saanut luotua toimivia testejä. Tämän jälkeen yritin luoda suorituskykytestejä JUnitin avulla, mutta ikävä kyllä sekään ei onnistunut. Yritin myös katsoa kurssin esimerkkiä suorituskykytestauksesta, mutta en ymmärtänyt sitä (koodissa ei käsittääkseni kutsuta testattavia luokkia/ohjelmaa kertaakaan; miten se siis voi testata niiden suorituskykyä?). Koska tämän viikon deadline lähestyy, keskityn nyt tekemään yksikkötestauksen kuntoon ja kirjoittamaan kunnollisen dokumentaation. Yritän saada suorituskykytestin toimimaan ensi viikolla.
+* Yritetty rakentaa suorituskykytestiä. Ikävä kyllä tässä ei ole vielä onnistuttu. Sain mm. Jmeterin asennettua, mutta en saanut luotua toimivia testejä. Tämän jälkeen yritin luoda suorituskykytestejä JUnitin avulla, mutta ikävä kyllä sekään ei onnistunut. Yritin myös katsoa kurssin esimerkkiä suorituskykytestauksesta, mutta en ikävä kyllä ymmärtänyt sitä. Yritän saada suorituskykytestin toimimaan ensi viikolla.
 
-* Lisätty yksikkötestejä Dijkstralle ja A*:lle.
+* Lisätty yksikkötestejä Dijkstralle ja A*:lle. Yksikkötestien kattavuus alkaa olla kivalla tasolla.
 
-* 
+* Kirjoitettu toteutus- ja testausdokumentteihin tietoja.
