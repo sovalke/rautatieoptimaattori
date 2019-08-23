@@ -64,5 +64,4 @@ Alla olevassa taulukossa on molempien nopeuden mediaani sekä suhteellinen nopeu
 | Helsinki asema-Turku asema| 100        | 234143        | 19247    | 12,17            |
 | Helsinki asema-Turku asema| 1000       | 194267        | 22228    | 8,74             |
 | Helsinki asema-Turku asema| 10 000     | 168537        | 24250    | 6,95             |
-| --------------------------|:-----------|:--------------|---------:|:-----------------|
-|                           |            |               |keskim.   | 4,85             |
+|                           |            |               |*keskim.* | *4,85*           |
