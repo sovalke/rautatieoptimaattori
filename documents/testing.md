@@ -34,10 +34,35 @@ Jatkossa osassa testeistä on tarkoitus käyttää merkittävästi laajempaa ain
 
 ## Suorituskykytesti
 
-Projektille on tarkoitus luoda suorituskykytesti. Toistaiseksi tällaista testiä ei ole alla kuvatuista ongelmista johtuen.
+Projektille on luotu suorituskykytesti, joka mittaa A*:n ja Dijkstran nopeuden eroja, kun samaa reittiä haetaan 100, 1000 ja 10 000 kertaa.
 
-Projektille on yritetty luoda suorituskykytestiä **JMeteriä** käyttäen. Ikävä kyllä tämä ei onnistunut, sillä vaikka JMeterin käyttöönotto onnistui, toimivien testien luominen osoittautui vaikeaksi.
+Testissä käytetään testidataa, joka sijaitsee projektin kansiossa /data/testdata/. Testidatasta käsitellään seuraavia yhteysvälejä (välit on valittu testiä ajatellen siten, että osa matkoista on lyhyitä ja osa pitkiä):
+* Helsinki asema-Jepua
+* Helsinki asema-Kemi
+* Hanko asema-Jokela
+* Rovaniemi-Turku asema
+* Helsinki asema-Turku asema
 
-Yritin luoda testiä myös **JUnitia** käyttäen. Ikävä kyllä en saanut myöskään tätä testiä toimimaan. Turvauduin lopulta tira-labran [esimerkkitestiin](https://github.com/TiraLabra/Testing-and-rmq/tree/master/src/main/java/rmq/util), mutta se oli erittäin vaikealukuinen. En siis saanut selville, kuinka se toimii – ilmeisesti RMQ:n vaikeaselkoisuus on tähän syynä. Lisäksi tiran esimerkkikoodissa ei ymmärtääkseni kutsuta testattavia luokkia ollenkaan, vaikka sen pitäisi testata juuri niiden suorituskykyä. Minulle on epäselvää, miten tämä testi pystyy testaamaan luokkia, joihin se ei viittaa lainkaan.
+Yleisesti ottaen A* oli selvästi nopeampi kuin Dijkstra; ääritapauksissa erot ovat yli 10-kertaisia.
 
-* __Ratkaisu:__ Pyrin selvittämään mahdollisimman nopeasti, miten suorituskykytestin saa kasattua ja miten RMQ liittyy asiaan. Lisään testin heti, kun saan toimivan testin aikaan.
+Alla olevassa taulukossa on molempien nopeuden mediaani sekä suhteellinen nopeusero.
+
+| Reitti                    | Kierrosta  | Dijkstra (ms) | A* (ms)  | Dijkstra / A*    |
+| --------------------------|:-----------|:--------------|:---------|:-----------------|
+| Helsinki asema-Jepua      | 100        | 1555430       | 1050279  | 1,48             |
+| Helsinki asema-Jepua      | 1000       | 992292        | 502423   | 1,98             |
+| Helsinki asema-Jepua      | 10 000     | 176112        | 117618   | 1,50             |
+| Helsinki asema-Kemi       | 100        | 252658        | 284727   | 0,89             |
+| Helsinki asema-Kemi       | 1000       | 197587        | 171931   | 1,15             |
+| Helsinki asema-Kemi       | 10 000     | 165767        | 171445   | 0,97             |
+| Hanko asema-Jokela        | 100        | 128288        | 17782    | 7,21             |
+| Hanko asema-Jokela        | 1000       | 191444        | 15211    | 12,59            |
+| Hanko asema-Jokela        | 10000      | 168424        | 14900    | 11,30            |
+| Rovaniemi-Turku asema     | 100        | 234700        | 114979   | 2,04             |
+| Rovaniemi-Turku asema     | 1000       | 178323        | 92411    | 1,93             |
+| Rovaniemi-Turku asema     | 10 000     | 172062        | 91407    | 1,88             |
+| Helsinki asema-Turku asema| 100        | 234143        | 19247    | 12,17            |
+| Helsinki asema-Turku asema| 1000       | 194267        | 22228    | 8,74             |
+| Helsinki asema-Turku asema| 10 000     | 168537        | 24250    | 6,95             |
+| --------------------------|:-----------|:--------------|---------:|:-----------------|
+|                           |            |               |keskim.   | 4,85             |

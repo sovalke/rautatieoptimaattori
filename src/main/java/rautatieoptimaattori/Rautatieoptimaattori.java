@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import rautatieoptimaattori.domain.Verkko;
 import rautatieoptimaattori.io.Aineistokasittelija;
+import suorituskyky.Suorituskykytesti;
 import tietorakenteet.OmaLista;
 
 public class Rautatieoptimaattori {
@@ -42,6 +43,8 @@ public class Rautatieoptimaattori {
 //                System.out.println(var + " ms");
 //            }
             
+            Suorituskykytesti testi = new Suorituskykytesti();
+            testi.testaa();
 
         } catch (Exception ex) {
             System.out.println("VIRHE: " + ex.getMessage());
