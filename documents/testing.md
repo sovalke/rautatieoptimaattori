@@ -34,9 +34,10 @@ Jatkossa osassa testeistä on tarkoitus käyttää merkittävästi laajempaa ain
 
 ## Suorituskykytesti
 
-Projektille on luotu suorituskykytesti, joka mittaa A*:n ja Dijkstran nopeuden eroja, kun samaa reittiä haetaan 100, 1000 ja 10 000 kertaa.
+Projektille on luotu suorituskykytesti, joka mittaa A*:n ja Dijkstran nopeuden eroja, kun samaa reittiä haetaan 100, 1000 ja 10 000 kertaa. Tätä dokumenttia varten testit ajettiin suhteellisen vanhalla kannettavalla tietokoneella (2,5 GHz Intel Core i5; 8 Gt RAM).
 
-Testissä käytetään testidataa, joka sijaitsee projektin kansiossa /data/testdata/. Testidatasta käsitellään seuraavia yhteysvälejä (välit on valittu testiä ajatellen siten, että osa matkoista on lyhyitä ja osa pitkiä):
+Testissä käytettiin testidataa, joka sijaitsee projektin kansiossa /data/testdata/. Testidatasta käsitellään seuraavia yhteysvälejä (välit on valittu testiä ajatellen siten, että osa matkoista on lyhyitä ja osa pitkiä):
+
 * Helsinki asema-Jepua
 * Helsinki asema-Kemi
 * Hanko asema-Jokela
@@ -64,4 +65,4 @@ Alla olevassa taulukossa on molempien nopeuden mediaani sekä suhteellinen nopeu
 | Helsinki asema-Turku asema| 100        | 234143        | 19247    | 12,17            |
 | Helsinki asema-Turku asema| 1000       | 194267        | 22228    | 8,74             |
 | Helsinki asema-Turku asema| 10 000     | 168537        | 24250    | 6,95             |
-|                           |            |               |*keskim.* | *4,85*           |
+|                           |            |               |**keskim.** | **4,85**       |
