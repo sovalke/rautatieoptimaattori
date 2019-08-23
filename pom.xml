@@ -24,6 +24,12 @@
     	<version>1.2.7</version>
     	<scope>test</scope>
 	</dependency>
+	<dependency>
+  		<groupId>org.apache.maven.plugins</groupId>
+  		<artifactId>maven-surefire-plugin</artifactId>
+  		<version>3.0.0-M3</version>
+  		<type>maven-plugin</type>
+	</dependency>
 </dependencies>
 
 <build>
@@ -35,6 +41,24 @@
                 <target>1.8</target>
             </configuration>
             <version>3.3</version>
+        </plugin>
+        <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.7.1</version>
+        </plugin>
+        <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.0.0</version>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-checkstyle-plugin</artifactId>
+            <!-- <version>3.0.0</version> -->
+            <configuration>
+                <configLocation>checkstyle.xml</configLocation>
+            </configuration>
         </plugin>
         <plugin>
             <groupId>org.pitest</groupId>
@@ -50,6 +74,18 @@
                 </targetTests>
             </configuration>
         </plugin>
+		<plugin>
+    		<artifactId>maven-surefire-plugin</artifactId>
+    		<version>3.0.0-M3</version>
+    		<configuration>
+        		<excludes>
+            		<exclude>DataTest.java</exclude>
+        		</excludes>
+        		<includes>
+            		<include>DataCheck.java</include>
+        		</includes>
+    		</configuration>
+		</plugin>
     </plugins>
 </build>
 
