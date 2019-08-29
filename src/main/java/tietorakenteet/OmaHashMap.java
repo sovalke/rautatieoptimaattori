@@ -5,12 +5,19 @@ public class OmaHashMap<K, V> {
     private OmaLista<OmaPari<K, V>>[] values;
     private int numberOfValues;
 
+    /**
+     * Konstruktori: luo uuden olion.
+     */
     public OmaHashMap() {
         this.values = new OmaLista[32];
         this.numberOfValues = 0;
     }
 
-    // Metodi, joka hakee avaimen perusteella hajautustaulusta arvon
+    /**
+     * Hakee avaimen perusteella hajautustaulusta arvon
+     * @param key hajautustaulun avain
+     * @return null, jos arvoa ei löydy
+     */
     public V get(K key) {
 
         int hashValue = Math.abs(key.hashCode() % this.values.length);
@@ -30,8 +37,12 @@ public class OmaHashMap<K, V> {
         return null;
     }
 
-    // Metodi, joka lisää hajautustauluun avain-arvoparin (tai päivittää
-    // olemassaolevan arvon)
+   /**
+     * Lisää hajautustauluun avain-arvoparin (tai päivittää olemassaolevan
+     * arvon)
+     * @param key avain
+     * @param value arvo
+     */
     public void put(K key, V value) {
 
         if (key == null | value == null) {
@@ -53,7 +64,11 @@ public class OmaHashMap<K, V> {
         }
     }
 
-    // Metodi, joka poistaa avain-arvoparin hajautustaulusta.
+    /**
+     * Poistaa avain-arvoparin hajautustaulusta.
+     * @param key avain, jonka perusteella poisto tehdään
+     * @return null, jos paria ei löydy tai poisto epäonnistuu
+     */
     public V remove(K key) {
         OmaLista<OmaPari<K, V>> valuesInIndex = getKeyRelatedList(key);
 
@@ -69,10 +84,14 @@ public class OmaHashMap<K, V> {
 
         OmaPari<K, V> pari = valuesInIndex.value(indeksi);
         valuesInIndex.remove(pari);
-
         return pari.getValue();
     }
 
+    /**
+     * Tarkistaa, löytyykö avainta hajautustaulusta.
+     * @param key haettava avain
+     * @return true, jos avain löytyy
+     */
     public boolean containsKey(K key) {
         V luku = get(key);
 
@@ -83,10 +102,9 @@ public class OmaHashMap<K, V> {
         }
     }
 
-    
-    // YKSITYISET METODIT
-    // Kasvattaa taulukon kokoa tarvittaessa, jotta kaikki data mahtuu.
-    // Luodaan uusi, entistä isompi taulukko ja siirretään vanhat arvot siihen.
+    /**
+     * Kasvattaa taulukon kokoa tarvittaessa, jotta kaikki data mahtuu.
+     */
     private void grow() {
         OmaLista<OmaPari<K, V>>[] newList = new OmaLista[this.values.length * 2];
 
@@ -97,8 +115,9 @@ public class OmaHashMap<K, V> {
         this.values = newList;
     }
 
-    // Metodi, joka kopioi vanhan taulukon yksi indeksi kerrallaan uuteen
-    // taulukkoon.
+    /**
+     * kopioi vanhan taulukon yksi indeksi kerrallaan uuteen taulukkoon.
+     */
     private void copy(OmaLista<OmaPari<K, V>>[] uusi, int fromIndex) {
 
         if (this.values[fromIndex] != null) {
@@ -115,7 +134,10 @@ public class OmaHashMap<K, V> {
         }
     }
 
-    // Metodi, joka hakee avaimeen liittyvän listan.
+    /**
+     * Hakee avaimeen liittyvän listan.
+     * @param key avain
+     */
     private OmaLista<OmaPari<K, V>> getKeyRelatedList(K key) {
         int hashValue = Math.abs(key.hashCode() % values.length);
 
@@ -126,7 +148,10 @@ public class OmaHashMap<K, V> {
         return values[hashValue];
     }
 
-    // Metodi, joka etsii avaimen indeksin listalta.
+    /**
+     * Metodi, joka etsii avaimen indeksin listalta.
+     * @return -1, jos avainta ei löydy.
+     */
     private int getIndexOfKey(OmaLista<OmaPari<K, V>> list, K key) {
         for (int i = 0; i < list.size(); i++) {
             if (list.value(i).getKey().equals(key)) {
