@@ -11,7 +11,7 @@ Ohjelmassa käytettävä ohjelmointikieli on Java.
 
 [Toteutusdokumentti](documents/implementation.md)
 
-[Javadoc](documents/javadoc/index.html)
+[Javadoc](documents/javadoc/)
 
 
 ## Viikkoraportit
