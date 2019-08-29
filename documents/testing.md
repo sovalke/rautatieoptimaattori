@@ -70,3 +70,11 @@ Alla olevassa taulukossa on molempien nopeuden mediaani sekä suhteellinen nopeu
 ### Suorituskykytesti kuvaajina
 
 ![Helsinki-Jepua](/documents/img/hki-jepua.png)
+
+![Helsinki-Kemi](/documents/img/hki-kemi.png)
+
+![Hanko-Jokela](/documents/img/hanko-jokela.png)
+
+![Rovaniemi-Turku](/documents/img/rovaniemi-turku.png)
+
+![Helsinki-Turku](/documents/img/hki-turku.png)
