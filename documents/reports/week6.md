@@ -8,4 +8,6 @@
 
 * Korjattu virheitä, joista Checkstyle on raportoinut. Jäljellä vain yksi varoitus, jonka pois saamisesta en ole varma.
 
-* lisätty suorituskykytestiin kuvaajia.
+* Lisätty suorituskykytestiin kuvaajia.
+
+Käytetty aika: 8 tuntia.
