@@ -3,7 +3,7 @@ package rautatieoptimaattori.domain;
 public class VertailtavaSolmu implements Comparable {
 
     private Solmu solmu;
-    private double etaisyys;
+    public double etaisyys;
 
     public VertailtavaSolmu(Solmu solmu, double etaisyys) {
         this.solmu = solmu;

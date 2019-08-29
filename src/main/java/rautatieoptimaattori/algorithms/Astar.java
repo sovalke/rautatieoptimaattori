@@ -5,6 +5,8 @@ import java.util.PriorityQueue;
 import rautatieoptimaattori.domain.Solmu;
 import rautatieoptimaattori.domain.Verkko;
 import rautatieoptimaattori.domain.VertailtavaSolmu;
+import tietorakenteet.OmaHashMap;
+import tietorakenteet.OmaKeko;
 
 public class Astar {
 
@@ -26,9 +28,9 @@ public class Astar {
         }
 
         // Luodaan keko ja tarvittavat HashMapit.
-        HashMap<Solmu, Long> etaisyydet = new HashMap<>();
-        HashMap<Solmu, Boolean> kasitelty = new HashMap<>();
-        PriorityQueue<VertailtavaSolmu> keko = new PriorityQueue();
+        OmaHashMap<Solmu, Long> etaisyydet = new OmaHashMap<>();
+        OmaHashMap<Solmu, Boolean> kasitelty = new OmaHashMap<>();
+        OmaKeko keko = new OmaKeko(this.verkko.getKoko());
 
         // Lisätään lähtöpiste kekoon ja etäisyysarvioon.
         keko.add(new VertailtavaSolmu(alku, 0));
