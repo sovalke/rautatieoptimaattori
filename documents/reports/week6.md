@@ -7,3 +7,5 @@
 * Lisätty Javadoc-kommentit projektin kaikkiin luokkiin. Generoitu Javadoc-dokumentaatio.
 
 * Korjattu virheitä, joista Checkstyle on raportoinut. Jäljellä vain yksi varoitus, jonka pois saamisesta en ole varma.
+
+* lisätty suorituskykytestiin kuvaajia.
