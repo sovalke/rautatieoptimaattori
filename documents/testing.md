@@ -67,6 +67,6 @@ Alla olevassa taulukossa on molempien nopeuden mediaani sekä suhteellinen nopeu
 | Helsinki asema-Turku asema| 10 000     | 168537        | 24250    | 6,95             |
 |                           |            |               |**keskim.** | **4,85**       |
 
-###Suorituskykytesti kuvaajina
+### Suorituskykytesti kuvaajina
 
-![Helsinki-Jepua](documents/img/hki-jepua.png)
+![Helsinki-Jepua](/documents/img/hki-jepua.png)
