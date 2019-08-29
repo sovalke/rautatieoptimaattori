@@ -46,7 +46,7 @@ public class OmaKeko {
         if (isEmpty()) {
             return null;
         }
-        VertailtavaSolmu smallest = heap[1];
+        VertailtavaSolmu first = heap[1];
         heap[1] = heap[knots];
         knots = knots - 1;
         int current = 1;
@@ -69,7 +69,7 @@ public class OmaKeko {
             }
             current = child;
         }
-        return smallest;
+        return first;
     }
 
     /**
@@ -112,7 +112,7 @@ public class OmaKeko {
         return this.knots >= 2;
     }
 
-   /**
+    /**
      * Palauttaa vasemman lapsen sijainnin.
      */
     private int left(int location) {

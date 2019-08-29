@@ -61,7 +61,8 @@ public class Dijkstra {
 
                 // Onko naapurisolmu jo etäisyysarviotaulukossa?
                 Solmu tutkittavaNaapuri = naapuri.getKey();
-                long uusi = etaisyydet.get(kasiteltava) + kasiteltava.getEtaisyys(tutkittavaNaapuri);
+                long uusi = etaisyydet.get(kasiteltava) 
+                        + kasiteltava.getEtaisyys(tutkittavaNaapuri);
 
                 // Ei ole; lisää se etäisyysarviointitaulukkoon ja kekoon.
                 if (!etaisyydet.containsKey(tutkittavaNaapuri)) {

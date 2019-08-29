@@ -11,8 +11,8 @@ import rautatieoptimaattori.io.Aineistokasittelija;
 public class Suorituskykytesti {
     Aineistokasittelija data;
     Verkko verkko;
-    Astar r;
-    Dijkstra d;
+    Astar astar;
+    Dijkstra dijkstra;
 
     /**
      * Konstruktori
@@ -20,12 +20,12 @@ public class Suorituskykytesti {
      * @throws java.lang.Exception
      */
     public Suorituskykytesti() throws Exception {
-            this.data = new Aineistokasittelija();
-            data.lisaaAsemat("./data/testdata/stations.csv");
-            data.lisaaYhteydet("./data/testdata/trains.csv");
-            this.verkko = data.getVerkko();
-            this.r = new Astar(this.verkko);
-            this.d = new Dijkstra(this.verkko);
+        this.data = new Aineistokasittelija();
+        data.lisaaAsemat("./data/testdata/stations.csv");
+        data.lisaaYhteydet("./data/testdata/trains.csv");
+        this.verkko = data.getVerkko();
+        this.astar = new Astar(this.verkko);
+        this.dijkstra = new Dijkstra(this.verkko);
     }
 
     /**
@@ -62,8 +62,7 @@ public class Suorituskykytesti {
             kulje(100, alku, loppu);
             kulje(1000, alku, loppu);
             kulje(10000, alku, loppu);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             System.out.println("VIRHE: " + ex.getMessage());
             System.exit(-1);
         }
@@ -78,34 +77,35 @@ public class Suorituskykytesti {
      * @throws java.lang.Exception
      */
     public void kulje(int krt, Solmu alku, Solmu loppu) throws Exception {
-            System.out.println("-----------------------------------------");
-            String lahtopaikka = alku.getNimi();
-            String maaranpaa = loppu.getNimi();
-            System.out.println("Kuljetaan " + krt + " kertaa väli " + lahtopaikka + "-" + maaranpaa + "...");
+        System.out.println("-----------------------------------------");
+        String lahtopaikka = alku.getNimi();
+        String maaranpaa = loppu.getNimi();
+        System.out.println("Kuljetaan " + krt + " kertaa väli " 
+                + lahtopaikka + "-" + maaranpaa + "...");
             
-            ArrayList ajat = new ArrayList<>();
+        ArrayList ajat = new ArrayList<>();
 
-            for (int i = 0; i < krt + 1; i++) {
-                long alkuAika = System.nanoTime();
-                this.d.reitinPituus(alku, loppu);
-                long loppuAika = System.nanoTime();
-                ajat.add(loppuAika - alkuAika);
-            }  
+        for (int i = 0; i < krt + 1; i++) {
+            long alkuAika = System.nanoTime();
+            this.dijkstra.reitinPituus(alku, loppu);
+            long loppuAika = System.nanoTime();
+            ajat.add(loppuAika - alkuAika);
+        }  
             
-            Collections.sort(ajat);
-            System.out.println("Dijkstran mediaaniaika: " + ajat.get(krt/2) + " millisekuntia");
+        Collections.sort(ajat);
+        System.out.println("Dijkstran mediaaniaika: " + ajat.get(krt / 2) + " millisekuntia");
             
-            ajat.clear();
+        ajat.clear();
             
-            for (int i = 0; i < krt + 1; i++) {
-                long alkuAika = System.nanoTime();
-                this.r.reitinPituus(alku, loppu);
-                long loppuAika = System.nanoTime();
-                ajat.add(loppuAika - alkuAika);
-            }  
+        for (int i = 0; i < krt + 1; i++) {
+            long alkuAika = System.nanoTime();
+            this.astar.reitinPituus(alku, loppu);
+            long loppuAika = System.nanoTime();
+            ajat.add(loppuAika - alkuAika);
+        }  
             
-            Collections.sort(ajat);
-            System.out.println("A*:n mediaaniaika: " + ajat.get(krt/2) + " millisekuntia");
+        Collections.sort(ajat);
+        System.out.println("A*:n mediaaniaika: " + ajat.get(krt / 2) + " millisekuntia");
             
     }
 }

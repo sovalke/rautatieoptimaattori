@@ -48,7 +48,8 @@ public class VertailtavaSolmu implements Comparable {
     public int hashCode() {
         int hash = 5;
         hash = 97 * hash + Objects.hashCode(this.solmu);
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.etaisyys) ^ (Double.doubleToLongBits(this.etaisyys) >>> 32));
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.etaisyys) 
+                ^ (Double.doubleToLongBits(this.etaisyys) >>> 32));
         return hash;
     }
 

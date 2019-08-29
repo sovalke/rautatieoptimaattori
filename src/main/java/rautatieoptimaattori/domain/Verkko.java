@@ -53,7 +53,7 @@ public class Verkko {
      *
      * @return OmaLista yhteyksistä
      */
-    public OmaLista Reitit() {
+    public OmaLista reitit() {
         OmaLista<String> lista = new OmaLista<>();
         
         for (HashMap.Entry<Integer, Solmu> entry : this.solmut.entrySet()) {

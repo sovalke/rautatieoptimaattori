@@ -111,7 +111,8 @@ public class Aineistokasittelija {
                     Date saapumisAika;
 
                     // Aikaleimaformaatti
-                    SimpleDateFormat aikaleima = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+                    SimpleDateFormat aikaleima = 
+                            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
                     lahtoAika = aikaleima.parse(olio[2]);
                     saapumisAika = aikaleima.parse(olio[3]);
                     long erotus = saapumisAika.getTime() - lahtoAika.getTime();

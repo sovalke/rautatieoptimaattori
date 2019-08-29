@@ -91,7 +91,7 @@ public class VerkkoTest {
         Solmu turku = verkko.lisaaAsema("Turku", 124, 60.451389, 22.266667);
         verkko.lisaaYhteys(turku, helsinki, 180);
         
-        OmaLista<String> lista = verkko.Reitit();
+        OmaLista<String> lista = verkko.reitit();
         assertEquals(lista.value(0), "Helsinki-Turku 180");
     }
 

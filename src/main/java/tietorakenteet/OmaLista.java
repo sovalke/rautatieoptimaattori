@@ -60,7 +60,8 @@ public class OmaLista<T> {
      */
     public T value(int index) {
         if (index < 0 || index >= this.numberOfValues) {
-            throw new ArrayIndexOutOfBoundsException("Indeksi " + index + " alueen [0, " + this.numberOfValues + "[ ulkopuolella.");
+            throw new ArrayIndexOutOfBoundsException("Indeksi " + index 
+                    + " alueen [0, " + this.numberOfValues + "[ ulkopuolella.");
         }
 
         return this.values[index];
