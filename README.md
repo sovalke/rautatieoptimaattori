@@ -21,3 +21,5 @@ Ohjelmassa käytettävä ohjelmointikieli on Java.
 [Viikko 4](documents/reports/week4.md)
 
 [Viikko 5](documents/reports/week5.md)
+
+[Viikko 6](documents/reports/week5.md)
