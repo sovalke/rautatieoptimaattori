@@ -5,9 +5,16 @@ import tietorakenteet.OmaLista;
 
 public class Verkko {
 
-    private HashMap<Integer, Solmu> solmut = new HashMap<>();
-
-    // Lisätään uusi asema koordinaatteineen.
+    private final HashMap<Integer, Solmu> solmut = new HashMap<>();
+    
+    /**
+     * Lisää uuden aseman koordinaatteineen.
+     * @param nimi aseman nimi
+     * @param id aseman tunnus
+     * @param x aseman x-koordinaatti
+     * @param y aseman y-koordinaatti
+     * @return lisätty solmu (olio)
+     */
     public Solmu lisaaAsema(String nimi, int id, double x, double y) {
         if (solmut.containsKey(id)) {
             Solmu paivitettava = solmut.get(id);
@@ -22,18 +29,30 @@ public class Verkko {
         return solmut.get(id);
     }
 
-    // Lisätään yhteys kahden aseman välille.
-    public int lisaaYhteys(Solmu a, Solmu b, long i) {
+    
+    /**
+     * Lisää yhteyden kahden aseman välille.
+     *
+     * @param asemaA ensimmäinen solmu
+     * @param asemaB toinen solmu
+     * @param aika solmujen välinen etäisyys (millisekunteina)
+     * @return 1, jos onnistuu
+     */
+    public int lisaaYhteys(Solmu asemaA, Solmu asemaB, long aika) {
         try {
-            a.lisaaYhteys(b, i);
-            b.lisaaYhteys(a, i);
+            asemaA.lisaaYhteys(asemaB, aika);
+            asemaB.lisaaYhteys(asemaA, aika);
             return 1;
         } catch (NullPointerException ex) {
             return -1;
         }
     }
-
-    // Palautetaan tunnetut yhteysvälit listana.
+    
+    /**
+     * Palauttaa tunnetut yhteysvälit listana.
+     *
+     * @return OmaLista yhteyksistä
+     */
     public OmaLista Reitit() {
         OmaLista<String> lista = new OmaLista<>();
         
@@ -49,12 +68,23 @@ public class Verkko {
         return lista;
     }
 
-    // Tarkistetaan, onko solmua olemassa.
+    /**
+     * Tarkistaa, onko solmu olemassa.
+     *
+     * @param solmu tarkistettava solmu
+     * @return true, jos löytyy
+     */
     public boolean onkoSolmua(Solmu solmu) {
         return this.solmut.containsValue(solmu);
     }
 
-    // Haetaan haluttu solmu.
+    /**
+     * Hakee halutun solmun.
+     *
+     * @param id haettavan solmun id
+     * @return haettava solmu
+     * @throws java.lang.Exception
+     */
     public Solmu getSolmu(Integer id) throws Exception {
         if (this.solmut.containsKey(id)) {
             return this.solmut.get(id);
@@ -62,7 +92,11 @@ public class Verkko {
         throw new Exception("Asemaa ei löydy.");
     }
 
-    // Haetaan tieto asemien lukumäärästä.
+    /**
+     * Hakee asemien lukumäärän.
+     *
+     * @return int solmujen lkm
+     */
     public int getKoko() {
         return this.solmut.size();
     }

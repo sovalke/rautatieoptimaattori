@@ -1,7 +1,6 @@
 package rautatieoptimaattori.algorithms;
 
 import java.util.HashMap;
-import java.util.PriorityQueue;
 import rautatieoptimaattori.domain.Solmu;
 import rautatieoptimaattori.domain.Verkko;
 import rautatieoptimaattori.domain.VertailtavaSolmu;
@@ -10,13 +9,25 @@ import tietorakenteet.OmaKeko;
 
 public class Dijkstra {
 
-    private Verkko verkko;
+    private final Verkko verkko;
 
+    /**
+     * Konstruktori.
+     *
+     * @param v käytettävä verkko
+     */
     public Dijkstra(Verkko v) {
         this.verkko = v;
     }
 
-    // Varsinainen Dijkstran algoritmi
+    /**
+     * Laskee parhaan reitin pituuden.
+     *
+     * @param alku alkusolmu
+     * @param loppu loppusolmu
+     * @return reitin pituus (millisekunteina)
+     * @throws java.lang.Exception
+     */
     public long reitinPituus(Solmu alku, Solmu loppu) throws Exception {
 
         if (!this.verkko.onkoSolmua(alku)) {
@@ -27,7 +38,6 @@ public class Dijkstra {
             throw new Exception("Kääk! Määränpääasemaa ei löydy!");
         }
 
-        // Luodaan keko ja tarvittavat HashMapit.
         OmaHashMap<Solmu, Long> etaisyydet = new OmaHashMap<>();
         OmaHashMap<Solmu, Boolean> kasitelty = new OmaHashMap<>();
         OmaKeko keko = new OmaKeko(this.verkko.getKoko());
@@ -47,7 +57,6 @@ public class Dijkstra {
             }
 
             // Muutoin käydään läpi solmun naapurit.
-            // Miksi tässä ei voi käyttää getNaapurit-metodia? Tulee virheilmoitus.
             for (HashMap.Entry<Solmu, Long> naapuri : kasiteltava.naapurit.entrySet()) {
 
                 // Onko naapurisolmu jo etäisyysarviotaulukossa?

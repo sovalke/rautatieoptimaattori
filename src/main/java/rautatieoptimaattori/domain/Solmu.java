@@ -10,6 +10,14 @@ public class Solmu {
     private long koordinaattiY;
     private int id;
 
+    /**
+     * Konstruktori.
+     *
+     * @param nimi Aseman nimi
+     * @param id Aseman tunniste
+     * @param x x-koordinaatti
+     * @param y y-koordinaatti
+     */
     public Solmu(String nimi, int id, double x, double y) {
         this.nimi = nimi;
         this.id = id;
@@ -19,53 +27,107 @@ public class Solmu {
         this.koordinaattiY = (long) muunnosY;
     }
 
+    /**
+     * Lisää kahdensuuntaisen yhteyden haluttuun solmuun.
+     *
+     * @param paikka haluttu paikka
+     * @param etaisyys etäisyys (millisekunteina)
+     */
     public void lisaaYhteys(Solmu paikka, long etaisyys) {
         naapurit.put(paikka, etaisyys);
     }
 
-    // Setterit
-    public int setId(int i) {
-        this.id = i;
-        return 1;
-    }
-    
-    public int setNimi(String nomen) {
-        if (nomen.isEmpty()) {
-            return -1;
-        }
-        this.nimi = nomen;
+    /**
+     * Asettaa solmulle uuden id:n.
+     *
+     * @param id uusi id
+     * @return 1, jos onnistuu
+     */
+    public int setId(int id) {
+        this.id = id;
         return 1;
     }
 
+    /**
+     * Asettaa solmulle uuden nimen.
+     *
+     * @param nimi uusi nimi
+     * @return 1, jos onnistuu
+     */
+    public int setNimi(String nimi) {
+        if (nimi.isEmpty()) {
+            return -1;
+        }
+        this.nimi = nimi;
+        return 1;
+    }
+
+    /**
+     * Asettaa solmulle uudet koordinaatit.
+     *
+     * @param x uusi x-koordinaatti
+     * @param y uusi y-koordinaatti
+     * @return 1, jos onnistuu
+     */
     public int setXY(long x, long y) {
         this.koordinaattiX = x;
         this.koordinaattiY = y;
         return 1;
     }
 
-    // Getterit
+    /**
+     * Hakee solmun tunnisteen.
+     *
+     * @return id
+     */
     public int getId() {
         return this.id;
     }
 
+    /**
+     * Hakee solmun etäisyyden halutusta paikasta.
+     *
+     * @param paikka haettava solmu
+     * @return etäisyys (millisekunteina)
+     */
     public long getEtaisyys(Solmu paikka) {
         return naapurit.get(paikka);
     }
 
+    /**
+     * Hakee solmun nimen.
+     *
+     * @return nimi
+     */
     public String getNimi() {
         return this.nimi;
     }
 
-    public HashMap getNaapurit() {
-        return naapurit;
-    }
-
+    /**
+     * Hakee solmun X-koordinaatin.
+     *
+     * @return double koordinaatti
+     */
     public double getX() {
         return this.koordinaattiX;
     }
 
+    /**
+     * Hakee solmun Y-koordinaatin.
+     *
+     * @return double koordinaatti
+     */
     public double getY() {
         return this.koordinaattiY;
+    }
+
+    /**
+     * Hakee solmun naapurit.
+     *
+     * @return naapurit OmaHashMapina.
+     */
+    public HashMap getNaapurit() {
+        return naapurit;
     }
 
 }

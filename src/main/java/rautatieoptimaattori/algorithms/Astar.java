@@ -1,7 +1,6 @@
 package rautatieoptimaattori.algorithms;
 
 import java.util.HashMap;
-import java.util.PriorityQueue;
 import rautatieoptimaattori.domain.Solmu;
 import rautatieoptimaattori.domain.Verkko;
 import rautatieoptimaattori.domain.VertailtavaSolmu;
@@ -10,24 +9,35 @@ import tietorakenteet.OmaKeko;
 
 public class Astar {
 
-    private Verkko verkko;
+    private final Verkko verkko;
 
+    /**
+     * Konstruktori.
+     *
+     * @param v käytettävä verkko
+     */
     public Astar(Verkko v) {
         this.verkko = v;
     }
 
-    // Varsinainen algoritmi
+    /**
+     * Laskee parhaan reitin pituuden.
+     *
+     * @param alku alkusolmu
+     * @param loppu loppusolmu
+     * @return reitin pituus (millisekunteina)
+     * @throws java.lang.Exception
+     */
     public long reitinPituus(Solmu alku, Solmu loppu) throws Exception {
 
-        if (! this.verkko.onkoSolmua(alku) ) {
+        if (!this.verkko.onkoSolmua(alku)) {
             throw new Exception("Kääk! Lähtöasemaa ei löydy!");
         }
 
-        if (! this.verkko.onkoSolmua(loppu)) {
+        if (!this.verkko.onkoSolmua(loppu)) {
             throw new Exception("Kääk! Määränpääasemaa ei löydy!");
         }
 
-        // Luodaan keko ja tarvittavat HashMapit.
         OmaHashMap<Solmu, Long> etaisyydet = new OmaHashMap<>();
         OmaHashMap<Solmu, Boolean> kasitelty = new OmaHashMap<>();
         OmaKeko keko = new OmaKeko(this.verkko.getKoko());
@@ -38,10 +48,8 @@ public class Astar {
 
         while (!keko.isEmpty()) {
 
-            // Napataan käsiteltävä solmu.
             Solmu kasiteltava = keko.poll().getSolmu();
 
-            // Ollaan päästy maaliin: lopetetaan suorittaminen.
             if (kasiteltava.equals(loppu)) {
                 break;
             }
@@ -52,7 +60,6 @@ public class Astar {
             }
 
             // Muutoin käydään läpi solmun naapurit.
-            // Miksi tässä ei voi käyttää getNaapurit-metodia? Tulee virheilmoitus.
             for (HashMap.Entry<Solmu, Long> naapuri : kasiteltava.naapurit.entrySet()) {
 
                 // Onko naapurisolmu jo etäisyysarviotaulukossa?
@@ -87,12 +94,16 @@ public class Astar {
         return millisekunnit;
     }
 
+    /**
+     * Laskee määränpäälle etäisyysarvion.
+     *
+     * @param piste : piste, jossa ollaan
+     * @param maaranpaa : piste, johon halutaan
+     */
     private double etaisyysArvio(Solmu piste, Solmu maaranpaa) {
         // Hyödynnetään Pythagoraan lausetta etäisyysarvion laskemiseen.
-
         double x = maaranpaa.getX() - piste.getX();
         double y = maaranpaa.getY() - piste.getY();
-
         double etaisyysArvio = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
         return etaisyysArvio;
     }

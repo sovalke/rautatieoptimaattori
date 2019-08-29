@@ -13,7 +13,12 @@ public class Suorituskykytesti {
     Verkko verkko;
     Astar r;
     Dijkstra d;
-    
+
+    /**
+     * Konstruktori
+     *
+     * @throws java.lang.Exception
+     */
     public Suorituskykytesti() throws Exception {
             this.data = new Aineistokasittelija();
             data.lisaaAsemat("./data/testdata/stations.csv");
@@ -22,7 +27,10 @@ public class Suorituskykytesti {
             this.r = new Astar(this.verkko);
             this.d = new Dijkstra(this.verkko);
     }
-    
+
+    /**
+     * Ajaa suorituskykytestin.
+     */
     public void testaa() {
 
         try {
@@ -60,7 +68,15 @@ public class Suorituskykytesti {
             System.exit(-1);
         }
     }
-    
+
+    /**
+     * Etsii reitin halutun määrän kertoja.
+     *
+     * @param krt Montako kertaa
+     * @param alku Reitin alkuasema
+     * @param loppu Reitin loppuasema
+     * @throws java.lang.Exception
+     */
     public void kulje(int krt, Solmu alku, Solmu loppu) throws Exception {
             System.out.println("-----------------------------------------");
             String lahtopaikka = alku.getNimi();
