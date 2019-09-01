@@ -1,7 +1,5 @@
 package rautatieoptimaattori.domain;
 
-import java.util.Objects;
-
 public class VertailtavaSolmu implements Comparable {
 
     private final Solmu solmu;
@@ -41,17 +39,6 @@ public class VertailtavaSolmu implements Comparable {
         return s.solmu.equals(this.solmu);
     }
 
-    /**
-     * Luo hash-koodin solmulle.
-     */
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.solmu);
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.etaisyys) 
-                ^ (Double.doubleToLongBits(this.etaisyys) >>> 32));
-        return hash;
-    }
 
     /**
      * Vertailee solmua ja objektia o: kumpi on suurempi?
