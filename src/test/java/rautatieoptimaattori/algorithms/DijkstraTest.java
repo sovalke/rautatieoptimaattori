@@ -1,25 +1,24 @@
 package rautatieoptimaattori.algorithms;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import rautatieoptimaattori.domain.Solmu;
-import rautatieoptimaattori.algorithms.Astar;
-import rautatieoptimaattori.algorithms.Dijkstra;
 import rautatieoptimaattori.domain.Verkko;
 
 
 public class DijkstraTest {
 
+    /**
+     * Konstruktori.
+     */
     public DijkstraTest() {
     }
 
+    /**
+     * Testataan Dijkstran algoritmin toiminta helpossa (suora yhteys pisteiden
+     * välillä).
+     */
     @Test
-    // Tällä testillä testataan Dijkstran algoritmin toiminta helpossa
-    // perustapauksessa (suora yhteys pisteiden välillä).
     public void etsiReitti1() throws Exception {
         Verkko verkko = new Verkko();
         Solmu helsinki = verkko.lisaaAsema("Helsinki", 123, 60.166640, 24.943536);
@@ -45,9 +44,12 @@ public class DijkstraTest {
         assertEquals(170, Vastaus, 0.02);
     }
 
+    /**
+     * Testaa tapauksen, jossa yhteys pisteiden välillä ei ole suora.
+     * @throws java.lang.Exception
+     */
     @Test
     public void etsiReitti2() throws Exception {
-        // Tapaus, jossa yhteys pisteiden välillä ei ole suora.
         Verkko verkko = new Verkko();
         Solmu helsinki = verkko.lisaaAsema("Helsinki", 123, 60.166640, 24.943536);
         Solmu turku = verkko.lisaaAsema("Turku", 124, 60.451389, 22.266667);
@@ -65,17 +67,80 @@ public class DijkstraTest {
         verkko.lisaaYhteys(lahti, riihimaki, 59);
         verkko.lisaaYhteys(lahti, helsinki, 104);
         verkko.lisaaYhteys(tampere, riihimaki, 116);
+        verkko.lisaaYhteys(riihimaki, helsinki, 69);
 
         Dijkstra d = new Dijkstra(verkko);
 
         double vastaus = d.reitinPituus(lahti, turku);
         assertEquals(297, vastaus, 0.02);
-
     }
     
-        @Test
-    // Tällä katsotaan, toimiiko nullpointerin käsittely oikein
-    // (määränpääasemaa ei löydy).
+    /**
+     * Testaa tapauksen, jossa algoritmi käsittelee samaa solmua useaan kertaan.
+     * @throws java.lang.Exception
+     */
+    @Test
+    public void etsiReitti3() throws Exception {
+        Verkko verkko = new Verkko();
+        Solmu pasila = verkko.lisaaAsema("Pasila", 10, 60.198689,24.933521);
+        Solmu kapyla = verkko.lisaaAsema("Käpylä", 977, 60.22017, 24.946034);
+        Solmu oulunkyla = verkko.lisaaAsema("Oulunkylä", 15, 60.229, 24.967676);
+        Solmu pukinmaki = verkko.lisaaAsema("Pukinmäki", 551, 60.242216, 24.993288);
+        Solmu malmi = verkko.lisaaAsema("Malmi", 17, 60.25166, 25.011468);
+        Solmu tapanila = verkko.lisaaAsema("Tapanila", 552, 60.2639, 25.030033);
+        Solmu puistola = verkko.lisaaAsema("Puistola", 553, 60.276313, 25.036683);
+        Solmu tikkurila = verkko.lisaaAsema("Tikkurila", 18, 60.292166, 25.044055);
+        Solmu hiekkaharju = verkko.lisaaAsema("Hiekkaharju", 556, 60.303081, 25.049104);
+        Solmu leinela = verkko.lisaaAsema("Leinelä", 1333, 60.322613, 25.039847);
+        Solmu lentoasema = verkko.lisaaAsema("Lentoasema", 1332, 60.315732, 24.968343);
+        Solmu aviapolis = verkko.lisaaAsema("Aviapolis", 1331, 60.30435, 24.956191);
+        Solmu kivisto = verkko.lisaaAsema("Kivistö", 1330, 60.314607, 24.846938);
+        Solmu vehkala = verkko.lisaaAsema("Vehkala", 1337, 60.295054, 24.843716);
+        Solmu vantaankoski = verkko.lisaaAsema("Vantaankoski", 839, 60.285681, 24.848271);
+        Solmu martinlaakso = verkko.lisaaAsema("Martinlaakso", 662, 60.27808, 24.852604);
+        Solmu louhela = verkko.lisaaAsema("Louhela", 661, 60.270798, 24.853299);
+        Solmu myyrmaki = verkko.lisaaAsema("Myyrmäki", 660, 60.261327, 24.854751);
+        Solmu malminkartano = verkko.lisaaAsema("Malminkartano", 659, 60.249316, 24.861283);
+        Solmu kannelmaki = verkko.lisaaAsema("Kannelmäki", 658, 60.239562, 24.877004);
+        Solmu phaaga = verkko.lisaaAsema("Pohjois-Haaga", 657, 60.230078, 24.883252);
+        Solmu huopalahti = verkko.lisaaAsema("Huopalahti", 72, 60.21835,24.893523);
+        Solmu valimo = verkko.lisaaAsema("Valimo", 847, 60.222172, 24.8758);
+
+        verkko.lisaaYhteys(pasila, kapyla, 3);
+        verkko.lisaaYhteys(kapyla, oulunkyla, 1);
+        verkko.lisaaYhteys(oulunkyla, pukinmaki, 2);
+        verkko.lisaaYhteys(pukinmaki, malmi, 1);
+        verkko.lisaaYhteys(malmi, tapanila, 2);
+        verkko.lisaaYhteys(tapanila, puistola, 2);
+        verkko.lisaaYhteys(puistola, tikkurila, 2);
+        verkko.lisaaYhteys(tikkurila, hiekkaharju, 2);
+        verkko.lisaaYhteys(hiekkaharju, leinela, 3);
+        verkko.lisaaYhteys(leinela, lentoasema, 4);
+        verkko.lisaaYhteys(lentoasema, aviapolis, 2);
+        verkko.lisaaYhteys(aviapolis, kivisto, 6);
+        verkko.lisaaYhteys(kivisto, vehkala, 2);
+        verkko.lisaaYhteys(vehkala, vantaankoski, 1);
+        verkko.lisaaYhteys(vantaankoski, martinlaakso, 1);
+        verkko.lisaaYhteys(martinlaakso, louhela, 1);
+        verkko.lisaaYhteys(louhela, myyrmaki, 1);
+        verkko.lisaaYhteys(myyrmaki, malminkartano, 2);
+        verkko.lisaaYhteys(malminkartano, kannelmaki, 2);
+        verkko.lisaaYhteys(kannelmaki, phaaga, 1);
+        verkko.lisaaYhteys(phaaga, huopalahti, 2);
+        verkko.lisaaYhteys(huopalahti, pasila, 3);
+        verkko.lisaaYhteys(huopalahti, valimo, 1);
+        verkko.lisaaYhteys(tikkurila, valimo, 15);
+
+        Dijkstra d = new Dijkstra(verkko);
+        double vastaus = d.reitinPituus(aviapolis, valimo);
+        assertEquals(20, vastaus, 0.02);
+    }
+    
+    /**
+     * Tarkistaa, toimiiko nullpointerin käsittely oikein (määränpääasemaa ei
+     * löydy).
+     */
+    @Test
     public void nullPointer1() {
         Verkko verkko = new Verkko();
         Solmu[] taulukko = new Solmu[10];
@@ -93,8 +158,9 @@ public class DijkstraTest {
     }
     
     @Test
-    // Tällä katsotaan, toimiiko nullpointerin käsittely oikein (lähtöasemaa
-    // ei löydy).
+    /**
+     * Tarkistaa, toimiiko nullpointerin käsittely oikein (lähtöasemaa ei löydy).
+     */
     public void nullPointer2() {
         Verkko verkko = new Verkko();
         Solmu[] taulukko = new Solmu[10];

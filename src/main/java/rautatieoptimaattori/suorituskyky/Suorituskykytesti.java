@@ -1,4 +1,4 @@
-package suorituskyky;
+package rautatieoptimaattori.suorituskyky;
 
 import java.util.ArrayList;
 import java.util.Collections;

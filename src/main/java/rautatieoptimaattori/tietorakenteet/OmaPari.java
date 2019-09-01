@@ -1,4 +1,4 @@
-package tietorakenteet;
+package rautatieoptimaattori.tietorakenteet;
 
 public class OmaPari<K, V> {
 
@@ -34,8 +34,10 @@ public class OmaPari<K, V> {
     /**
      * Asettaa arvon.
      * @param arvo
+     * @return 
      */
-    public void setValue(V arvo) {
+    public boolean setValue(V arvo) {
         this.value = arvo;
+        return true;
     }
 }

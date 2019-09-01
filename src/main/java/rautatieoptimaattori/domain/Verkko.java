@@ -1,7 +1,7 @@
 package rautatieoptimaattori.domain;
 
 import java.util.HashMap;
-import tietorakenteet.OmaLista;
+import rautatieoptimaattori.tietorakenteet.OmaLista;
 
 public class Verkko {
 

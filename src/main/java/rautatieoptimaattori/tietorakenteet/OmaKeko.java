@@ -1,4 +1,4 @@
-package tietorakenteet;
+package rautatieoptimaattori.tietorakenteet;
 
 import rautatieoptimaattori.domain.VertailtavaSolmu;
 

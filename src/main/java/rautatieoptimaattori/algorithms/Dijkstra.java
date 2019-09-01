@@ -4,8 +4,8 @@ import java.util.HashMap;
 import rautatieoptimaattori.domain.Solmu;
 import rautatieoptimaattori.domain.Verkko;
 import rautatieoptimaattori.domain.VertailtavaSolmu;
-import tietorakenteet.OmaHashMap;
-import tietorakenteet.OmaKeko;
+import rautatieoptimaattori.tietorakenteet.OmaHashMap;
+import rautatieoptimaattori.tietorakenteet.OmaKeko;
 
 public class Dijkstra {
 

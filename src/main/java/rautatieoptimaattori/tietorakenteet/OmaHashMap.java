@@ -1,4 +1,4 @@
-package tietorakenteet;
+package rautatieoptimaattori.tietorakenteet;
 
 public class OmaHashMap<K, V> {
 

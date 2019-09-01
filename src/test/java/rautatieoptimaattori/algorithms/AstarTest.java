@@ -1,24 +1,26 @@
 package rautatieoptimaattori.algorithms;
 
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import rautatieoptimaattori.domain.Solmu;
-import rautatieoptimaattori.algorithms.Astar;
 import rautatieoptimaattori.domain.Verkko;
+import rautatieoptimaattori.io.Aineistokasittelija;
 
 public class AstarTest {
 
+    /**
+     * Konstruktori.
+     */
     public AstarTest() {
     }
 
+    /**
+     * Testataan A*-algoritmin toiminta helpossa perustapauksessa (suora yhteys
+     * pisteiden välillä).
+     *
+     * @throws java.lang.Exception
+     */
     @Test
-    // Tällä testillä testataan A*-algoritmin toiminta helpossa
-    // perustapauksessa (suora yhteys pisteiden välillä).
     public void etsiReitti1() throws Exception {
         Verkko verkko = new Verkko();
         Solmu helsinki = verkko.lisaaAsema("Helsinki", 123, 60.166640, 24.943536);
@@ -44,8 +46,12 @@ public class AstarTest {
         assertEquals(170, aVastaus, 0.02);
     }
 
+    /**
+     * Testataan A*-algoritmin heuristiikkaa.
+     *
+     * @throws java.lang.Exception
+     */
     @Test
-    // Tällä testillä testataan A*-algoritmin heuristiikkaa.
     public void etsiReitti2() throws Exception {
         Verkko verkko = new Verkko();
         Solmu helsinki = verkko.lisaaAsema("Helsinki", 123, 60.166640, 24.943536);
@@ -70,40 +76,59 @@ public class AstarTest {
         double vastaus = a.reitinPituus(lahti, turku);
         assertEquals(345, vastaus, 0.02);
     }
-    
+
+    /**
+     * Testaa tapauksen, jossa algoritmi käsittelee samaa solmua useaan kertaan.
+     *
+     * @throws java.lang.Exception
+     */
     @Test
-    // Tällä katsotaan, toimiiko nullpointerin käsittely oikein
-    // (määränpääasemaa ei löydy).
+    public void etsiReitti3() throws Exception {
+        Aineistokasittelija data = new Aineistokasittelija();
+        data.lisaaAsemat("./data/testdata/stations.csv");
+        data.lisaaYhteydet("./data/testdata/trains.csv");
+        Verkko verkko = data.getVerkko();
+        Astar r = new Astar(verkko);
+        long reitti = r.reitinPituus(verkko.getSolmu(130), verkko.getSolmu(1));
+
+        assertEquals(reitti, 9546000, 0.02);
+    }
+
+    /**
+     * Katsotaan, toimiiko nullpointerin käsittely oikein (määränpääasemaa ei
+     * löydy).
+     */
+    @Test
     public void nullPointer1() {
         Verkko verkko = new Verkko();
         Solmu[] taulukko = new Solmu[10];
         taulukko[0] = verkko.lisaaAsema("Helsinki", 123, 60.166640, 24.943536);
         Astar r = new Astar(verkko);
-        String error ="";
-        
+        String error = "";
+
         try {
             r.reitinPituus(taulukko[0], taulukko[1]);
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             error = e.toString();
         }
         assertEquals(error, "java.lang.Exception: Kääk! Määränpääasemaa ei löydy!");
     }
-    
+
+    /**
+     * Katsotaan, toimiiko nullpointerin käsittely oikein (lähtöasemaa ei
+     * löydy).
+     */
     @Test
-    // Tällä katsotaan, toimiiko nullpointerin käsittely oikein (lähtöasemaa
-    // ei löydy).
     public void nullPointer2() {
         Verkko verkko = new Verkko();
         Solmu[] taulukko = new Solmu[10];
         taulukko[0] = verkko.lisaaAsema("Helsinki", 123, 60.166640, 24.943536);
         Astar r = new Astar(verkko);
-        String error ="";
-        
+        String error = "";
+
         try {
             r.reitinPituus(taulukko[1], taulukko[0]);
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             error = e.toString();
         }
         assertEquals(error, "java.lang.Exception: Kääk! Lähtöasemaa ei löydy!");
