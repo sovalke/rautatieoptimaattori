@@ -5,6 +5,10 @@
  */
 package rautatieoptimaattori.tietorakenteet;
 
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -13,11 +17,24 @@ import static org.junit.Assert.*;
  * @author sonja
  */
 public class OmaListaTest {
-
-    /**
-     * Konstruktori.
-     */
+    
     public OmaListaTest() {
+    }
+    
+    @BeforeClass
+    public static void setUpClass() {
+    }
+    
+    @AfterClass
+    public static void tearDownClass() {
+    }
+    
+    @Before
+    public void setUp() {
+    }
+    
+    @After
+    public void tearDown() {
     }
 
     /**
@@ -25,61 +42,25 @@ public class OmaListaTest {
      */
     public void addTest() {
         OmaLista lista = new OmaLista();
-        assertEquals(lista.add(5), true);
-    }
-
-    /**
-     * Testaa, palauttaako contains-metodi oikean arvon.
-     */
-    public void containsTest() {
-        OmaLista lista = new OmaLista();
-        lista.add(5);
-        assertEquals(lista.contains(2), false);
-        assertEquals(lista.contains(5), true);
-    }
-
-    /**
-     * Testaa, poistaako remove-metodi olion listalta.
-     */
-    public void removeTest() {
-        OmaLista lista = new OmaLista();
-        lista.add(5);
-        lista.add(6);
-        lista.remove(5);
-        assertEquals(lista.contains(5), false);
-        assertEquals(lista.contains(6), true);
-    }
-
-    /**
-     * Testaa, hakeeko value-metodi halutun arvon.
-     */
-    public void valueTest() {
-        OmaLista lista = new OmaLista();
-        lista.add(5);
-        lista.add(6);
-        assertEquals(lista.value(1), 6);
-    }
-
-    /**
-     * Testaa, hakeeko indexOf-metodi halutun arvon.
-     */
-    public void indexOfTest() {
-        OmaLista lista = new OmaLista();
-        lista.add(5);
-        lista.add(6);
-        assertEquals(lista.indexOf(5), 0);
-        assertEquals(lista.indexOf(7), -1);
-    }
-
-    /**
-     * Testaa, hakeeko size-metodi listalla olevien olioiden määrän.
-     */
-    public void sizeTest() {
-        OmaLista lista = new OmaLista();
+        boolean tulos = lista.add(1);
+        lista.add(2);
+        lista.add(3);
+        lista.add(4);
         lista.add(5);
         lista.add(6);
         lista.add(7);
-        assertEquals(lista.size(), 3);
+        lista.add(8);
+        lista.add(9);
+        lista.add(10);
+        lista.add(11);
+        lista.add(12);
+        lista.add(13);
+        lista.add(14);
+        lista.add(15);
+        lista.add(16);
+        lista.add(17);
+        System.out.println(lista.size());
+        assertEquals(tulos, true);
     }
     
 }
