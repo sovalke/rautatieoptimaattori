@@ -43,15 +43,17 @@ public class OmaLista<T> {
      * Poistaa halutun arvon listalta.
      *
      * @param value arvo
+     * @return true, jos onnistuu, false jos arvoa ei ole listalla
      */
-    public void remove(T value) {
+    public boolean remove(T value) {
         int indexOfValue = indexOf(value);
         if (indexOfValue < 0) {
-            return; // ei löydy
+            return false; // ei löydy
         }
 
         moveToLeft(indexOfValue);
         this.numberOfValues--;
+        return true;
     }
 
     /**

@@ -4,4 +4,6 @@
 
 * Lisätty Javadoc-kommentit testiluokkiin.
 
+* Lisätty JUnit-testit testiluokille.
+
 * 
