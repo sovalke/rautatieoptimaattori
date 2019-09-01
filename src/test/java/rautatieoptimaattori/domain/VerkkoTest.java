@@ -2,17 +2,19 @@ package rautatieoptimaattori.domain;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-import rautatieoptimaattori.domain.Solmu;
-import rautatieoptimaattori.algorithms.Astar;
-import rautatieoptimaattori.algorithms.Dijkstra;
-import rautatieoptimaattori.domain.Verkko;
 import tietorakenteet.OmaLista;
 
 public class VerkkoTest {
 
+    /**
+     * Konstruktori.
+     */
     public VerkkoTest() {
     }
 
+    /**
+     * Testaa, onnistuuko verkon luonti ongelmitta.
+     */
     @Test
     public void luoVerkko() {
         Verkko verkko = new Verkko();
@@ -22,6 +24,9 @@ public class VerkkoTest {
         assertEquals(2, vastaus);
     }
 
+    /**
+     * Testaa, onnistuuko yhteyden lisääminen verkkoon.
+     */
     @Test
     public void lisaaYhteys() {
         Verkko verkko = new Verkko();
@@ -31,7 +36,10 @@ public class VerkkoTest {
         assertEquals(1, tulos);
     }
     
-    // Testataan tilannetta, jossa verkkoon yritetään lisätä olematonta asemaa.
+    /**
+     * Testaa tilannetta, jossa verkkoon yritetään lisätä yhteyttä, jota ei
+     * ole olemassa.
+     */
     @Test
     public void LisaaOlematonYhteys() {
         Solmu[] taulukko = new Solmu[10];
@@ -42,6 +50,9 @@ public class VerkkoTest {
         assertEquals(-1, tulos);
     }
 
+    /**
+     * Testaa, toimiiko onkoSolmua-metodi oikein.
+     */
     @Test
     public void onkoSolmua() {
         Verkko verkko = new Verkko();
@@ -50,6 +61,10 @@ public class VerkkoTest {
         assertEquals(true, status);
     }
     
+    /**
+     * Testaa, palauttaako getSolmu-metodi oikean olion.
+     * @throws java.lang.Exception
+     */
     @Test
     public void getSolmu() throws Exception {
         Verkko verkko = new Verkko();
@@ -58,7 +73,11 @@ public class VerkkoTest {
         assertEquals(solmu.getId(), 123);
     }
     
-    // Lisätään samalla id:llä kaksi eri asemaa.
+    /**
+     * Testaa tilannetta, jossa verkkoon lisätään samalla id:llä kaksi eri
+     * asemaa.
+     * @throws java.lang.Exception
+     */
     @Test
     public void tuplaLisäys() throws Exception {
         Verkko verkko = new Verkko();
@@ -68,7 +87,10 @@ public class VerkkoTest {
         assertEquals(testi.getNimi(), "Turku");
     }
     
-    // Yritetään lisätä verkkoon olematon asema.
+    /**
+     * Testaa tilannetta, jossa verkkoon yritetään lisätä olematonta asemaa.
+     * @throws java.lang.Exception
+     */
     @Test
     public void tuntematonAsema() throws Exception {
         Verkko verkko = new Verkko();
@@ -83,7 +105,9 @@ public class VerkkoTest {
         assertEquals(error, "java.lang.Exception: Asemaa ei löydy.");
     }
     
-    // Testataan, palauttaako Reitit-metodi oikeanlaisen syötteen.
+    /**
+     * Testaa, palauttaako Reitit-metodi oikeanlaisen syötteen.
+     */
     @Test
     public void Reitit() {
         Verkko verkko = new Verkko();
