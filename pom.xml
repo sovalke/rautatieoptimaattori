@@ -68,6 +68,7 @@
                 <targetClasses>
                     <param>rautatieoptimaattori.algorithms*</param>
                     <param>rautatieoptimaattori.domain*</param>
+                    <param>rautatieoptimaattori.tietorakenteet*</param>
                 </targetClasses>
                 <targetTests>
                     <param>rautatieoptimaattori*</param>

@@ -17,14 +17,16 @@ public class OmaLista<T> {
      * Lisää listalle uuden arvon.
      *
      * @param value lisättävä arvo
+     * @return true, kun onnistuu
      */
-    public void add(T value) {
+    public boolean add(T value) {
         if (this.numberOfValues == this.values.length) {
             grow();
         }
 
         this.values[this.numberOfValues] = value;
         this.numberOfValues++;
+        return true;
     }
 
     /**
