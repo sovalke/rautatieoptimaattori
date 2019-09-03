@@ -1,8 +1,10 @@
 package rautatieoptimaattori.tietorakenteet;
 
-public class OmaPari<K, V> {
+import java.util.Map;
 
-    private K key;
+public class OmaPari<K, V> implements Map.Entry {
+
+    private final K key;
     private V value;
 
     /**
@@ -19,6 +21,7 @@ public class OmaPari<K, V> {
      * Hakee avaimen.
      * @return avain
      */
+    @Override
     public K getKey() {
         return key;
     }
@@ -27,6 +30,7 @@ public class OmaPari<K, V> {
      * Hakee arvon.
      * @return arvo
      */
+    @Override
     public V getValue() {
         return value;
     }
@@ -36,8 +40,13 @@ public class OmaPari<K, V> {
      * @param arvo
      * @return 
      */
-    public boolean setValue(V arvo) {
-        this.value = arvo;
-        return true;
+    @Override
+    public Object setValue(Object arvo) {
+        this.value = (V) arvo;
+        return this.value;
     }
+
+
+
+
 }

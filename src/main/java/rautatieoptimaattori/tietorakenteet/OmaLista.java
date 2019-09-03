@@ -1,9 +1,14 @@
 package rautatieoptimaattori.tietorakenteet;
 
-public class OmaLista<T> {
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Set;
 
-    private T[] values;
-    private int numberOfValues;
+public class OmaLista<T> implements Iterable<T>, Set<T> {
+
+    protected T[] values;
+    protected int numberOfValues;
 
     /**
      * Konstruktori: luo uuden listan.
@@ -19,6 +24,7 @@ public class OmaLista<T> {
      * @param value lisättävä arvo
      * @return true, kun onnistuu
      */
+    @Override
     public boolean add(T value) {
         if (this.numberOfValues == this.values.length) {
             grow();
@@ -35,18 +41,20 @@ public class OmaLista<T> {
      * @param value arvo
      * @return true, jos löytyy
      */
-    public boolean contains(T value) {
-        return indexOf(value) >= 0;
+    @Override
+    public boolean contains(Object value) {
+        return indexOf((T) value) >= 0;
     }
 
     /**
      * Poistaa halutun arvon listalta.
      *
-     * @param value arvo
+     * @param value poisettava arvo
      * @return true, jos onnistuu, false jos arvoa ei ole listalla
      */
-    public boolean remove(T value) {
-        int indexOfValue = indexOf(value);
+    @Override
+    public boolean remove(Object value) {
+        int indexOfValue = indexOf((T) value);
         if (indexOfValue < 0) {
             return false; // ei löydy
         }
@@ -92,8 +100,29 @@ public class OmaLista<T> {
      *
      * @return int lukumäärä
      */
+    @Override
     public int size() {
         return this.numberOfValues;
+    }
+    
+    /**
+     * Tyhjää listan.
+     *
+     */
+    @Override
+    public void clear() {
+        this.values = (T[]) new Object[10];
+        this.numberOfValues = 0;
+    }
+    
+    /**
+     * Tarkistaa, onko lista tyhjä.
+     *
+     * @return true, jos lista on tyhjä.
+     */
+    @Override
+    public boolean isEmpty() {
+        return this.numberOfValues == 0;
     }
 
     /**
@@ -118,5 +147,88 @@ public class OmaLista<T> {
         }
 
         this.values = newObject;
+    }
+
+    /**
+     * Alaluokka OmaLista-olion läpikäymistä varten.
+     */
+    @Override
+    public Iterator<T> iterator() {
+        Iterator<T> item = new Iterator<T>() {
+            private int index = 0;
+
+            @Override
+            public boolean hasNext() {
+                return index < values.length && values[index] != null;
+            }
+
+            @Override
+            public T next() {
+                return values[index++];
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
+        };
+        return item;
+    }
+
+    /**
+     * Palauttaa kaikki listan oliot Arrayna.
+     * EI KÄYTÖSSÄ TÄSSÄ TOTEUTUKSESSA.
+     */
+    @Override
+    public Object[] toArray() {
+        throw new UnsupportedOperationException("Tätä metodia ei tueta vielä.");
+    }
+
+    /**
+     * Muuntaa parametrina annetun taulukon Array-olioksi.
+     * EI KÄYTÖSSÄ TÄSSÄ TOTEUTUKSESSA.
+     * @param <T>
+     */
+    @Override
+    public <T> T[] toArray(T[] a) {
+        throw new UnsupportedOperationException("Tätä metodia ei tueta vielä.");
+    }
+
+    /**
+     * Tarkistaa, sisältääkö listä kaikki parametrina annetut arvot.
+     * EI KÄYTÖSSÄ TÄSSÄ TOTEUTUKSESSA.
+     */
+    @Override
+    public boolean containsAll(Collection<?> c) {
+        throw new UnsupportedOperationException("Tätä metodia ei tueta vielä.");
+    }
+
+    /**
+     * Lisää kaikki parametrina annetun Collectionin oliot listaan.
+     * EI KÄYTÖSSÄ TÄSSÄ TOTEUTUKSESSA.
+     */
+    @Override
+    public boolean addAll(Collection<? extends T> c) {
+        throw new UnsupportedOperationException("Tätä metodia ei tueta vielä.");
+    }
+
+    /**
+     * Säilyttää listalla vain sellaiset oliot, jotka sisältyvät parametrina
+     * annettuun Collectio-olioon.
+     * EI KÄYTÖSSÄ TÄSSÄ TOTEUTUKSESSA.
+     */
+    @Override
+    public boolean retainAll(Collection<?> c) {
+        throw new UnsupportedOperationException("Tätä metodia ei tueta vielä.");
+    }
+
+    /**
+     * Poistaa kaikki oliot, jotka vastaavat parametrina annetun
+     * Collection-olion olioita.
+     * EI KÄYTÖSSÄ TÄSSÄ TOTEUTUKSESSA.
+     */
+    @Override
+    public boolean removeAll(Collection<?> c) {
+        throw new UnsupportedOperationException("Tätä metodia ei tueta vielä.");
     }
 }
