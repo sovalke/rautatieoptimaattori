@@ -1,17 +1,17 @@
 package rautatieoptimaattori.domain;
 
-import java.util.HashMap;
+import rautatieoptimaattori.tietorakenteet.OmaHashMap;
 
-public class Solmu {
+public class Solmu implements Comparable<Solmu> {
 
     private String nimi;
-    public HashMap<Solmu, Long> naapurit = new HashMap<>();
+    public OmaHashMap<Solmu, Long> naapurit = new OmaHashMap<>();
     private long koordinaattiX;
     private long koordinaattiY;
     private int id;
 
     /**
-     * Konstruktori.
+     * Konstruktori: luo uuden solmun.
      *
      * @param nimi Aseman nimi
      * @param id Aseman tunniste
@@ -126,8 +126,19 @@ public class Solmu {
      *
      * @return naapurit OmaHashMapina.
      */
-    public HashMap getNaapurit() {
+    public OmaHashMap getNaapurit() {
         return naapurit;
+    }
+
+    /**
+     * Vertailee solmua ja objektia o: kumpi on suurempi?
+     *
+     * @return
+     */
+    @Override
+    public int compareTo(Solmu o) {
+        Solmu toinen = (Solmu) o;
+        return (int) (this.id - toinen.getId());
     }
 
 }

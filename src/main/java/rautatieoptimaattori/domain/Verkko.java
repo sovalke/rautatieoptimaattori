@@ -1,11 +1,12 @@
 package rautatieoptimaattori.domain;
 
-import java.util.HashMap;
+import rautatieoptimaattori.tietorakenteet.OmaHashMap;
 import rautatieoptimaattori.tietorakenteet.OmaLista;
+import rautatieoptimaattori.tietorakenteet.OmaPari;
 
 public class Verkko {
 
-    private final HashMap<Integer, Solmu> solmut = new HashMap<>();
+    private final OmaHashMap<Integer, Solmu> solmut = new OmaHashMap<>();
     
     /**
      * Lisää uuden aseman koordinaatteineen.
@@ -29,7 +30,24 @@ public class Verkko {
         return solmut.get(id);
     }
 
-    
+    /**
+     * Palauttaa verkon asemat oliolistana.
+     * @return Omalista
+     */
+    public Solmu[] asemat() {
+        Solmu[] asemat = new Solmu[this.getKoko()];
+        int i = 0;
+        
+        for (Object naapuri : solmut.entrySet()) {
+            if (naapuri != null || i < asemat.length) {
+                OmaPari pari = (OmaPari) naapuri;
+                asemat[i] = (Solmu) pari.getValue();
+                i++;
+            }
+        }
+        return asemat;
+    }
+
     /**
      * Lisää yhteyden kahden aseman välille.
      *
@@ -56,13 +74,17 @@ public class Verkko {
     public OmaLista reitit() {
         OmaLista<String> lista = new OmaLista<>();
         
-        for (HashMap.Entry<Integer, Solmu> entry : this.solmut.entrySet()) {
-            Solmu tulos = entry.getValue();
-            HashMap<Solmu, Long> naapurit = tulos.getNaapurit();
+        for (Object entry : this.solmut.entrySet()) {
+            OmaPari tutk = (OmaPari) entry;
+            Solmu tulos = (Solmu) tutk.getValue();
+            OmaHashMap<Solmu, Long> naapurit = (OmaHashMap) tulos.getNaapurit();
 
-            for (HashMap.Entry<Solmu, Long> naapuri : naapurit.entrySet()) {
-                long erotus = naapuri.getValue();
-                lista.add(tulos.getNimi() + "-" + naapuri.getKey().getNimi() + " " + erotus);
+            for (Object naapuri : naapurit.entrySet()) {
+                OmaPari tutk2 = (OmaPari) naapuri;
+                
+                long erotus = (long) tutk2.getValue();
+                Solmu maaranpaa = (Solmu) tutk2.getKey();
+                lista.add(tulos.getNimi() + "-" + maaranpaa.getNimi() + " " + erotus);
             }
         }
         return lista;
@@ -73,9 +95,11 @@ public class Verkko {
      *
      * @param solmu tarkistettava solmu
      * @return true, jos löytyy
+     * @throws java.lang.Exception
      */
-    public boolean onkoSolmua(Solmu solmu) {
-        return this.solmut.containsValue(solmu);
+    public Solmu onkoSolmua(Solmu solmu) throws Exception {
+        Solmu loytynyt = getSolmu(solmu.getId());
+        return loytynyt;
     }
 
     /**
@@ -83,13 +107,12 @@ public class Verkko {
      *
      * @param id haettavan solmun id
      * @return haettava solmu
-     * @throws java.lang.Exception
      */
-    public Solmu getSolmu(Integer id) throws Exception {
+    public Solmu getSolmu(Integer id) {
         if (this.solmut.containsKey(id)) {
             return this.solmut.get(id);
         }
-        throw new Exception("Asemaa ei löydy.");
+        return null;
     }
 
     /**

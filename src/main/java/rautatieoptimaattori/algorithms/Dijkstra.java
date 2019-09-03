@@ -1,18 +1,18 @@
 package rautatieoptimaattori.algorithms;
 
-import java.util.HashMap;
 import rautatieoptimaattori.domain.Solmu;
 import rautatieoptimaattori.domain.Verkko;
 import rautatieoptimaattori.domain.VertailtavaSolmu;
 import rautatieoptimaattori.tietorakenteet.OmaHashMap;
 import rautatieoptimaattori.tietorakenteet.OmaKeko;
+import rautatieoptimaattori.tietorakenteet.OmaPari;
 
 public class Dijkstra {
 
     private final Verkko verkko;
 
     /**
-     * Konstruktori.
+     * Konstruktori: asettaa käytettävän verkon.
      *
      * @param v käytettävä verkko
      */
@@ -30,11 +30,11 @@ public class Dijkstra {
      */
     public long reitinPituus(Solmu alku, Solmu loppu) throws Exception {
 
-        if (!this.verkko.onkoSolmua(alku)) {
+        if (this.verkko.onkoSolmua(alku) == null) {
             throw new Exception("Kääk! Lähtöasemaa ei löydy!");
         }
 
-        if (!this.verkko.onkoSolmua(loppu)) {
+        if (this.verkko.onkoSolmua(loppu) == null) {
             throw new Exception("Kääk! Määränpääasemaa ei löydy!");
         }
 
@@ -57,10 +57,12 @@ public class Dijkstra {
             }
 
             // Muutoin käydään läpi solmun naapurit.
-            for (HashMap.Entry<Solmu, Long> naapuri : kasiteltava.naapurit.entrySet()) {
-
+            for (Object naapuri : kasiteltava.naapurit.entrySet()) {
+                
+                OmaPari<Solmu, Long> naapurinen = (OmaPari) naapuri;
+                
                 // Onko naapurisolmu jo etäisyysarviotaulukossa?
-                Solmu tutkittavaNaapuri = naapuri.getKey();
+                Solmu tutkittavaNaapuri = naapurinen.getKey();
                 long uusi = etaisyydet.get(kasiteltava) 
                         + kasiteltava.getEtaisyys(tutkittavaNaapuri);
 
@@ -68,7 +70,6 @@ public class Dijkstra {
                 if (!etaisyydet.containsKey(tutkittavaNaapuri)) {
                     etaisyydet.put(tutkittavaNaapuri, uusi);
                     keko.add(new VertailtavaSolmu(tutkittavaNaapuri, uusi));
-
                     continue;
                 }
 
