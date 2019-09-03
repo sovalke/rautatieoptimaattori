@@ -52,12 +52,18 @@ public class VerkkoTest {
 
     /**
      * Testaa, toimiiko onkoSolmua-metodi oikein.
+     * @throws java.lang.Exception
      */
     @Test
-    public void onkoSolmua() {
+    public void onkoSolmua() throws Exception {
         Verkko verkko = new Verkko();
         Solmu helsinki = verkko.lisaaAsema("Helsinki", 123, 60.166640, 24.943536);
-        boolean status = verkko.onkoSolmua(helsinki);
+        boolean status = false;
+        
+        if (verkko.onkoSolmua(helsinki) != null) {
+            status = true;
+        }
+        
         assertEquals(true, status);
     }
     
@@ -102,7 +108,7 @@ public class VerkkoTest {
         catch(Exception e) {
             error = e.toString();
         }
-        assertEquals(error, "java.lang.Exception: Asemaa ei löydy.");
+        assertEquals(error, "");
     }
     
     /**

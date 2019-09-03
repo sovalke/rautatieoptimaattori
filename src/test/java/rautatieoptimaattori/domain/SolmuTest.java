@@ -1,8 +1,8 @@
 package rautatieoptimaattori.domain;
 
-import java.util.HashMap;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import rautatieoptimaattori.tietorakenteet.OmaHashMap;
 
 public class SolmuTest {
     
@@ -50,7 +50,7 @@ public class SolmuTest {
         Solmu helsinki = new Solmu("Helsinki", 1, 60.166640, 24.943536);
         Solmu turku = new Solmu("Turku", 124, 60.451389, 22.266667);
         helsinki.lisaaYhteys(turku, 180);
-        HashMap naapurit = helsinki.getNaapurit();
+        OmaHashMap naapurit = helsinki.getNaapurit();
         assertEquals(naapurit.size(), 1);
     }
     
