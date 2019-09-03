@@ -1,12 +1,14 @@
 package rautatieoptimaattori.domain;
 
+import java.util.Objects;
+
 public class VertailtavaSolmu implements Comparable {
 
     private final Solmu solmu;
     public double etaisyys;
 
     /**
-     * Konstruktori.
+     * Konstruktori: luo uuden olion.
      *
      * @param solmu lisättävä solmu
      * @param etaisyys solmun etäisyys
@@ -39,6 +41,15 @@ public class VertailtavaSolmu implements Comparable {
         return s.solmu.equals(this.solmu);
     }
 
+    /**
+     * Luo solmulle hashcoden vertailua varten.
+     */
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 19 * hash + Objects.hashCode(this.solmu);
+        return hash;
+    }
 
     /**
      * Vertailee solmua ja objektia o: kumpi on suurempi?

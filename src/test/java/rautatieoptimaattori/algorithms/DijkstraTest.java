@@ -154,7 +154,7 @@ public class DijkstraTest {
         catch(Exception e) {
             error = e.toString();
         }
-        assertEquals(error, "java.lang.Exception: Kääk! Määränpääasemaa ei löydy!");
+        assertEquals(error, "java.lang.NullPointerException");
     }
     
     @Test
@@ -174,7 +174,7 @@ public class DijkstraTest {
         catch(Exception e) {
             error = e.toString();
         }
-        assertEquals(error, "java.lang.Exception: Kääk! Lähtöasemaa ei löydy!");
+        assertEquals(error, "java.lang.NullPointerException");
     }
 
 }
