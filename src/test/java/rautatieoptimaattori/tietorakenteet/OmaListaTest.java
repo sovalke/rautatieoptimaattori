@@ -2,12 +2,7 @@ package rautatieoptimaattori.tietorakenteet;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-import rautatieoptimaattori.tietorakenteet.OmaLista;
 
-/**
- *
- * @author sonja
- */
 public class OmaListaTest {
 
     /**

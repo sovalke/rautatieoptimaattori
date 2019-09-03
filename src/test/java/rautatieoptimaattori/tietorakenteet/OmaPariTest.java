@@ -41,7 +41,8 @@ public class OmaPariTest {
         Solmu helsinki = new Solmu("Helsinki", 1, 60.166640, 24.943536);
         Solmu turku = new Solmu("Turku", 124, 60.451389, 22.266667);
         OmaPari pari = new OmaPari("Helsinki", helsinki);
-        assertEquals(pari.setValue(turku), true);
+        
+        assertEquals(pari.setValue(turku), turku);
     }
     
 }

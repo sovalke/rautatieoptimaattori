@@ -4,7 +4,7 @@ import rautatieoptimaattori.domain.VertailtavaSolmu;
 
 public class OmaKeko {
 
-    private VertailtavaSolmu[] heap;
+    private final VertailtavaSolmu[] heap;
     private int knots;
 
     /**
