@@ -2,7 +2,6 @@ package rautatieoptimaattori.domain;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-import rautatieoptimaattori.tietorakenteet.OmaLista;
 
 public class VerkkoTest {
 
@@ -121,8 +120,8 @@ public class VerkkoTest {
         Solmu turku = verkko.lisaaAsema("Turku", 124, 60.451389, 22.266667);
         verkko.lisaaYhteys(turku, helsinki, 180);
         
-        OmaLista<String> lista = verkko.reitit();
-        assertEquals(lista.value(0), "Helsinki-Turku 180");
+        String[] lista = verkko.reitit();
+        assertEquals(lista[0], "Helsinki - Turku");
     }
 
 }
