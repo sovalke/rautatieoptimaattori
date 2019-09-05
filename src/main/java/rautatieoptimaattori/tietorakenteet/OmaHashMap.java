@@ -176,33 +176,6 @@ public class OmaHashMap<K, V> implements Map<K, V> {
     }
 
     /**
-     * Tarkistaa, löytyykö arvoa hajautustaulusta.
-     *
-     * @param value haettava arvo
-     * @return true, jos arvo löytyy
-     */
-    @Override
-    public boolean containsValue(Object value) {
-        
-        // Jos hajautustaulu on tyhjä, palautetaan false.
-        if (isEmpty() == true) {
-            return false;
-        }
-        
-        for (OmaLista<OmaPari<K, V>> pairToBeInspected : values) {
-            // Indeksistä ei löydy paria. Palautetaan false.
-            if (pairToBeInspected == null) {
-                continue;
-            }
-            // Osuma löytyi. Palautetaan true.
-            if (pairToBeInspected.equals(value)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
      * Tyhjää listan ja asettaa sen koon alkuarvoksi (32).
      */
     @Override
@@ -288,6 +261,18 @@ public class OmaHashMap<K, V> implements Map<K, V> {
      */
     @Override
     public void putAll(Map m) {
+        throw new UnsupportedOperationException("Tätä metodia ei tueta vielä.");
+    }
+    
+    /**
+     * Tarkistaa, löytyykö arvoa hajautustaulusta.
+     * EI KÄYTÖSSÄ TÄSSÄ TOTEUTUKSESSA.
+     *
+     * @param value haettava arvo
+     * @return true, jos arvo löytyy
+     */
+    @Override
+    public boolean containsValue(Object value) {
         throw new UnsupportedOperationException("Tätä metodia ei tueta vielä.");
     }
 
