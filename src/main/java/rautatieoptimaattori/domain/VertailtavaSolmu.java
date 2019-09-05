@@ -1,7 +1,5 @@
 package rautatieoptimaattori.domain;
 
-import java.util.Objects;
-
 public class VertailtavaSolmu implements Comparable {
 
     private final Solmu solmu;
@@ -39,16 +37,6 @@ public class VertailtavaSolmu implements Comparable {
         }
         VertailtavaSolmu s = (VertailtavaSolmu) o;
         return s.solmu.equals(this.solmu);
-    }
-
-    /**
-     * Luo solmulle hashcoden vertailua varten.
-     */
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 19 * hash + Objects.hashCode(this.solmu);
-        return hash;
     }
 
     /**
