@@ -41,9 +41,9 @@ public class Verkko {
     }
 
     /**
-     * Palauttaa verkon asemat oliolistana.
+     * Palauttaa verkon asemat taulukkona.
      *
-     * @return Omalista
+     * @return Solmu[]
      */
     public Solmu[] asemat() {
         Solmu[] asemat = new Solmu[this.getKoko()];

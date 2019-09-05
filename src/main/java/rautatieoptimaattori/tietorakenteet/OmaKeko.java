@@ -114,22 +114,28 @@ public class OmaKeko {
 
     /**
      * Palauttaa vasemman lapsen sijainnin.
+     * @param location
+     * @return 
      */
-    private int left(int location) {
+    protected int left(int location) {
         return (2 * location);
     }
 
     /**
      * Palauttaa oikean lapsen sijainnin.
+     * @param location
+     * @return 
      */
-    private int right(int location) {
+    protected int right(int location) {
         return (2 * location + 1);
     }
     
     /**
      * Palauttaa vanhemman sijainnin.
+     * @param location
+     * @return 
      */
-    private int getParent(int location) {
+    protected int getParent(int location) {
         return (location / 2);
     }
 
