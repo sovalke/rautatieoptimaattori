@@ -2,12 +2,13 @@
 
 ## Yksikkötestaus: JUnit
 
-Projektille on pyritty luomaan mahdollisimman kattava JUnit-yksikkötestien paketti. Testien koodikattavuutta on testattu Pitin avulla.
+Projektille on pyritty luomaan mahdollisimman kattava JUnit-yksikkötestien paketti. Testien koodikattavuutta on testattu Pitin avulla. Kokonaisuudessaan ohjelman koodi- ja mutaatiokattavuus on seuraava:
 
-**Huom.!** Luokissa OmaHashMap ja OmaLista on implementoitu ylempien luokkien rajapintoja (Map, Set, Iterable). Aivan kaikkia näihin rajapintoihin kuuluvia metodeita ei kuitenkaan ole toteutettu, koska kaikille metodeille ei ole tässä työssä käyttöä eivätkä ne kuulu tämän työn ydinalueeseen.
+![Pit-testauksen tulokset](/documents/img/pit.png)
 
-Toteuttamatta jätetyt metodit vaikuttavat rivikattavuuteen, sillä niille ei tietenkään voi laatia yksikkötestejä. Luokkien OmaHashMap ja OmaLista kohdalla on siksi taulukossa ilmoitettu rivikattavuudelle kaksi prosenttilukua. Ensimmäinen lukema laskee mukaan kaikki ohjelmatiedostojen rivit, myös toteuttamattomat metodit. Toinen lukema on laskettu vain toteutettujen metodien perusteella.
+**Huom.!** Tietorakenteet-paketin luokissa OmaHashMap ja OmaLista on implementoitu ylempien luokkien rajapintoja (Map, Set, Iterable). Aivan kaikkia näihin rajapintoihin kuuluvia metodeita ei kuitenkaan ole toteutettu, koska kaikille metodeille ei ole tässä työssä käyttöä eivätkä ne kuulu tämän työn ydinalueeseen. Toteuttamatta jätetyt metodit vaikuttavat rivikattavuuteen, sillä niille ei tietenkään voi laatia yksikkötestejä. Tästä syystä ohjelman rivikattavuus ei ole 100 %.
 
+Alla olevassa erittelytaulukossa on listattu kunkin luokan tarkemmat rivi- ja mutaatiokattavuudet. Luokkien OmaHashMap ja OmaLista kohdalla on ilmoitettu rivikattavuudelle kaksi prosenttilukua. Ensimmäinen lukema laskee mukaan kaikki ohjelmatiedostojen rivit, myös toteuttamattomat metodit. Toinen lukema on laskettu vain toteutettujen metodien perusteella.
 
 Ohjelman luokkien koodikattavuus on seuraava:
 	
@@ -25,7 +26,6 @@ Ohjelman luokkien koodikattavuus on seuraava:
 | - OmaKeko          | 100 %          | 85 %              |
 | - OmaLista         | 86 % / 100 %*  | 84 %              |
 | - OmaPari          | 100 %          | 100 %             |
-| **Kaikki yhteensä**| 100 %          | 100 %             | 
 
 
 ### JUnit-testeissä käytetty aineisto
@@ -47,7 +47,7 @@ Testissä käytettiin testidataa, joka sijaitsee projektin kansiossa /data/testd
 * Rovaniemi-Turku asema
 * Helsinki asema-Turku asema
 
-Yleisesti ottaen A* oli selvästi nopeampi kuin Dijkstra; ääritapauksissa erot ovat yli 10-kertaisia.
+Yleisesti ottaen A* oli selvästi nopeampi kuin Dijkstra; ääritapauksissa erot A-Starin hyväksi ovat melkein 20-kertaisia (mm. välillä Helsinki asema - Turku asema A* käyttää reitin etsimiseen vain 6 % Dijkstran ajasta).
 
 Alla olevassa taulukossa on molempien algoritmien nopeuden mediaani sekä suhteellinen nopeusero prosentteina.
 
