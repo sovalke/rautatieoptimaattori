@@ -6,6 +6,7 @@ import rautatieoptimaattori.algorithms.Astar;
 import rautatieoptimaattori.algorithms.Dijkstra;
 import rautatieoptimaattori.domain.Solmu;
 import rautatieoptimaattori.domain.Verkko;
+import rautatieoptimaattori.suorituskyky.Suorituskykytesti;
 
 public class Lukija {
 
@@ -38,6 +39,7 @@ public class Lukija {
             System.out.println("A - Tulosta verkon asemat aakkosjärjestyksessä");
             System.out.println("R - Tulosta kaikki saatavilla olevat reitit");
             System.out.println("O - Siirry reittiohjelmaan");
+            System.out.println("S - Aja suorituskykytesti");
             System.out.println("Q - Lopeta");
             System.out.print("\nAnna käsky: ");
             String kasky = lukija.nextLine();
@@ -53,6 +55,11 @@ public class Lukija {
 
             if (kasky.equals("O") || kasky.equals("o")) {
                 reittiohjelma();
+            }
+            
+            if (kasky.equals("S") || kasky.equals("s")) {
+                Suorituskykytesti testi = new Suorituskykytesti();
+                testi.testaa();
             }
 
             if (kasky.equals("Q") || kasky.equals("q") || kasky.equals("")) {
