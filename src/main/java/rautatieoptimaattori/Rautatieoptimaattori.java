@@ -1,16 +1,8 @@
 package rautatieoptimaattori;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import rautatieoptimaattori.algorithms.Astar;
-import rautatieoptimaattori.algorithms.Dijkstra;
-import rautatieoptimaattori.domain.Solmu;
 import rautatieoptimaattori.domain.Verkko;
 import rautatieoptimaattori.io.Aineistokasittelija;
-import rautatieoptimaattori.suorituskyky.Suorituskykytesti;
-import rautatieoptimaattori.tietorakenteet.OmaLista;
+import rautatieoptimaattori.ui.Lukija;
 
 public class Rautatieoptimaattori {
 
@@ -21,37 +13,18 @@ public class Rautatieoptimaattori {
      * @throws java.lang.Exception
      */
     public static void main(String[] args) throws Exception {
+        System.out.println("TERVETULOA RAUTATIEOPTIMAATTORIIN!");
+        System.out.println("------------------------------------------");
 
+        System.out.println("Ladataan dataa...");
         Aineistokasittelija data = new Aineistokasittelija();
         int asemaLkm = data.lisaaAsemat("./data/stations.csv");
-        System.out.println("Asemia on nyt " + asemaLkm + ".");
-            
         data.lisaaYhteydet("./data/trains.csv");
         Verkko verkko = data.getVerkko();
-        
-        
-        // Tulostaa kaikki asemat id-järjestyksessä.
-        
-        Solmu[] asemat = verkko.asemat();
-        Arrays.sort(asemat);
-        
-        for (Object asema : asemat) {
-            Solmu a = (Solmu) asema;
-            System.out.println(a.getId() + " " + a.getNimi());
-        }
+        System.out.println("------VALMIS.");
 
-//        Astar r = new Astar(verkko);
-//        long reittiB = r.reitinPituus(verkko.getSolmu(130), verkko.getSolmu(1));
-//        System.out.println("A*:     " + verkko.getSolmu(130).getNimi() + "-" 
-//                + verkko.getSolmu(1).getNimi() + ": " + reittiB + " ms");
-//
-//        Dijkstra d = new Dijkstra(verkko);
-//        long reittiA = d.reitinPituus(verkko.getSolmu(130), verkko.getSolmu(1));
-//        System.out.println("Dijkstra: " + verkko.getSolmu(130).getNimi() + "-" 
-//                + verkko.getSolmu(1).getNimi() + ": " + reittiA + " ms");
-
-//                Suorituskykytesti testi = new Suorituskykytesti();
-//                testi.testaa();
+        Lukija lukija = new Lukija(verkko);
+        lukija.kuuntele();
     }
 
 }
