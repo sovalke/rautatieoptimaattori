@@ -37,7 +37,9 @@ Ainoa poikkeus koskee A*-algoritmin testejä, joista osassa on käytetty kansios
 
 ## Suorituskykytesti
 
-Projektille on luotu suorituskykytesti, joka mittaa A*:n ja Dijkstran nopeuden eroja, kun samaa reittiä haetaan 100, 1000 ja 10 000 kertaa. Tätä dokumenttia varten testit ajettiin suhteellisen vanhalla kannettavalla tietokoneella (2,5 GHz Intel Core i5; 8 Gt RAM).
+Projektille on luotu suorituskykytesti, joka mittaa A*:n ja Dijkstran nopeuden eroja, kun samaa reittiä haetaan 100, 1000 ja 10 000 kertaa. Suorituskykytestin voi ajaa valitsemalla ohjelman käyttöliittymässä komennon "S" (suorituskykytesti).
+
+Tätä dokumenttia varten testit ajettiin suhteellisen vanhalla kannettavalla tietokoneella (2,5 GHz Intel Core i5; 8 Gt RAM).
 
 Testissä käytettiin testidataa, joka sijaitsee projektin kansiossa /data/testdata/. Testidatasta käsitellään seuraavia yhteysvälejä (välit on valittu testiä ajatellen siten, että osa matkoista on lyhyitä ja osa pitkiä):
 
