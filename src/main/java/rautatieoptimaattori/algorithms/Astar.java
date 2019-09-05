@@ -30,13 +30,8 @@ public class Astar {
      */
     public long reitinPituus(Solmu alku, Solmu loppu) throws Exception {
 
-        if (this.verkko.onkoSolmua(alku) == null) {
-            throw new Exception("Kääk! Lähtöasemaa ei löydy!");
-        }
-
-        if (this.verkko.onkoSolmua(loppu) == null) {
-            throw new Exception("Kääk! Määränpääasemaa ei löydy!");
-        }
+        this.verkko.onkoSolmua(alku);
+        this.verkko.onkoSolmua(loppu);
 
         OmaHashMap<Solmu, Long> etaisyydet = new OmaHashMap<>();
         OmaHashMap<Solmu, Boolean> kasitelty = new OmaHashMap<>();
@@ -61,12 +56,12 @@ public class Astar {
 
             // Muutoin käydään läpi solmun naapurit.
             for (Object naapuri : kasiteltava.naapurit.entrySet()) {
-                
+
                 OmaPari<Solmu, Long> naapurinen = (OmaPari) naapuri;
-                
+
                 // Onko naapurisolmu jo etäisyysarviotaulukossa?
                 Solmu tutkittavaNaapuri = naapurinen.getKey();
-                long uusi = etaisyydet.get(kasiteltava) 
+                long uusi = etaisyydet.get(kasiteltava)
                         + kasiteltava.getEtaisyys(tutkittavaNaapuri);
 
                 // Ei ole; lisää se etäisyytaulukkoon ja kekoon.

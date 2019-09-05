@@ -30,13 +30,8 @@ public class Dijkstra {
      */
     public long reitinPituus(Solmu alku, Solmu loppu) throws Exception {
 
-        if (this.verkko.onkoSolmua(alku) == null) {
-            throw new Exception("Kääk! Lähtöasemaa ei löydy!");
-        }
-
-        if (this.verkko.onkoSolmua(loppu) == null) {
-            throw new Exception("Kääk! Määränpääasemaa ei löydy!");
-        }
+        this.verkko.onkoSolmua(alku);
+        this.verkko.onkoSolmua(loppu);
 
         OmaHashMap<Solmu, Long> etaisyydet = new OmaHashMap<>();
         OmaHashMap<Solmu, Boolean> kasitelty = new OmaHashMap<>();
