@@ -67,7 +67,8 @@ public class VerkkoTest {
     }
     
     /**
-     * Testaa, palauttaako getSolmu-metodi oikean olion.
+     * Testaa, palauttaako getSolmu-metodi oikean olion, kun haetaan
+     * solmun id:llä.
      * @throws java.lang.Exception
      */
     @Test
@@ -76,6 +77,22 @@ public class VerkkoTest {
         verkko.lisaaAsema("Helsinki", 123, 60.166640, 24.943536);
         Solmu solmu = verkko.getSolmu(123);
         assertEquals(solmu.getId(), 123);
+    }
+    
+    /**
+     * Testaa, palauttaako getSolmu-metodi oikean olion, kun haetaan
+     * solmun nimellä.
+     * @throws java.lang.Exception
+     */
+    @Test
+    public void getSolmu2() throws Exception {
+        Verkko verkko = new Verkko();
+        verkko.lisaaAsema("Helsinki", 123, 60.166640, 24.943536);
+        Solmu solmu = verkko.getSolmu("Helsinki");
+        Solmu solmu2 = verkko.getSolmu("Turku");
+        
+        assertEquals(solmu.getId(), 123);
+        assertEquals(solmu2, null);
     }
     
     /**
@@ -122,6 +139,19 @@ public class VerkkoTest {
         
         String[] lista = verkko.reitit();
         assertEquals(lista[0], "Helsinki - Turku");
+    }
+    
+    /**
+     * Testaa, palauttaako Asemat-metodi halutunlaisen listauksen.
+     */
+    @Test
+    public void Asemat() {
+        Verkko verkko = new Verkko();
+        verkko.lisaaAsema("Helsinki", 1, 60.166640, 24.943536);
+        verkko.lisaaAsema("Turku", 124, 60.451389, 22.266667);
+        verkko.lisaaAsema("Vaasa", 288, 63.097786, 21.621824);
+        Solmu[] lista = verkko.asemat();
+        assertEquals(lista[1].getId(), 124);
     }
 
 }

@@ -51,4 +51,5 @@ public class VertailtavaSolmuTest {
         int tulos = testisolmu.compareTo(testisolmu2);
         assertEquals(tulos, 300);
     }
+    
 }

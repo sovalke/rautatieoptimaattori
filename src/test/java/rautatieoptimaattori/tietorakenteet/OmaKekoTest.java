@@ -113,7 +113,6 @@ public class OmaKekoTest {
      */
     @Test
     public void oneTwoTest() {
-        
         VertailtavaSolmu turku = new VertailtavaSolmu(new Solmu("Turku", 
                 124, 60.451389, 22.266667), 180);
         VertailtavaSolmu helsinki = new VertailtavaSolmu(new Solmu("Helsinki",
@@ -132,6 +131,16 @@ public class OmaKekoTest {
         assertEquals(vainYksi2, false);
         assertEquals(kaksiTaiEnemman, false);
         assertEquals(kaksiTaiEnemman2, true);
+    }
+    
+    /**
+     * Testaa, toimivatko metodit right ja left oikein.
+     */
+    @Test
+    public void leftRight() {
+        OmaKeko keko = new OmaKeko(5);
+        assertEquals(keko.left(2), 4);
+        assertEquals(keko.right(2), 5);
     }
     
     

@@ -1,5 +1,6 @@
 package rautatieoptimaattori.domain;
 
+import java.util.Arrays;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import rautatieoptimaattori.tietorakenteet.OmaHashMap;
@@ -105,5 +106,18 @@ public class SolmuTest {
         Solmu helsinki = new Solmu("Helsinki", 1, 60.166640, 24.943536);
         int i = helsinki.setId(2);
         assertEquals(i, 1);
+    }
+    
+    /**
+     * Testaa, toimiiko compareTo-metodi oikein.
+     */
+    @Test
+    public void compare() {
+        Solmu[] lista = new Solmu[3];
+        lista[0] = new Solmu("Vaasa", 288, 63.097786, 21.621824);
+        lista[1] = new Solmu("Helsinki", 1, 60.166640, 24.943536);
+        lista[2] = new Solmu("Turku", 124, 60.451389, 22.266667);
+        Arrays.sort(lista);
+        assertEquals(lista[0].getId(), 1);
     }
 }

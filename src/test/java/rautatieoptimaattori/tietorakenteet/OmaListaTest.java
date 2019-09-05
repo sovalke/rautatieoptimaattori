@@ -122,4 +122,31 @@ public class OmaListaTest {
         assertEquals(lista.size(), 3);
     }
     
+    /**
+     * Testaa, tyhjääkö clear-metodi listan.
+     */
+    @Test
+    public void clearTest() {
+        OmaLista lista = new OmaLista();
+        lista.add(5);
+        lista.add(6);
+        lista.add(7);
+        lista.clear();
+        assertEquals(lista.numberOfValues, 0);
+    }
+    
+    /**
+     * Testaa, palauttaako isEmpty-metodi oikean tuloksen.
+     */
+    @Test
+    public void isEmptyTest() {
+        OmaLista lista = new OmaLista();
+        boolean tyhja = lista.isEmpty();
+        lista.add(5);
+        boolean eiTyhja = lista.isEmpty();
+        assertEquals(tyhja, true);
+        assertEquals(eiTyhja, false);
+        
+    }   
+    
 }
