@@ -4,32 +4,35 @@
 
 Projektille on pyritty luomaan mahdollisimman kattava JUnit-yksikkötestien paketti. Testien koodikattavuutta on testattu Pitin avulla.
 
-Tällä hetkellä (17.8.2019) yksikkötestien koodikattavuus on seuraava:
+**Huom.!** Luokissa OmaHashMap ja OmaLista on implementoitu ylempien luokkien rajapintoja (Map, Set, Iterable). Aivan kaikkia näihin rajapintoihin kuuluvia metodeita ei kuitenkaan ole toteutettu, koska kaikille metodeille ei ole tässä työssä käyttöä eivätkä ne kuulu tämän työn ydinalueeseen.
+
+Toteuttamatta jätetyt metodit vaikuttavat rivikattavuuteen, sillä niille ei tietenkään voi laatia yksikkötestejä. Luokkien OmaHashMap ja OmaLista kohdalla on siksi taulukossa ilmoitettu rivikattavuudelle kaksi prosenttilukua. Ensimmäinen lukema laskee mukaan kaikki ohjelmatiedostojen rivit, myös toteuttamattomat metodit. Toinen lukema on laskettu vain toteutettujen metodien perusteella.
+
+
+Ohjelman luokkien koodikattavuus on seuraava:
 	
 | Luokka             | Rivikattavuus  | Mutaatiokattavuus |
 | -------------------|:---------------|:------------------|
 | **Algoritmit**     |                |                   |
-| - Astar            | 90 %           | 76 %              |
-| - Dijkstra         | 91 %           | 90 %              |
+| - Astar            | 100 %          | 73 %              |
+| - Dijkstra         | 100 %          | 88 %              |
 | **Domain-luokat**  |                |                   |
 | - Solmu            | 100 %          | 100 %             |
-| - Verkko           | 100 %          | 88 %              |
-| - VertailtavaSolmu | 64 %           | 50 %              |
-| **Kaikki yhteensä**| 92 %           | 84 %              | 
+| - Verkko           | 100 %          | 80 %              |
+| - VertailtavaSolmu | 100 %          | 100 %             |
+| **Tietorakenteet** |                |                   |
+| - OmaHashMap       | 95 %  / 100 %* | 91  %             |
+| - OmaKeko          | 100 %          | 85 %              |
+| - OmaLista         | 86 % / 100 %*  | 84 %              |
+| - OmaPari          | 100 %          | 100 %             |
+| **Kaikki yhteensä**| 100 %          | 100 %             | 
+
 
 ### JUnit-testeissä käytetty aineisto
 
-Tällä hetkellä JUnit-testeissä käytetään pientä aineistoa, joka generoidaan jokaista testiä varten erikseen. Pienimmät aineistot ovat vain yhden tai kahden solmun kokoisia – näitä käytetään mm. getterien testauksessa.
+Useimmissa JUnit-testeissä käytetään pientä, muutaman tai korkeintaan parinkymmenen solmun kokoista aineistoa, joka generoidaan testiä varten lennossa.
 
-Jatkossa osassa testeistä on tarkoitus käyttää merkittävästi laajempaa aineistoa, jotta tietyt testeissä havaitut kattavuuserot saadaan korjattua.
-
-### Syyt JUnit-testien kattavuuseroihin
-
-**Algoritmien tapauksessa** rivit, joita yksikkötestit eivät käsittele, ovat yksittäisiä. Rivit mm. tarkistavat, onko jokin solmu jo käsitelty. Testeissä käytettävä testidata on vielä tässä vaiheessa sen verran pientä, että näitä tilanteita ei testissä tule vastaan. Täten myös rivit jäävät testien ulkopuolelle.
-* __Korjausajatus:__ kasvatetaan testien dataa niin suureksi, että myös nämä rivit tulevat käyttöön.
-
-**Domain-luokkien tapauksessa** ongelmia aiheuttavat VertailtavaSolmu-luokan rivit, joilla on tarkoitus vertailla, onko vertailtava olio yhtä suuri toisen olion kanssa. Kyse on siis compare-luokasta. Minulla ei tässä vaiheessa ole tietoa siitä, miten tällaista metodia voisi tarkistaa JUnitin avulla.
-* __Korjausajatus:__ selvitetään, miten compare-olioita voi testata yksikkötesteillä.
+Ainoa poikkeus koskee A*-algoritmin testejä, joista osassa on käytetty kansiossa data/testdata/ olevia tiedostoja. Suuri aineisto on tarpeen mm. tilanteissa, joissa testataan algoritmin tapaa käsitellä samaa solmua useaan kertaan. Kovin pienellä datalla tällaista tilannetta ei tule vastaan, joten testi käyttää n. 3 mt kokoista valmista datasettiä. 
 
 
 ## Suorituskykytesti
@@ -46,26 +49,38 @@ Testissä käytettiin testidataa, joka sijaitsee projektin kansiossa /data/testd
 
 Yleisesti ottaen A* oli selvästi nopeampi kuin Dijkstra; ääritapauksissa erot ovat yli 10-kertaisia.
 
-Alla olevassa taulukossa on molempien nopeuden mediaani sekä suhteellinen nopeusero.
+Alla olevassa taulukossa on molempien algoritmien nopeuden mediaani sekä suhteellinen nopeusero prosentteina.
 
-| Reitti                    | Kierrosta  | Dijkstra (ms) | A* (ms)  | Dijkstra / A*    |
-| --------------------------|:-----------|:--------------|:---------|:-----------------|
-| Helsinki asema-Jepua      | 100        | 1555430       | 1050279  | 1,48             |
-| Helsinki asema-Jepua      | 1000       | 992292        | 502423   | 1,98             |
-| Helsinki asema-Jepua      | 10 000     | 176112        | 117618   | 1,50             |
-| Helsinki asema-Kemi       | 100        | 252658        | 284727   | 0,89             |
-| Helsinki asema-Kemi       | 1000       | 197587        | 171931   | 1,15             |
-| Helsinki asema-Kemi       | 10 000     | 165767        | 171445   | 0,97             |
-| Hanko asema-Jokela        | 100        | 128288        | 17782    | 7,21             |
-| Hanko asema-Jokela        | 1000       | 191444        | 15211    | 12,59            |
-| Hanko asema-Jokela        | 10000      | 168424        | 14900    | 11,30            |
-| Rovaniemi-Turku asema     | 100        | 234700        | 114979   | 2,04             |
-| Rovaniemi-Turku asema     | 1000       | 178323        | 92411    | 1,93             |
-| Rovaniemi-Turku asema     | 10 000     | 172062        | 91407    | 1,88             |
-| Helsinki asema-Turku asema| 100        | 234143        | 19247    | 12,17            |
-| Helsinki asema-Turku asema| 1000       | 194267        | 22228    | 8,74             |
-| Helsinki asema-Turku asema| 10 000     | 168537        | 24250    | 6,95             |
-|                           |            |               |**keskim.** | **4,85**       |
+
+| Reitti	                | 100 krt	 | 1000 krt      | 10 000 krt |
+| --------------------------|:-----------|:--------------|:-----------|
+| **Helsinki asema-Jepua**   	|            |               |            |
+| - Dijkstra            	| 1947773	 | 1051410	     | 189612     |
+| - A-Star                 	| 1121873	 | 773238	     | 100793     |
+| -- *Ero A-Starin hyväksi* | 42 %       | 26 %          | 47 %       |
+| **Helsinki asema-Kemi** 	|       	 |      	     |            |
+| - Dijkstra            	| 535754	 | 190921	     | 190222     |
+| - A-Star                	| 362253	 | 190348	     | 176980     |
+| -- *Ero A-Starin hyväksi* | 32 %       | 0,3 %         | 7,0 %       |
+| **Hanko asema-Jokela**    |            |       	     |            |
+| - Dijkstra                | 187835     | 185137	     | 184616     |
+| - A-Star                  | 29603	     | 14996         | 15953      |
+| -- *Ero A-Starin hyväksi* | 84 %       | 92 %          | 91 %       |
+| **Rovaniemi-Turku asema**	|        	 |       	     |            |
+| - Dijkstra                | 200636	 | 186894	     | 186873     |
+| - A-Star                	| 95975	     | 94681	     | 95603      |
+| -- *Ero A-Starin hyväksi* | 52 %       | 49 %          | 49 %       |
+| **Helsinki asema-Turku asema** |            |       	     |            |
+| - Dijkstra	            | 405258	 | 193876	     | 185122     |
+| - A-Star	                | 23576	     | 24110	     | 26906      |
+| -- *Ero A-Starin hyväksi* | 94 %       | 75 %          | 85 %       |
+| **Keskimäärin**           | 61 %       | 48 %          | 56 %       |
+
+Ero A-Starin hyväksi on laskettu siten, että A-Starin suoritusaika on jaettu Dijkstran suoritusajalla.
+Tämän jälkeen saatu luku on vähennetty 1:stä ja kerrottu sadalla. Eli:
+
+(1 - (A-Starin suoritusaika) / (Dijkstran suoritusaika)) * 100 %. 
+
 
 ### Suorituskykytesti kuvaajina
 
