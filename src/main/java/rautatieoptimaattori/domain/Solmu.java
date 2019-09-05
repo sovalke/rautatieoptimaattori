@@ -138,7 +138,7 @@ public class Solmu implements Comparable<Solmu> {
     @Override
     public int compareTo(Solmu o) {
         Solmu toinen = (Solmu) o;
-        return (int) (this.id - toinen.getId());
+        return this.nimi.compareTo(toinen.getNimi());
     }
 
 }
