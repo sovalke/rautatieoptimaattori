@@ -1,5 +1,6 @@
 package rautatieoptimaattori.domain;
 
+import java.util.Arrays;
 import rautatieoptimaattori.tietorakenteet.OmaHashMap;
 import rautatieoptimaattori.tietorakenteet.OmaLista;
 import rautatieoptimaattori.tietorakenteet.OmaPari;
@@ -7,9 +8,11 @@ import rautatieoptimaattori.tietorakenteet.OmaPari;
 public class Verkko {
 
     private final OmaHashMap<Integer, Solmu> solmut = new OmaHashMap<>();
-    
+    private final OmaHashMap<String, Solmu> solmut2 = new OmaHashMap<>();
+
     /**
      * Lisää uuden aseman koordinaatteineen.
+     *
      * @param nimi aseman nimi
      * @param id aseman tunnus
      * @param x aseman x-koordinaatti
@@ -22,22 +25,30 @@ public class Verkko {
             long x1 = (long) x * 1000000;
             long y1 = (long) y * 1000000;
             paivitettava.setXY(x1, y1);
-            paivitettava.setNimi(nimi);
+
+            String vanhaNimi = paivitettava.getNimi();
+            solmut2.remove(vanhaNimi); // Poistetaan vanha nimi
+
+            paivitettava.setNimi(nimi); // Tallennetaan uusi nimi
+            solmut2.put(paivitettava.getNimi(), paivitettava); // Tallennetaan uusi nimi
+
         } else {
             Solmu lisattava = new Solmu(nimi, id, x, y);
             solmut.put(lisattava.getId(), lisattava);
+            solmut2.put(lisattava.getNimi(), lisattava);
         }
         return solmut.get(id);
     }
 
     /**
      * Palauttaa verkon asemat oliolistana.
+     *
      * @return Omalista
      */
     public Solmu[] asemat() {
         Solmu[] asemat = new Solmu[this.getKoko()];
         int i = 0;
-        
+
         for (Object naapuri : solmut.entrySet()) {
             if (naapuri != null || i < asemat.length) {
                 OmaPari pari = (OmaPari) naapuri;
@@ -45,6 +56,7 @@ public class Verkko {
                 i++;
             }
         }
+        Arrays.sort(asemat);
         return asemat;
     }
 
@@ -65,15 +77,15 @@ public class Verkko {
             return -1;
         }
     }
-    
+
     /**
      * Palauttaa tunnetut yhteysvälit listana.
      *
      * @return OmaLista yhteyksistä
      */
-    public OmaLista reitit() {
+    public String[] reitit() {
         OmaLista<String> lista = new OmaLista<>();
-        
+
         for (Object entry : this.solmut.entrySet()) {
             OmaPari tutk = (OmaPari) entry;
             Solmu tulos = (Solmu) tutk.getValue();
@@ -81,13 +93,21 @@ public class Verkko {
 
             for (Object naapuri : naapurit.entrySet()) {
                 OmaPari tutk2 = (OmaPari) naapuri;
-                
+
                 long erotus = (long) tutk2.getValue();
                 Solmu maaranpaa = (Solmu) tutk2.getKey();
-                lista.add(tulos.getNimi() + "-" + maaranpaa.getNimi() + " " + erotus);
+                lista.add(tulos.getNimi() + " - " + maaranpaa.getNimi());
             }
         }
-        return lista;
+
+        String[] valit = new String[lista.size()];
+
+        for (int i = 0; i < lista.size(); i++) {
+            valit[i] = lista.value(i);
+        }
+
+        Arrays.sort(valit);
+        return valit;
     }
 
     /**
@@ -111,6 +131,13 @@ public class Verkko {
     public Solmu getSolmu(Integer id) {
         if (this.solmut.containsKey(id)) {
             return this.solmut.get(id);
+        }
+        return null;
+    }
+
+    public Solmu getSolmu(String nimi) {
+        if (this.solmut2.containsKey(nimi)) {
+            return this.solmut2.get(nimi);
         }
         return null;
     }

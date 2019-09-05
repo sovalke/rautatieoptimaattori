@@ -6,4 +6,6 @@
 
 * Lisätty JUnit-testit omille tietorakenteille.
 
-* 
+* Toteutettu asemalistauksen järjestäminen ja tulostaminen.
+
+* Lisätty tekstipohjainen käyttöliittymä.
