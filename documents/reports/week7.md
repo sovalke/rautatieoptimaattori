@@ -17,3 +17,5 @@
 * Kirjoitettu dokumentaatio loppuun.
 
 * Ajettu Checkstyle ja viimeistelty koodia.
+
+Viikolla käytetty aika: 22 tuntia.
