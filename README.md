@@ -1,6 +1,6 @@
 # Rautatieoptimaattori
 
-Ohjelma, jonka tarkoitus on etsiä nopein reitti rautatieverkon asemalta toiselle. 
+Tira-harkassa toteutettu ohjelma, jonka tarkoitus on etsiä nopein reitti rautatieverkon asemalta toiselle. 
 
 Ohjelmassa käytettävä ohjelmointikieli on Java.
 
