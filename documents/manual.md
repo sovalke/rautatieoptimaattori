@@ -2,8 +2,14 @@
 
 * [Aloittaminen](#aloittaminen)
 * [Ohjelman käyttäminen](#ohjelman-käyttäminen)
- * [Tulosta verkon asemat](#tulosta-verkon-asemat)
- * [Tulosta kaikki saatavilla olevat reitit](#tulosta-kaikki-saatavilla-olevat-reitit)
+  * [Tulosta verkon asemat](#tulosta-verkon-asemat)
+  * [Tulosta kaikki saatavilla olevat reitit](#tulosta-kaikki-saatavilla-olevat-reitit)
+  * [Reittiohjelma](#reittiohjelma)
+  * [Suorituskykytestin ajaminen](#suorituskykytestin-ajaminen)
+  * [Ohjelman lopettaminen](#lopettaminen)
+* [Oman datan käyttäminen](#oman-datan-käyttäminen)
+  * [Junien tiedot](#junien-tiedot)
+  * [Asemien tiedot](#asemien-tiedot)
 
 ## Aloittaminen
 
@@ -33,7 +39,7 @@ Tulostamisen jälkeen palataan alkutilaan.
 
 Kun syötät ohjelmalle komennon **R** tai **r**, ohjelma tulostaa kaikki sillä hetkellä tunnetut suorat yhteydet eri asemien välillä.
 
-### O: siirry reittiohjelmaan
+### Reittiohjelma
 
 Kun syötät ohjelmalle komennon **O** tai **o**, ohjelma siirtyy reitinetsintätilaan. Ohjelma tiedustelee ensin lähtöaseman ja sen jälkeen määränpääaseman nimeä.
 
@@ -62,13 +68,13 @@ Kun olet antanut sekä lähtö- että määränpääaseman nimen, ohjelma tiedus
 
 Kun olet saanut reitin selvitettyä, ohjelma palaa alkutilaan.
 
-### S: aja suorituskykytesti
+### Suorituskykytestin ajaminen
 
 Kun valitset komennon **S** tai **s**, ohjelma käynnistää suorituskykytestin ja printtaa tulokset.
 
 Kun testi on tehty, ohjelma palaa alkutilaan.
 
-### Q: lopeta
+### Lopettaminen
 
 Kun valitset komennon **Q** tai **q**, poistut ohjelmasta.
 
