@@ -3,6 +3,9 @@ package rautatieoptimaattori.domain;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ * Verkko-luokan yksikkötestit.
+ */
 public class VerkkoTest {
 
     /**

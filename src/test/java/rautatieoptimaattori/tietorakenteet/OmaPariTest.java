@@ -4,6 +4,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import rautatieoptimaattori.domain.Solmu;
 
+/**
+ * OmaPari-luokan yksikkötestit.
+ */
 public class OmaPariTest {
     
     /**

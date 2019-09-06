@@ -6,6 +6,9 @@ import rautatieoptimaattori.domain.Solmu;
 import rautatieoptimaattori.domain.Verkko;
 import rautatieoptimaattori.io.Aineistokasittelija;
 
+/**
+ * A-Star-algoritmin yksikkötestit.
+ */
 public class AstarTest {
 
     /**

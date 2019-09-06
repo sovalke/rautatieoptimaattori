@@ -3,6 +3,9 @@ package rautatieoptimaattori.tietorakenteet;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ * OmaHashMap-luokan yksikkötestit.
+ */
 public class OmaHashMapTest {
 
     /**

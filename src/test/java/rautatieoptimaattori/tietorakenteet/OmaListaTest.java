@@ -3,6 +3,9 @@ package rautatieoptimaattori.tietorakenteet;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ * OmaLista-luokan yksikkötestit.
+ */
 public class OmaListaTest {
 
     /**

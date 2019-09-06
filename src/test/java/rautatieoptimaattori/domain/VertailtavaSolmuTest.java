@@ -3,6 +3,9 @@ package rautatieoptimaattori.domain;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
+/**
+ * VertailtavaSolmu-luokan yksikkötestit.
+ */
 public class VertailtavaSolmuTest {
     
     /**

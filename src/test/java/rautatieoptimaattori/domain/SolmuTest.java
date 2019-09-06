@@ -4,6 +4,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import rautatieoptimaattori.tietorakenteet.OmaHashMap;
 
+/**
+ * Solmu-luokan yksikkötestit.
+ */
 public class SolmuTest {
     
     /**

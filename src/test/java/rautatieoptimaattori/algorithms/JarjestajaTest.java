@@ -4,11 +4,17 @@ import java.util.Random;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ * Lomitusjärjestämisluokan yksikkötestit.
+ */
 public class JarjestajaTest {
-        
+
+    /**
+     * Konstruktori.
+     */
     public JarjestajaTest() {
     }
-    
+
     /**
      * Testaa Jarjesta-metodin toimintaa.
      */
@@ -20,7 +26,7 @@ public class JarjestajaTest {
             int x = ran.nextInt(20) + 1;
             taulukko[i] = x;
         }
-        
+
         Jarjestaja jarjestaja = new Jarjestaja();
         taulukko[12] = 1;
         long[] result = jarjestaja.jarjesta(taulukko, 0, 999);
@@ -28,5 +34,5 @@ public class JarjestajaTest {
         long odotus = 1;
         assertEquals(tulos, odotus);
     }
-    
+
 }

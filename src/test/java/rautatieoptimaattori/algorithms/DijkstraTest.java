@@ -5,7 +5,9 @@ import static org.junit.Assert.*;
 import rautatieoptimaattori.domain.Solmu;
 import rautatieoptimaattori.domain.Verkko;
 
-
+/**
+ * Dijkstrana algoritmin yksikkötestit.
+ */
 public class DijkstraTest {
 
     /**
