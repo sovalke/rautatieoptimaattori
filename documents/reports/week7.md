@@ -1,6 +1,6 @@
 # Viikkoraportti 7
 
-* Lisätty JUnit-testit luokalle VertailtavaSolmu. Domain-luokkien rivikattavuus on nyt 100 % ja mutaatiokattavuus 94 %.
+* Lisätty puuttuvia JUnit-testejä.
 
 * Lisätty Javadoc-kommentit testiluokkiin.
 
@@ -9,3 +9,9 @@
 * Toteutettu asemalistauksen järjestäminen ja tulostaminen.
 
 * Lisätty tekstipohjainen käyttöliittymä.
+
+* Toteutettu lomitusjärjestämisalgoritmi Jarjestaja. Tätä luokkaa käytetään suorituskykytestauksessa.
+
+* Kirjoitettu dokumentaatio loppuun.
+
+* Ajettu Checkstyle ja viimeistelty koodia.
