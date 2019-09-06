@@ -19,11 +19,7 @@
 
 Ohjelman ydintoiminnot (mm. algoritmit) on toteutettu täysin omien tietorakenteiden avulla. Muutamissa aputoiminnoissa on kuitenkin käytetty apuna *Arrays.sort*-toimintoa. Näitä aputoimintoja ovat:
 
-* **Suorituskykytesti**-luokka, jossa taulukon Arrays.sortia käytetään apuna algoritmin mediaanisuoritusajan selvittämisessä. Koska kyse on testidatan keräämisestä eikä ohjelman ydintoiminnallisuudesta, taulukkojen sort-ominaisuutta ei ole toteutettu itse.
-
 * **Käyttöliittymä**-luokka Lukija, jossa Arrays.sortia käytetään aakkostamaan tulostettavia asema- ja yhteysvälilistauksia. Jälleen kerran kyse **ei ole** ohjelman ydintoiminnallisuudesta vaan kosmeettisesta lisästä - listaukset toimisivat aivan yhtä hyvin ilman aakkostamistakin.
-
-* *SolmuTest*-luokka, jossa järjestetään taulukossa olevat Solmu-oliot. Metodin tarkoitus on testata, toimiiko Solmu-luokan compareTo-metodi. Jälleen kerran: varsinainen järjestäminen ei ole testin ydintoimintoa, vaan testaaminen.
 
 * Lisäksi **OmaHashMap**- ja **OmaLista**-luokissa on import Collections-luokalle. **Collections-luokkaa ei kuitenkaan käytetä.** Import on jätetty paikalleen, koska luokat toteuttavat rajapintoja (Map, Set, Iterable), jotka puolestaan edellyttävät ylimääräisten metodien toteuttamista. Nämä metodit vaativat parametreina Collections-tyypin olioita, tai vaihtoehtoisesti palauttavat Collections-luokan olioita return-arvoina. Nämä metodit on tässä ohjelmassa jätetty toteuttamatta, mutta niiden vaatimat importit on jätetty paikoilleen, jotta ei tule virheilmoituksia.
 
