@@ -11,6 +11,8 @@ Ohjelmassa käytettävä ohjelmointikieli on Java.
 
 [Toteutusdokumentti](documents/implementation.md)
 
+[Käyttöohje](documents/manual.md)
+
 [Javadoc](documents/javadoc/)
 
 
