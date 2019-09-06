@@ -41,6 +41,16 @@ Ainoa poikkeus koskee A*-algoritmin testejä, joista osassa on käytetty kansios
 JUnit-testit voi toistaa ajamalla komentoriviltä ohjelman kansiossa komennon `mvn test`.
 
 
+## Checkstyle
+
+Projekti on tarkistettu Mavenin Checkstyle-pluginin avulla. Checkstyle antoi vain yhden varoituksen: OmaKeko-luokan rivillä 52 on muuttuja, jonka esittelyn ja käytön välillä on liian monta riviä koodia.
+
+Ikävä kyllä tämä on välttämätöntä ohjelman toiminnalle, ja etäisyyden pienennysyritykset johtivat ohjelman toiminnan vioittumiseen. Tästä syystä tämä huomautus on jätetty lopulliseen versioon.
+
+![Checkstylen yleisnäkymä](/documents/img/checkstyle1.png)
+
+![Tarkempi virheilmoitus](/documents/img/checkstyle2.png)
+
 ## Suorituskykytesti
 
 Projektille on luotu suorituskykytesti, joka mittaa A*:n ja Dijkstran nopeuden eroja, kun samaa reittiä haetaan 100, 1000 ja 10 000 kertaa. Testi järjestää algoritmien suoritusajat ja ottaa vertailuun suoritusaikojen mediaanit. Mediaanien valintaa varten data järjestetään lomitusjärjestämisellä (Järjestäjä-luokka).
