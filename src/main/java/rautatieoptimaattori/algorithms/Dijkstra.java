@@ -7,6 +7,9 @@ import rautatieoptimaattori.tietorakenteet.OmaHashMap;
 import rautatieoptimaattori.tietorakenteet.OmaKeko;
 import rautatieoptimaattori.tietorakenteet.OmaPari;
 
+/**
+ * Dijkstran algoritmi.
+ */
 public class Dijkstra {
 
     private final Verkko verkko;

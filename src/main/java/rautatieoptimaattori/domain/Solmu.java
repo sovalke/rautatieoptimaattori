@@ -2,6 +2,9 @@ package rautatieoptimaattori.domain;
 
 import rautatieoptimaattori.tietorakenteet.OmaHashMap;
 
+/**
+ * Asemaa eli solmua kuvaava luokka.
+ */
 public class Solmu {
 
     private String nimi;

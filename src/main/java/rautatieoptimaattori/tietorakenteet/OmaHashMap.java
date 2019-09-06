@@ -4,6 +4,11 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Oma HashMap-luokka.
+ * @param <K>
+ * @param <V>
+ */
 public class OmaHashMap<K, V> implements Map<K, V> {
 
     private OmaLista<OmaPari<K, V>>[] values;

@@ -7,6 +7,9 @@ import rautatieoptimaattori.domain.Solmu;
 import rautatieoptimaattori.domain.Verkko;
 import rautatieoptimaattori.io.Aineistokasittelija;
 
+/**
+ * Luokka, joka toteuttaa ohjelman suorituskykytestit.
+ */
 public class Suorituskykytesti {
     Aineistokasittelija data;
     Verkko verkko;

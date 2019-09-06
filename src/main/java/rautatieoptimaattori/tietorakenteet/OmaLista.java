@@ -4,6 +4,10 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
 
+/**
+ * Yksinkertainen oma listarakenne.
+ * @param <T>
+ */
 public class OmaLista<T> implements Iterable<T>, Set<T> {
 
     protected T[] values;

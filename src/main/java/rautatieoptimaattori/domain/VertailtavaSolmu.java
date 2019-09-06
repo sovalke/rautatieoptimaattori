@@ -1,5 +1,9 @@
 package rautatieoptimaattori.domain;
 
+/**
+ * Luokka, joka auttaa vertailemaan solmujen etäisyyksiä (tai etäisyysarvioita)
+ * määränpäästä.
+ */
 public class VertailtavaSolmu implements Comparable {
 
     private final Solmu solmu;

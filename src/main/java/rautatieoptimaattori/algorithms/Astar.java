@@ -7,6 +7,9 @@ import rautatieoptimaattori.tietorakenteet.OmaHashMap;
 import rautatieoptimaattori.tietorakenteet.OmaKeko;
 import rautatieoptimaattori.tietorakenteet.OmaPari;
 
+/**
+ * A-Star-algoritmi.
+ */
 public class Astar {
 
     private final Verkko verkko;

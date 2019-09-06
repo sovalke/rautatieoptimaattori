@@ -4,6 +4,9 @@ import rautatieoptimaattori.tietorakenteet.OmaHashMap;
 import rautatieoptimaattori.tietorakenteet.OmaLista;
 import rautatieoptimaattori.tietorakenteet.OmaPari;
 
+/**
+ * Asemien ja yhteyksien muodostamaa verkkoa kuvaava luokka.
+ */
 public class Verkko {
 
     private final OmaHashMap<Integer, Solmu> solmut = new OmaHashMap<>();

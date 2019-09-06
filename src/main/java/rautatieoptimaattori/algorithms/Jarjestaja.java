@@ -1,5 +1,8 @@
 package rautatieoptimaattori.algorithms;
 
+/**
+ * Lomitusjärjestämiseen perustuva järjestämisluokka.
+ */
 public class Jarjestaja {
 
     private long[] longApu;

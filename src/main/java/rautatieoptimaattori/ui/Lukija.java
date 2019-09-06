@@ -9,6 +9,9 @@ import rautatieoptimaattori.domain.Solmu;
 import rautatieoptimaattori.domain.Verkko;
 import rautatieoptimaattori.suorituskyky.Suorituskykytesti;
 
+/**
+ * Käyttöliittymäluokka.
+ */
 public class Lukija {
 
     Verkko verkko;
@@ -167,18 +170,21 @@ public class Lukija {
             if (kasky.equals("K") || kasky.equals("k")) {
                 System.out.println("\nSelvä. Pannaan hommaan vauhtia ja käytetään A*:aa.");
                 long reitti = this.astar.reitinPituus(alku, loppu);
+                String aika = aika(reitti);
                 System.out.println("Haetaan reittiä...");
                 System.out.println("------VALMIS.");
-                System.out.println("\nMatkan pituus on " + reitti + " millisekuntia.");
+                System.out.println("\nMatkan pituus on " + aika + ".");
                 System.out.println("------------------------------------------");
                 break;
             }
             if (kasky.equals("E") || kasky.equals("e")) {
                 System.out.println("\nSelvä. Otetaan letkeästi ja käytetään Dijkstraa.");
                 long reitti = this.dijkstra.reitinPituus(alku, loppu);
+                String aika = aika(reitti);
+                
                 System.out.println("Haetaan reittiä...");
                 System.out.println("------VALMIS.");
-                System.out.println("\nMatkan pituus on " + reitti + " millisekuntia.");
+                System.out.println("\nMatkan pituus on " + aika + ".");
                 System.out.println("------------------------------------------");
                 break;
             }
@@ -208,6 +214,29 @@ public class Lukija {
             return solmu;
         }
         return solmu;
+    }
+
+    /**
+     * Muuttaa millisekunnit tunneiksi, minuuteiksi ja sekunneiksi.
+     *
+     * @param ms millisekunnit
+     * @return String aika tunteina, minuutteina ja sekunteina
+     */
+    public static String aika(long ms) {
+        long kokSekunnit = ms/1000;
+        long tunnit = (kokSekunnit / 3600);
+        long minuutit = (kokSekunnit / 60) % 60;
+        long sekunnit = kokSekunnit % 60;
+        
+        String minString = (minuutit == 0)
+            ? "00" : ((minuutit < 10) ? "0" + minuutit : "" + minuutit);
+        String sekString = (sekunnit == 0) ? "00" : ((sekunnit < 10)
+            ? "" + sekunnit : "" + sekunnit);
+        if (tunnit > 0)
+            return tunnit + " tuntia, " + minString + " minuuttia ja " + sekString + " sekuntia";
+        else if (minuutit > 0)
+            return minuutit + ":" + sekString;
+        else return ":" + sekString;
     }
 
 }

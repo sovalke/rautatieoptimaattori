@@ -4,6 +4,11 @@ import rautatieoptimaattori.domain.Verkko;
 import rautatieoptimaattori.io.Aineistokasittelija;
 import rautatieoptimaattori.ui.Lukija;
 
+/**
+ * Pääluokka.
+ *
+ * @author Sonja
+ */
 public class Rautatieoptimaattori {
 
     /**

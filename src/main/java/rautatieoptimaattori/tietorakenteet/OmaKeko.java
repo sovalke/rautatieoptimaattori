@@ -2,6 +2,9 @@ package rautatieoptimaattori.tietorakenteet;
 
 import rautatieoptimaattori.domain.VertailtavaSolmu;
 
+/**
+ * Minimikekoa mallintava kekoluokka.
+ */
 public class OmaKeko {
 
     private final VertailtavaSolmu[] heap;

@@ -12,6 +12,9 @@ import java.util.logging.Logger;
 import rautatieoptimaattori.domain.Solmu;
 import rautatieoptimaattori.domain.Verkko;
 
+/**
+ * Luokka, joka pureskelee csv-muotoisen datan ohjelman huolimaan muotoon.
+ */
 public class Aineistokasittelija {
 
     Verkko verkko;

@@ -2,6 +2,11 @@ package rautatieoptimaattori.tietorakenteet;
 
 import java.util.Map;
 
+/**
+ * Yksinkertainen paria mallintava luokka.
+ * @param <K>
+ * @param <V>
+ */
 public class OmaPari<K, V> implements Map.Entry {
 
     private final K key;
