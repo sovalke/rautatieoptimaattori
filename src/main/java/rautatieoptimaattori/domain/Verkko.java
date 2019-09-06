@@ -133,6 +133,12 @@ public class Verkko {
         return null;
     }
 
+    /**
+     * Hakee halutun solmun.
+     *
+     * @param nimi haettavan solmun nimi
+     * @return haettava solmu
+     */
     public Solmu getSolmu(String nimi) {
         if (this.solmut2.containsKey(nimi)) {
             return this.solmut2.get(nimi);
