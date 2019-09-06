@@ -1,6 +1,5 @@
 package rautatieoptimaattori.domain;
 
-import java.util.Arrays;
 import rautatieoptimaattori.tietorakenteet.OmaHashMap;
 import rautatieoptimaattori.tietorakenteet.OmaLista;
 import rautatieoptimaattori.tietorakenteet.OmaPari;
@@ -56,7 +55,7 @@ public class Verkko {
                 i++;
             }
         }
-        Arrays.sort(asemat);
+
         return asemat;
     }
 
@@ -105,8 +104,7 @@ public class Verkko {
         for (int i = 0; i < lista.size(); i++) {
             valit[i] = lista.value(i);
         }
-
-        Arrays.sort(valit);
+        
         return valit;
     }
 

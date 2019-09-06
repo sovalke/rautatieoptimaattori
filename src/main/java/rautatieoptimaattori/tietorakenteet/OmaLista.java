@@ -230,4 +230,5 @@ public class OmaLista<T> implements Iterable<T>, Set<T> {
     public boolean removeAll(Collection<?> c) {
         throw new UnsupportedOperationException("Tätä metodia ei tueta vielä.");
     }
+
 }
