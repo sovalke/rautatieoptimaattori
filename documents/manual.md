@@ -1,5 +1,8 @@
 # Käyttöohje
 
+[Aloittaminen](#aloittaminen)
+[Ohjelman käyttäminen](#ohjelman-käyttäminen)
+[A: tulosta verkon asemat](#a:-tulosta-verkon-asemat)
 
 ## Aloittaminen
 
