@@ -2,11 +2,13 @@
 
 * Lisätty puuttuvia JUnit-testejä.
 
+* Parannettu JUnit-testien rivikattavuutta.
+
 * Lisätty Javadoc-kommentit testiluokkiin.
 
-* Lisätty JUnit-testit omille tietorakenteille.
+* Toteutettu asemalistauksen tulostaminen.
 
-* Toteutettu asemalistauksen järjestäminen ja tulostaminen.
+* Toteutettu Lukija-luokkaan metodi **aika**, joka muuntaa algoritmin antaman matka-ajan millisekunneista tunneiksi, minuuteiksi ja sekunneiksi.
 
 * Lisätty tekstipohjainen käyttöliittymä.
 
