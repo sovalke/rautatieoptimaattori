@@ -1,9 +1,8 @@
 package rautatieoptimaattori.suorituskyky;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import rautatieoptimaattori.algorithms.Astar;
 import rautatieoptimaattori.algorithms.Dijkstra;
+import rautatieoptimaattori.algorithms.Jarjestaja;
 import rautatieoptimaattori.domain.Solmu;
 import rautatieoptimaattori.domain.Verkko;
 import rautatieoptimaattori.io.Aineistokasittelija;
@@ -83,29 +82,32 @@ public class Suorituskykytesti {
         System.out.println("Kuljetaan " + krt + " kertaa väli " 
                 + lahtopaikka + "-" + maaranpaa + "...");
             
-        ArrayList ajat = new ArrayList<>();
+        long[] ajat = new long[krt + 1];
 
         for (int i = 0; i < krt + 1; i++) {
             long alkuAika = System.nanoTime();
             this.dijkstra.reitinPituus(alku, loppu);
             long loppuAika = System.nanoTime();
-            ajat.add(loppuAika - alkuAika);
+            ajat[i] = loppuAika - alkuAika;
         }  
             
-        Collections.sort(ajat);
-        System.out.println("Dijkstran mediaaniaika: " + ajat.get(krt / 2) + " millisekuntia");
+        Jarjestaja jarjestaja = new Jarjestaja();
+        jarjestaja.jarjesta(ajat, 0, krt);
+        System.out.println("Dijkstran mediaaniaika: " + ajat[krt / 2] + " millisekuntia");
             
-        ajat.clear();
+        ajat = new long[krt + 1];
             
         for (int i = 0; i < krt + 1; i++) {
             long alkuAika = System.nanoTime();
             this.astar.reitinPituus(alku, loppu);
             long loppuAika = System.nanoTime();
-            ajat.add(loppuAika - alkuAika);
+            ajat[i] = loppuAika - alkuAika;
         }  
             
-        Collections.sort(ajat);
-        System.out.println("A*:n mediaaniaika: " + ajat.get(krt / 2) + " millisekuntia");
+        Jarjestaja jarjestaja2 = new Jarjestaja();
+        jarjestaja2.jarjesta(ajat, 0, krt);
+        
+        System.out.println("A*:n mediaaniaika: " + ajat[krt / 2] + " millisekuntia");
             
     }
 }
