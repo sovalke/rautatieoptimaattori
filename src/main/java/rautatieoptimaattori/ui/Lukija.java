@@ -1,6 +1,7 @@
 package rautatieoptimaattori.ui;
 
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.Scanner;
 import rautatieoptimaattori.algorithms.Astar;
 import rautatieoptimaattori.algorithms.Dijkstra;
@@ -36,7 +37,7 @@ public class Lukija {
         System.out.println("------------------------------------------");
         while (true) {
             System.out.println("Valitse mitä haluat tehdä.");
-            System.out.println("A - Tulosta verkon asemat aakkosjärjestyksessä");
+            System.out.println("A - Tulosta verkon asemat");
             System.out.println("R - Tulosta kaikki saatavilla olevat reitit");
             System.out.println("O - Siirry reittiohjelmaan");
             System.out.println("S - Aja suorituskykytesti");
@@ -75,17 +76,30 @@ public class Lukija {
      */
     public void asemalistaus() {
         Solmu[] asemat = verkko.asemat();
+                
         System.out.println("------------------------------------------");
         System.out.println("\nASEMALISTAUS");
         System.out.println("Asemia on yhteensä " + asemat.length);
         System.out.println("");
+        
+        String[] asematTeksti = new String[asemat.length];
 
-        for (Object asema : asemat) {
-            Solmu a = (Solmu) asema;
-            System.out.println(a.getId() + " " + a.getNimi());
+        // Kopioidaan asemien nimet ja id:t uuteen taulukkoon muodossa
+        // nimi (id).
+        for (int i = 0; i < asemat.length; i++) {
+            asematTeksti[i] = asemat[i].getNimi() + "(" + asemat[i].getId() + ")";
         }
-        System.out.println("------------------------------------------");
 
+        // Tällä sort-komennolla aakkostetaan tulostettavat asemat.
+        // Ei liity ohjelman ydintoimintoihin.
+        Arrays.sort(asematTeksti);
+        
+        // Tulostetaan nimet.
+        for (String rivi : asematTeksti) {
+            System.out.println(rivi);
+        }
+        
+        System.out.println("------------------------------------------");
     }
     
     /**
@@ -93,6 +107,11 @@ public class Lukija {
      */
     public void reitit() {
         String[] yhteydet = verkko.reitit();
+        
+        // Tällä sort-komennolla aakkostetaan tulostettavat reitit kauniimmiksi.
+        // Ei liity ohjelman ydintoimintoihin.
+        Arrays.sort(yhteydet);
+        
         System.out.println("------------------------------------------");
         System.out.println("\nSAATAVILLA OLEVAT YHTEYSVÄLIT");
         System.out.println("Yhteyksiä yhteensä " + yhteydet.length);
