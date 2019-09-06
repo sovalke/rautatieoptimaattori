@@ -17,9 +17,10 @@ Ohjelman luokkien koodikattavuus on seuraava:
 | **Algoritmit**     |                |                   |
 | - Astar            | 100 %          | 73 %              |
 | - Dijkstra         | 100 %          | 88 %              |
+| - Jarjestaja       | 100 %          | 63 %              |
 | **Domain-luokat**  |                |                   |
 | - Solmu            | 100 %          | 100 %             |
-| - Verkko           | 100 %          | 80 %              |
+| - Verkko           | 100 %          | 82 %              |
 | - VertailtavaSolmu | 100 %          | 100 %             |
 | **Tietorakenteet** |                |                   |
 | - OmaHashMap       | 95 %  / 100 %* | 91  %             |
@@ -35,9 +36,14 @@ Useimmissa JUnit-testeissä käytetään pientä, muutaman tai korkeintaan parin
 Ainoa poikkeus koskee A*-algoritmin testejä, joista osassa on käytetty kansiossa data/testdata/ olevia tiedostoja. Suuri aineisto on tarpeen mm. tilanteissa, joissa testataan algoritmin tapaa käsitellä samaa solmua useaan kertaan. Kovin pienellä datalla tällaista tilannetta ei tule vastaan, joten testi käyttää n. 3 mt kokoista valmista datasettiä. 
 
 
+### JUnit-testien toistaminen
+
+JUnit-testit voi toistaa ajamalla komentoriviltä ohjelman kansiossa komennon `mvn test`.
+
+
 ## Suorituskykytesti
 
-Projektille on luotu suorituskykytesti, joka mittaa A*:n ja Dijkstran nopeuden eroja, kun samaa reittiä haetaan 100, 1000 ja 10 000 kertaa. Suorituskykytestin voi ajaa valitsemalla ohjelman käyttöliittymässä komennon "S" (suorituskykytesti).
+Projektille on luotu suorituskykytesti, joka mittaa A*:n ja Dijkstran nopeuden eroja, kun samaa reittiä haetaan 100, 1000 ja 10 000 kertaa. Testi järjestää algoritmien suoritusajat ja ottaa vertailuun suoritusaikojen mediaanit. Mediaanien valintaa varten data järjestetään lomitusjärjestämisellä (Järjestäjä-luokka).
 
 Tätä dokumenttia varten testit ajettiin suhteellisen vanhalla kannettavalla tietokoneella (2,5 GHz Intel Core i5; 8 Gt RAM).
 
@@ -82,6 +88,10 @@ Ero A-Starin hyväksi on laskettu siten, että A-Starin suoritusaika on jaettu D
 Tämän jälkeen saatu luku on vähennetty 1:stä ja kerrottu sadalla. Eli:
 
 (1 - (A-Starin suoritusaika) / (Dijkstran suoritusaika)) * 100 %. 
+
+### Suorituskykytestin toisintaminen
+
+Suorituskykytestin voi ajaa valitsemalla ohjelman käyttöliittymässä komennon "S" (suorituskykytesti).
 
 
 ### Suorituskykytesti kuvaajina
