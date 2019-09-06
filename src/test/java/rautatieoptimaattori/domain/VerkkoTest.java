@@ -151,7 +151,7 @@ public class VerkkoTest {
         verkko.lisaaAsema("Turku", 124, 60.451389, 22.266667);
         verkko.lisaaAsema("Vaasa", 288, 63.097786, 21.621824);
         Solmu[] lista = verkko.asemat();
-        assertEquals(lista[1].getId(), 124);
+        assertEquals(lista[2].getId(), 124);
     }
 
 }
