@@ -12,12 +12,12 @@ Tämän jälkeen voit suorittaa ohjelman. Ohjelman pääluokka on Rautatieoptima
 
 Kun olet **käynnistänyt ohjelman**, näkyviin tulee tekstipohjainen käyttöliittymä. Valittavana on seuraavat komennot:
 
-> Valitse mitä haluat tehdä.
-> A - Tulosta verkon asemat
-> R - Tulosta kaikki saatavilla olevat reitit
-> O - Siirry reittiohjelmaan
-> S - Aja suorituskykytesti
-> Q - Lopeta
+    Valitse mitä haluat tehdä.
+    A - Tulosta verkon asemat
+    R - Tulosta kaikki saatavilla olevat reitit
+    O - Siirry reittiohjelmaan
+    S - Aja suorituskykytesti
+    Q - Lopeta
 
 ### A: tulosta verkon asemat
 
@@ -33,28 +33,28 @@ Kun syötät ohjelmalle komennon **R** tai **r**, ohjelma tulostaa kaikki sillä
 
 Kun syötät ohjelmalle komennon **O** tai **o**, ohjelma siirtyy reitinetsintätilaan. Ohjelma tiedustelee ensin lähtöaseman ja sen jälkeen määränpääaseman nimeä.
 
-> REITINHAKUOHJELMA
-> Syötä lähtöaseman nimi: Tampere asema
-> Syötä määränpääaseman nimi: Turku asema
+    REITINHAKUOHJELMA
+    Syötä lähtöaseman nimi: Tampere asema
+    Syötä määränpääaseman nimi: Turku asema
 
 **Jos oikeaa asemaa ei löydy, tarkista aseman nimi.** Kaikkien asemien nimet eivät ole intuitiivisia (esimerkiksi pelkkä *Helsinki* ei ole aseman nimi, vaan päärautatieasema on *Helsinki asema*). Aseman nimen pitää olla kirjoitettu täsmälleen oikein, jotta ohjelma huolii sen. Huomaathan, että isoilla ja pienillä kirjaimilla on merkitystä.
 
-> Syötä lähtöaseman nimi: Tampere
->   Asemaa ei löydy. Yritä uudelleen.
-> Syötä lähtöaseman nimi: Tampere asema
-> Syötä määränpääaseman nimi: Turku asema
+    Syötä lähtöaseman nimi: Tampere
+    Asemaa ei löydy. Yritä uudelleen.
+    Syötä lähtöaseman nimi: Tampere asema
+    Syötä määränpääaseman nimi: Turku asema
 
 Kun olet antanut sekä lähtö- että määränpääaseman nimen, ohjelma tiedustelee, onko sinulla kiire. Vastaa joko kyllä (k tai K) tai ei (e tai E). Ohjelma valitsee käytettävän algoritmin tämän mukaan.
 
-> Onko sinulla kiire perille?
-> K - kyllä, E - ei 
-> e
-> 
-> Selvä. Otetaan letkeästi ja käytetään Dijkstraa.
-> Haetaan reittiä...
-> ------VALMIS.
-> 
-> Matkan pituus on 2 tuntia, 58 minuuttia ja 34 sekuntia.
+    Onko sinulla kiire perille?
+    K - kyllä, E - ei 
+    e
+    
+    Selvä. Otetaan letkeästi ja käytetään Dijkstraa.
+    Haetaan reittiä...
+    ------VALMIS.
+    
+    Matkan pituus on 2 tuntia, 58 minuuttia ja 34 sekuntia.
 
 Kun olet saanut reitin selvitettyä, ohjelma palaa alkutilaan.
 
