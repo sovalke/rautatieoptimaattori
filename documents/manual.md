@@ -1,8 +1,9 @@
 # Käyttöohje
 
-[Aloittaminen](#aloittaminen)
-[Ohjelman käyttäminen](#ohjelman-käyttäminen)
-[A: tulosta verkon asemat](#a:-tulosta-verkon-asemat)
+* [Aloittaminen](#aloittaminen)
+* [Ohjelman käyttäminen](#ohjelman-käyttäminen)
+ * [Tulosta verkon asemat](#tulosta-verkon-asemat)
+ * [Tulosta kaikki saatavilla olevat reitit](#tulosta-kaikki-saatavilla-olevat-reitit)
 
 ## Aloittaminen
 
@@ -22,13 +23,13 @@ Kun olet **käynnistänyt ohjelman**, näkyviin tulee tekstipohjainen käyttöli
     S - Aja suorituskykytesti
     Q - Lopeta
 
-### A: tulosta verkon asemat
+### Tulosta verkon asemat
 
 Kun syötät ohjelmalle komennon **A** tai **a**, ohjelma tulostaa kaikki sillä hetkellä käytössä olevat asemat. Jokaisen aseman perässä on lisäksi suluissa aseman id.
 
 Tulostamisen jälkeen palataan alkutilaan.
 
-### R: tulosta kaikki saatavilla olevat reitit
+### Tulosta kaikki saatavilla olevat reitit
 
 Kun syötät ohjelmalle komennon **R** tai **r**, ohjelma tulostaa kaikki sillä hetkellä tunnetut suorat yhteydet eri asemien välillä.
 
